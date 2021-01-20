@@ -1,0 +1,768 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts, amsmath, amssymb}
+\usepackage[english]{babel}
+% \usepackage{boisik}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{centernot}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{empheq}
+\usepackage{calligra}
+
+
+%\usepackage{tgbonum}
+%\usepackage{cmbright}
+%\usepackage{textcomp}
+\usepackage{sectsty}
+\sectionfont{\fontsize{20}{20}\selectfont}
+%\titlefont{\fontsize{20}{20}\selectfont}
+%\usepackage{mathpazo} 
+
+\usepackage{hyperref} %Uncomment for Hyperlinked Table of Contents.
+
+\hypersetup{
+	colorlinks,
+	citecolor=blue,
+	filecolor=black,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+\usepackage[skins,theorems]{tcolorbox}
+\tcbset{highlight math style={enhanced,
+		colframe=red,colback=white,arc=0pt,boxrule=1pt}}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+\subsectionfont{\fontsize{15}{15}\selectfont}
+
+\usepackage{xcolor}
+
+\newcommand*{\myfont}{\fontfamily{cmr}\selectfont}
+\newcommand{\id}[1]{{\myfont \text{id}_{#1}}}
+\newcommand{\notset}[0]{\setminus}
+
+
+
+\title{\Huge Measure Theory\\
+	\Large Definitions, Propositions, Theorems \& Proofs}
+\author{Animesh Renanse}
+\date{\today}
+\usepackage{amsthm}
+
+\theoremstyle{definition}
+\newtheorem{definition}{$\boxed{\star}$ Definition}
+\newcommand{\tit}[1]{\textit{#1}}
+\newtheorem{theorem}{$\boxed{\boxed{\circledast}}$ Theorem}
+
+\newcommand{\nll}[0]{\newline\newline}
+\theoremstyle{remark}
+\newtheorem*{remark}{\textbf{Remark}}
+
+\theoremstyle{definition}
+\newtheorem{corollary}{$ \to $ Corollary}
+
+\theoremstyle{definition}
+\newtheorem{proposition}{$\checkmark$ Proposition}
+
+\theoremstyle{definition}
+\newtheorem{lemma}{Lemma}
+
+\usepackage{mathtools}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\theor}[0]{\boxed{\textbf{\textit{Theorem}}}}
+\newcommand{\algo}[0]{\boxed{\textbf{\textit{Algorithm}}}}
+\newcommand{\assum}[0]{\boxed{\textbf{\textit{Assumption}}}}
+\newcommand{\formula}[0]{\boxed{\textbf{\textit{Formula}}}}
+\newcommand{\defin}[0]{\boxed{\textbf{\textit{Definition}}}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\mat}[1]{\bm{\mathrm{#1}}}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\innerp}[2]{\langle #1, #2 \rangle}
+\newcommand{\expec}[2]{\mathbb{E}_{#1}\left[ #2\right]}
+\newcommand{\seq}[1]{\left\{#1\right\}}
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
+\newcommand{\estif}[1]{\hat{\theta}\left( #1 \right)}
+\newcommand{\esti}[0]{\hat{\theta}}
+
+
+
+\newcommand{\defeq}[1]{
+		\tcbhighmath[boxrule=1pt,arc=0pt,colback=yellow!10,colframe=black]{\begin{aligned}
+				#1
+		\end{aligned}}
+	}
+\newcommand{\theoreq}[1]{
+		\tcbhighmath[boxrule=2pt,arc=0pt,colback=blue!10!white,colframe=black]{\begin{aligned}
+				#1
+		\end{aligned}}}
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Commands
+\newcommand{\union}{\cup}
+\newcommand{\intrs}{\cap}
+\newcommand{\bunion}{\bigcup}
+\newcommand{\bintrs}{\bigcap}
+\newcommand{\interior}[1]{{#1}^{\circ}}
+\newcommand{\closure}[1]{\overline{#1}}
+\newcommand{\boundary}[1]{\partial #1}
+\newcommand{\lsum}[2]{l(#1,\mathcal{#2})}
+\newcommand{\usum}[2]{u(#1,\mathcal{#2})}
+\newcommand{\where}{\;\vert\;}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\alg}[1]{\mathscr{#1}}
+\newcommand{\bor}[1]{\mathscr{B}(#1)}
+\newcommand{\comp}[1]{#1^{\text{c}}}
+\newcommand{\m}[1]{\mu\left (#1\right )}
+\newcommand{\limit}[2]{\underset{#1}{\lim}\; #2}
+\newcommand{\pow}[1]{\mathscr{P}\left (#1\right )}
+\newcommand{\om}[1]{\mu^*\left ( #1\right )}
+\newcommand{\lom}[1]{\lambda^*\left (#1\right )}
+\newcommand{\set}[1]{\mathscr{#1}}
+\newcommand{\msigm}[1]{\set{M}_{#1}}
+
+\begin{document}
+\begin{titlepage}
+	{\scshape\LARGE Indian Institute of Technology, Guwahati \par}
+	\vspace{1cm}
+	{\scshape\Large Pre-Final Year : $ 6^{th} $ Semester\par}
+	\vspace{1.5cm}
+	{\Huge\bfseries Measure Theory\par}
+	\vspace{2cm}
+	{\Large\itshape Animesh Renanse\par}
+	\vfill
+	Instructed by\par
+	Prof.~Pratyoosh \textsc{Kumar}
+	
+	\vfill
+	
+	% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+\tableofcontents
+\newpage
+\section{Introduction}
+Measure Theory is a field of mathematics which deals with formalizing the notion of a \emph{measure} of a given quantity. Traditional notion of a \emph{measure} fails in lots of complicated scenario. Hence, we need a rigorous definition of it. The work in this direction was forwarded by Lebesgue and others in the dawn of $ 20^{th} $ century.
+\subsection{Few introductory definitions}
+These are few of the basic definitions that one might remember from real analysis.
+\begin{itemize}
+	\item{\textbf{Limit Points} : $ x\in X $ is called a \emph{limit point} of a subset $ S \subseteq X $ if $\forall\; r > 0 $, $ \exists\; a\neq x$ such that $ a\in S\intrs B_{r}(x) $. That is, ball of any size $ r $ around $ x $ contains atleast one point of $ S $.}
+	\item{\textbf{Isolated Points} : $ y\in S $ is called an \emph{isolated point} of a subset $ S\subseteq X $ if $ \exists \;r > 0 $ such that $ (B_r(y)\setminus \{y\}) \intrs S = \Phi $. That is, $ B_r(y) $ contains no other point of $ S $ apart from $ y $. \begin{itemize}
+			\item {Also note that every point of closure $ \closure{S} $ is either a limit point or an isolated point of $ S $.}
+			\item {More specifically, \emph{any subset of $ \R^d $ is closed if and only if it contains all of it's limit points}.}
+		\end{itemize} }
+	\item{\textbf{Perfect Set} : $ A $ is called a perfect set if $ A = A^\prime $ where $ A^\prime $ is the set of all \emph{limit points} of $ A $. More conveniently, if $ A $ does not contain any isolated points then it is a perfect set. $ \R $ is a perfect set.}
+	\item {\textbf{Symmetric Difference} : $ A $ and $ B $ are two sets then symmetric difference is $ A\Delta B = (A\setminus B) \cup (B\setminus A)$.}
+	\item {\textbf{Power Set} : Collection of all subsets of a set $ S $, written as $ P(S) $.}
+	\item {\textbf{Lower Bound} : 	A \emph{lower bound} of a subset $ S $ of a poset $ (P,\le) $ is an element $ a \in P$ such that $ a\le x $ for all $ x\in S $.}
+	\item {\textbf{Infimum} : A lower bound $ p\in P $ is called an \emph{infimum} of $ S $ if for all lower bounds $ y $ of $ S $ in $ P $, $ y\le p $.}
+	\item {\textbf{Upper Bound} : An \emph{upper bound} of a subset $ S $ of a poset $  P$ is an element $ b\in P $ such that $ b\ge x $ for all $ x\in S $.}
+	\item {\textbf{Supremum} : An upper bound $ u\in P $ is called a \emph{supremum} of $ S $ if for all upper bounds $ z $ of $ S $ in $ P $, $ z \ge u $.}
+	\item {\textbf{Lower Sum} : $ l(f,\mathcal{P}) $ is the sum of the minimum functional values at the partition. That is,
+		\[\lsum{f}{P} = \sum_{i=0}^{n-1} m_i (a_{i+1} - a_i)\]
+		where $ m_i = \inf\{f(x)\;\vert\;x\in [a_{i-1},a_i]\}$.}
+	\item {\textbf{Upper Sum} : Similarly,
+		\[\usum{f}{P} = \sum_{i=0}^{n-1} M_i (a_{i+1} - a_i)\]
+		where $ M_i = \sup\{f(x)\where x\in [a_{i-1},a_i] \} $.\\
+		Remember that the function is \emph{Riemann Integrable} if $ l(f,\mathcal{P}) = u(f,\mathcal{P}) $.}
+	\item{\textbf{Countable Sets} : Note the following,
+\begin{enumerate}
+	\item{\emph{Cardinality} : Sets $ X $ and $ Y $ have the same cardinality if there exists a bijection from $ X $ to $ Y $.}
+	\item{\emph{Finite Set} : A set is finite if it is empty or it has the same cardinality as $ \{1,2,\dots,n\} $ for some $ n\in \N $.}
+	\item{\emph{Countably Infinite} : If the set has the same cardinality as $ \N $.}
+	\item {\emph{Enumeration} : An enumeration of a countably infinite set $ X $ is a bijection of $ \N $ onto $ X $. That is, an enumeration is an infinite sequence $ \{x_n\} $ such that each of the $ x_i $'s are in $ X $ and each element of $ X $ is $ x_i $ for some $ i $.}
+	\item {\emph{Countable} : A set is countable if it is finite or countably infinite. For example, $ \N $ is countable, $ \Q $ is also countable (!), $ \R \setminus \Q $ (irrationals) is not countable, $ \R $ is not countable.}
+\end{enumerate}	
+\item {\textbf{Totally Bounded} : A subset $ B\subseteq X $ is \emph{totally bounded} when it can be covered by a finite number of $ r $-balls for all $ r>0 $. That is,
+\[\forall \; r > 0,\;\exists N\in \N,\;\exists a_1,\dots,a_N\in X\;\text{such that}\;B\subseteq \bunion_{n=1}^N B_{r}(a_n)\]
+}
+\item{\textbf{Compact Set} : A set $ K $ is said to be \emph{compact} when given any cover of balls of possibly unequal radii, there is a finite sub-collection of them that still covers the set $ K $. That is,
+\[K\subseteq \bunion_{i}B_{r_i}(a_i)\implies \exists \;i_1,\dots,i_N,\;\;K \subseteq \bunion_{n=1}^N B_{r_{i_n}}(a_{i_n})\]
+Note that \emph{compact metric spaces are totally bounded (!)}. Also, \emph{compact sets are closed}.
+}
+} 
+\end{itemize}
+The problem begins with Riemann Integrable functions when we see that functions like Dirichlet function ($ 1 $ on  irrational and $ 0 $ on rational points) can become \emph{measurable} even when the function is not continuous! This motivates the need of a formal notion of a \emph{measure}.
+\subsection{Homework - I}
+\begin{enumerate}
+	\item{Every open set in $ \mathbb{R} $ can be written as disjoint union of open intervals.
+\begin{proof}
+	Let $ G\subseteq \R$ be a open subset. Now by definition of an open subset, we have that for any $ x\in G $, there exists atleast one open subset $ U $ such that $ x\in U \subseteq G $. Now consider the following union of all such open subsets of $ x $,
+	\[U_x = \bunion_{x\in U\subseteq G} U\]
+	It's now easy to see that $ U_x $ is the largest such subset of $ G $, as any other $ V\subseteq G $ such that $ x\in V $ is by definition contained in $ U_x $. Moreover, $ U_x $ is an interval as it is an arbitrary union of open intervals. Now, define the following relation on $ G $:
+	\[y\sim x \;\iff\; y\in U_x\]
+	Now we clearly have that $ x\in U_x $ (reflexive); for $ y\sim U_x $ we have $ U\subseteq U_x $ such that $ x,y\in U $, hence $ x\in U_y $ (symmetric); for $ x\in U_y $ and $ y\in U_z $, we have that $ x,y,z\in U_y $, since $ z\in U_y \subseteq G $ so $ U_y\subseteq U_z $, so $ x\in U_z $ (transitive). Hence $ \sim $ is an equivalence relation, hence $ \sim $ partitions the set $ G $. Denote the set of all equivalence classes as $ \mathcal{I} $ so we get 
+	\[G = \bunion_{I\in \mathcal{I}} I\]
+	such that $I_1\intrs I_2 = \Phi$ for any $ I_1,I_2\in \mathcal{I} $. Now note that for any $ I \in \mathcal{I}$ is open because each $ I $ is generated by the relation $ \sim $ such that $ y\sim x $ iff $ y\in U_x $. Hence for any $ z\in I $, we have $ z\in U_x \subseteq G$ where $ U_x $ is open. Therefore, we have $ G = \union_{I\in \mathcal{I}} I $ for disjoint open intervals in $ \mathcal{I} $.
+\end{proof}	
+}
+	\item{Prove that every non-empty perfect subset of $ \mathbb{R} $ (or $ \mathbb{R}^n $) is uncountable. That is, if $ A= A^\prime $ then $ A $ is uncountable.
+\begin{proof}
+	Take $ A\subseteq \R $ to be a perfect subset. Since $ A $ it is perfect, therefore, it must contain all of it's limit points or, equivalently, contains no isolated points. Clearly, then, $ A $ cannot be finite, but can only be countably infinite or uncountable. If it is uncountable, then the proof is over. If $ A $ is countably infinite, then we can write $ A $ as the following :
+	\[A= \{a_1,a_2,\dots\}.\]
+	Construct a ball around $ a_{i_1} $ of any radius $ r_1 >0 $. Since $ A $ is perfect, therefore $ \exists $ $ a_{i_2} \in B_{r_{1}} (a_{i_1}) \intrs A = C_1$. Similarly, for some $ r_2>0 $, we have $ a_{i_3} \in B_{r_2}(a_{i_2}) \intrs B_{r_1}(a_{i_1}) \intrs A = C_2$ such that $ a_{i_1}\notin C_2 $ and so on. In general, we would have the following,
+	\[a_{i_{n+1}} \in \left (\bintrs_{j=1}^n B_{r_j}(a_{i_j}) \right ) \intrs A = C_n.\]
+	Now, consider $ C = \intrs_n C_n $. Since $ C_{n+1} \subseteq C_n $, therefore $ C\neq \Phi $. But, $ a_i\notin C $ for any $ i \in\N $ as $ a_i \notin C_{i+1} $. Therefore we have a contradiction. Hence $ A $ cannot by countably infinite, it must only be uncountable.
+\end{proof}	
+}
+%\item {A subset of R is compact if, and only if, it is
+%	closed and bounded.
+%\begin{proof}
+%	\emph{Do It!}
+%\end{proof}
+%}	
+\item {In the definition of Lebesgue Outer Measure on $ \R $, one can instead take $ \alg{C}_A $ to be collection of infinite sequences of the any form from $ \{[a_n,b_n]\}, \{(a_n,b_n)\} $ or $ \{(a_n,b_n]\} $.
+\begin{proof}
+	\emph{Refer Proof of Proposition \ref{P-9}}.
+\end{proof}
+}
+\item {Show the following:
+\[\bunion_{n=1}^N E_n = \bunion_{n=1}^N \left (E_n \intrs \comp{\left ( \bunion_{k<n} E_k\right )}\right )\]
+\begin{proof}
+Take $ x\in \bunion_{n=1}^N E_n $. Then $ \exists \; E_k $ for some $a  $ such that $ x\in E_a $. Now, clearly, $ x\in E_a \subseteq \left ( \bunion_{k<a} E_k\right )^c $, hence $ x\in\left (E_a \intrs \comp{\left ( \bunion_{k<a} E_k\right )}\right )  $. Hence, we have $ \bunion_{n=1}^N E_n \subseteq  \bunion_{n=1}^N \left (E_n \intrs \comp{\left ( \bunion_{k<n} E_k\right )}\right ) $. The converse is easy to see too.
+\end{proof}
+}
+
+\end{enumerate}
+\newpage
+\subsection{Measure of an Interval}
+In the definition of Riemann Integral, we see that a function is Riemann Integrable if $ \usum{f}{P} = \lsum{f}{P} $. But it depends upon the definition of the \emph{length of an interval}.\\
+Note that in the traditional notion of \emph{measure}, the number of points has no contribution in length. Hence the question becomes:
+\[\text{\emph{How to measure a set $ A $ in $ \R $?}}\]
+For this, we define \emph{Outer Measure}.
+\subsubsection{Outer Lebesgue Measure}
+The concept of this topic began from the following question : If we consider the cauchy sequence of Riemann Integrable functions on $ \R $, will it converge to a Riemann Integrable function?\\
+We follow the following notion of measure (atleast for the first part of the course). We do approximation by approximation.\\\\
+Suppose $ A\subseteq \R $. We define $ m^*(A) $ as the \emph{Outer Lebesgue Measure} defined by
+\begin{equation*}
+	\begin{split}
+		m^*(A) = \inf \left \{\sum_{i=1}^\infty l(I_i)\where A\subseteq \bunion_{i}I_i\right \}
+	\end{split}
+\end{equation*}
+where $ I_i = [a_i,b_i) $. Since we are taking infimum of the the collection, hence Note that it is approximating measure from outside. Also note that this is different from the definition of measurable sets.\\
+Outer measure is a function $ m^* : P(\R) \to [0,\infty] $. 
+%\subsubsection{Properties}
+%We have the following properties:
+%\begin{itemize}
+%	\item{$ m^*(\phi) = 0 $.}
+%	\item{$ m^*(\{a\}) = 0 $.}
+%	\item{}
+%\end{itemize}
+%\begin{lemma}
+%	$ A = I $ then $ m^*(A) = l(I) $ if $ I $ is a closed interval.
+%\end{lemma}
+\newpage
+\section{Measures}
+\subsection{Algebras \& Sigma-Algebras}
+\begin{definition}
+	(\textbf{Algebra/Field}) Let $ X $ be an arbitrary set. A collection $ \alg{A} \subseteq P(X)$ of subsets of $ X $ is an algebra on $ X $ if:
+	\begin{itemize}
+		\item {$ X\in \alg{A} $.}
+		\item {$ A\in \alg{A} \implies A^c \in \alg{A}$.}
+		\item {For each finite sequence $ A_1,A_2,\dots, A_n \in \alg{A}$ implies that
+	\[\bunion_{i=1}^n A_i \in \alg{A}\]	
+	 }
+ \item {For each finite sequence $ A_1,A_2,\dots,A_n\in\alg{A} $ implies that
+\[\bintrs_{i=1}^nA_i \in\alg{A}\] 
+}
+	\end{itemize}
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{$ \sigma $-Algebra/$ \sigma $-Field}) Let $ X $ be an arbitrary set. A collection $ \alg{A} \subseteq P(X)$ of subsets of $ X $ is a $ \sigma $-algebra on $ X $ if:
+	\begin{itemize}
+		\item {$ X\in \alg{A} $.}
+		\item {$ A\in\alg{A} \implies A^c\in \alg{A}$.}
+		\item {For each infinite sequence $ \{A_i\} $ such that $ A_i\in \alg{A} $, it implies that
+	\[\bunion_{i=1}^\infty A_i \in\alg{A}\]	
+	}
+\item{For each infinite sequence $ \{A_i\} $ such that $ A_i\in \alg{A} $, it implies that
+	\[\bintrs_{i=1}^\infty A_i \in\alg{A}\]} 
+	\end{itemize}
+\end{definition}
+\hrulefill
+\begin{proposition}
+	\label{P-1}
+	Let $ X $ be a set. Then the intersection of an arbitrary non-empty collection of $ \sigma $-algebras on $ X $ is a $ \sigma $-algebra on $ X $.
+\end{proposition}
+\begin{proof}
+	Consider a collection $ \alg{C} $ of $ \sigma $-algebras on $ X $. Denote $ \alg{A} = \bintrs\alg{C} $ as intersection of all $ \sigma $-algebras in $ \alg{C}$. We can now easily see that any subset in $ \alg{A} $ would be present in every $ \sigma $-algebra present in collection $ \alg{C} $, hence, it would obey all properties of a $ \sigma $-algebras. Therefore, $ \alg{A} $ is a $ \sigma $-algebra.
+\end{proof}
+\begin{corollary}
+	Let $ X $ be a set and let $ \alg{F}\subseteq P(X) $ be a family of subsets of $ X $. Then there exists a smallest $ \sigma $-algebra on $ X $ that includes $ \alg{F} $.
+\end{corollary}
+\begin{proof}
+	Consider any given family $ \alg{F} \subseteq P(X)$ and just take intersection of the family $ \alg{C} $ of all $ \sigma $-algebras which contains $ \alg{F} $ to construct this smallest $ \sigma $-algebra. 
+\end{proof}
+\hrulefill
+\begin{definition}
+	(\textbf{Generated $ \sigma $-algebra}) The smallest $ \sigma $-algebra on $ X $ containing a given family $ \alg{F}  \subseteq P(X) $ of subsets is called the $ \sigma $-algebra \emph{generated} by $ \alg{F} $, denoted as $ \sigma(\alg{F}) $.
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Borel $ \sigma $-algebra on $ \R^d $}) It is the $ \sigma $-algebra on $ \R^d $ generated by the collection of all open subsets of $ \R^d $, denoted as $ \alg{B}(\R^d) $.
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Borel Subsets of $ \R^d $}) Any $ A \subseteq \R^d$ is called a Borel subset of $ \R^d $ if $ A\in \bor{\R^d} $.
+\end{definition}
+\hrulefill
+\newpage
+\begin{proposition}
+	\label{P-2}
+	The Borel $ \sigma $-algebra on $ \R $, $ \bor{\R} $, of Borel subsets of $ \R $ is  generated by each of the following collection of sets:
+	\begin{enumerate}
+		\item {The collection of all closed subsets of $ \R $.}
+		\item {The collection of all subintervals of $ \R $ of the form $ (-\infty,b] $.}
+		\item {The collection of all subintervals of $ \R $ of the form $ (a,b] $.}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	To show all of these, consider the three $\sigma$-algebras $ \alg{A}_1, \alg{A}_2, \alg{A}_3 $ corresponding to conditions 1,2 \& 3 respectively and try to prove $ \alg{A}_3\subseteq \alg{A}_2\subseteq \alg{A}_1 \subseteq \bor{\R}$ together with $ \bor{\R}\subseteq \alg{A}_3 $. The first three inclusions are trivial to see. For the case that $ \bor{\R}\subseteq \alg{A}_3 $, simply note that any open subset can be made by unions of the sets of form $ (a,b] $ and by Homework-I,1, each open set is union of open subsets.
+\end{proof}
+\hrulefill
+\begin{proposition}
+	\label{P-3}
+	The $ \sigma $-algebra $ \bor{\R^d} $ of Borel subsets of $ \R^d $ is generated by each of the following collections:
+	\begin{enumerate}
+		\item{The collection of all closed subsets of $ \R^d $.}
+		\item {The collection of all closed half-spaces in $ \R^d $ that have the form $ \{(x_1,\dots,x_d)\where x_i\le b\} $ for some index $ i $ and some $ b\in \R $.}
+		\item {The collection of all rectangles in $ \R^d $ that have the form 
+	\[\{(x_1,\dots,x_d)\where a_i< x_i\le b_i\;\text{for}\;i=1,\dots,d\}\]	
+	}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Almost the same as in Proposition \ref{P-2}. $\alg{A}_1 \subseteq \bor{\R^d}$ trivially by definition. $ \alg{A}_2 \subseteq \alg{A}_1 $ as $ \{(x_1,\dots,x_d)\where x_i\le b\} $ is closed itself. $ \alg{A}_3\subseteq \alg{A}_2 $ by the observation that $ \{(x_1,\dots,x_d)\where a_i< x_i\le b_i\} $ is made by the difference of two subsets of the form $ \{(x_1,\dots,x_d)\where x_i\le b_i\} $ and $ \{(x_1,\dots,x_d)\where x_i> a_i\} $, the latter is the complement of a certain subset in $ \alg{A}_2 $, moreover, $ \{(x_1,\dots,x_d)\where a_i< x_i\le b_i\;\text{for}\;i=1,\dots,d\} $ is then constructed by intersection of $ d $ such subsets. Finally, $ \bor{\R^d} \subseteq \alg{A}_3$ can be seen via the fact that open subsets in $ \R^d $ are made by union of rectangles of type 3 and as such, they are called open subsets. 
+\end{proof}
+\hrulefill
+
+\emph{Conditions for an algebra to become a $ \sigma $-algebra.}
+\begin{proposition}
+	\label{P-4}
+	Let $ X $ be a set and let $ \alg{A} $ be an algebra on $ X $. Then, $ \alg{A} $ is a $ \sigma $-algebra on $ X $ if \textbf{either}
+	\begin{itemize}
+		\item {$ \alg{A} $ is closed under the formation of \textbf{unions} of \emph{increasing} sequence of sets, or,}
+		\item {$ \alg{A} $ is closed under the formation of \textbf{intersections} of \emph{decreasing} sequence of sets.}
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Take any countably infinite collection of subsets $ A_1,A_2,\dots \in \alg{A}$ where $ \alg{A} $ is an algebra. Due to the definition of an algebra, we have that $ C_n = \bunion_{i = 1}^n A_i \in \alg{A}$ for any $ n\ge 1\in \Z_+ $. Now note that $ C_1\subseteq C_2 \subseteq \dots  $, that is, the sequence $ \{C_n\} $ forms an increasing sequence of sets. Hence, by the requirement of the question, we have that $ \bunion_{i=1}^\infty C_i \in \alg{A} $. But then we also have that $ \bunion_{i = 1}^\infty A_i \subseteq \bunion_{i=1}^\infty C_i \in \alg{A}$. Hence we have the required condition for part 1. For part 2, we can see that $ \comp{C_1} \supseteq \comp{C_2} \supseteq \dots $ is a decreasing sequence of sets. Then we must have, by the requirement of the question, that $ \bintrs_{i=1}^{\infty} \comp{C_i} = \comp{\left (\bunion_{i=1}^\infty C_i\right )} \in \alg{A}$. But then by definition of algebra, we must have $ \bunion_{i=1}^\infty C_i\in \alg{A} $, which already contains the countably infinite union $ \bunion_{i=1}^\infty A_i $.
+\end{proof}
+\hrulefill
+\newpage
+\subsection{Measures}
+\begin{definition}
+	(\textbf{Countably Additive Function}) Let $ X $ be a set and $ \alg{A} $ be a $ \sigma $-algebra on $ X $. Function $ \mu : \alg{A} \longrightarrow [0,+\infty]$ is said to be \emph{countably additive} \textbf{if} it satisfies:
+	\[\mu\left (\bunion_{i=1}^\infty A_i\right ) = \sum_{i=1}^\infty \mu(A_i) \]
+	for \textbf{each} infinite sequence $ \{A_i\} $ of \textbf{disjoint} sets in $ \alg{A} $.
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Measure}) A \emph{measure} on $ \alg{A} $ is a function $ \mu: \alg{A} \to [0,+\infty] $ that is \textbf{countably additive} and satisfies:
+	\[\mu(\Phi) = 0.\]
+\end{definition}
+\begin{remark}
+	This is sometimes also referred as \emph{countably additive measure} on $ \alg{A} $.
+\end{remark}
+\hrulefill
+\begin{definition}
+	We have following definitions to compactly represent above definitions:
+	\begin{enumerate}
+		\item {(\textbf{\emph{Measure Space}}) If $ X $ is a set, $ \alg{A} $ is a $ \sigma$-algebra on $ X $ and if $ \mu $ is a measure on $ \alg{A} $, then the triple $ (X,\alg{A}, \mu) $ is called a \emph{measure space}.}
+		\item {(\textbf{\emph{Measurable Space}}) If $ X $ is a set and $ \alg{A} $ is a $ \sigma $-algebra on $ X $, then the pair $ (X,\alg{A}) $ is called a \emph{measurable space}.}
+	\end{enumerate}
+\end{definition}
+\hrulefill
+\begin{proposition}
+	\label{P-5}
+	Let $ (X,\alg{A},\mu) $ be a measure space and let $ A, B\in \alg{A} $ such that $ A\subseteq B$. Then,
+	\begin{itemize}
+		\item {We have $ \mu(A) \le \mu(B) $.}
+		\item {Additionally, if $ A $ satisfies that $ \mu(A)< +\infty $, then:
+	\[\mu(B-A) = \mu(B) - \mu(A).\]	
+	}
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Note that $ A $ and $ B\intrs \comp{A} $ are disjoint sets in the sigma algebra $ \alg{A} $. Hence we can write, by countably additive property of $ \mu $, that:
+	\begin{equation*}
+		\begin{split}
+			\mu(A\union \left (B\intrs \comp{A}\right )) &= \mu(B)\\
+			&=  \mu(A) + \mu(B\intrs \comp{A})
+		\end{split}
+	\end{equation*}
+Since $ \mu(B\intrs \comp{A}) \ge 0$, hence $ \mu(A)\le \mu(B) $. Moreover, if $ \mu <\infty $, then we can additionally write $ \mu(B\intrs \comp{A})  = \mu(B) - \mu(A)$.
+\end{proof}
+\hrulefill
+\begin{definition}
+	Let $ \mu $ be a measure on a measurable space $ (X,\alg{A}) $. Then,
+	\begin{itemize}
+		\item {(\textbf{\emph{Finite Measure}}) If $ \mu(X)< +\infty $.}
+		\item {(\textbf{\emph{$ \sigma $-Finite Measure}}) If $ X = \bunion_{i}A_i $ where $ A_i \in\alg{A} $ such that $ \mu(A_i)< +\infty $ for all $ i\in \N $.}
+	\end{itemize}
+\end{definition}
+\begin{remark}
+	In other words, a subset $ A\in\alg{A} $ is \emph{$ \sigma $-finite} if it is a union of a countable sequence of sets that are in $ \alg{A} $ and are of finite measure under $ \mu $.
+\end{remark}
+\hrulefill
+\subsubsection{Elementary Properties of Measures}
+\begin{proposition}
+	\label{P-6}
+	Let $ (X,\alg{A}, \mu) $ be a measure space. If $ \{A_k\} $ is an \textbf{arbitrary} sequence of sets that belong to $ \alg{A} $, then,
+	\[\mu\left (\bunion_{k=1}^\infty A_k\right) \le \sum_{k=1}^\infty \mu(A_k).\]
+\end{proposition}
+\begin{proof}
+	Denote $ B_1 = A_1 $ and $ B_i = A_i \intrs \comp{\left (\bunion_{k=1}^{i-1} A_k \right)} $. Note that $ B_i $ and $ B_j $ are disjoint for distinct $ i $ and $ j $. Since $ \{A_k\}\in \alg{A} $, therefore $ \{B_i\} \in \alg{A}$. Moreover, $ \bunion_{i=1}^{\infty} B_i = \bunion_{k=1}^\infty A_k $ by construction. We then get,
+	\begin{equation*}
+		\begin{split}
+			\mu\left (\bunion_{k=1}^\infty A_k\right ) = \mu\left (\bunion_{i=1}^\infty B_i\right ) &= \sum_{i=1}^\infty \mu(B_i)\\
+			&\le \sum_{i=1}^\infty \mu(A_i)\;\;\;\;\text{($ \because \;B_i \subseteq A_i$ by construction.)}
+		\end{split}
+	\end{equation*}
+Hence proved.
+\end{proof}
+\hrulefill
+\newpage
+\begin{proposition}
+	\label{P-7}
+	Let $ (X,\alg{A},\mu) $ be a measure space.
+	\begin{itemize}
+		\item {If $ \{A_k\} $ is an \textbf{increasing} sequence of sets in $ \alg{A} $, then
+	\[\m{\bunion_{k}A_k} = \limit{k}{\m{A_k}}.\]	
+	}
+\item {If $ \{A_k\} $ is a \textbf{decreasing} sequence of sets in $ \alg{A} $ \textbf{and} if $ \m{A_n} < + \infty$ holds for some $ n $, then
+\[\m{\bintrs_k A_k} = \limit{k}{\m{A_k}}.\]
+}
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Consider $ \{A_i\} \in \alg{A} $ be an increasing sequence of subsets of $ X $. Define $ B_1 = A_1 $ and $ B_i = A_i - A_{i-1} = A_i \intrs \comp{A_{i-1}}$. Clearly, $ B_i $ are disjoint for distinct $ i $. Hence, we can now write,
+	\[\m{\bunion_i B_i} =\sum_{i=1}^\infty \m{B_i}.\]
+	Moreover, $ \bunion_i B_i = \bunion_k A_k $ and $ B_i = \bunion_{j=1}^i A_j $, therefore we can modify the above as
+	\[\m{\bunion_k A_k} = \limit{k\to \infty}{\sum_{i=1}^k \m{\bunion_{j=1}^i A_j}}= \limit{k\to\infty }{\m{\bunion_{i=1}^k \bunion_{j=1}^i A_j}} = \limit{k\to \infty }{\m{A_k}}\]
+	Now, consider $ \{A_k\} $ to be a decreasing sequence of subsets in $ \alg{A} $. Take $ n\in \N $ such that $ \m{A_n} < + \infty$. Denote $ B_i = A_n - A_{n+i} $. We have each $ B_i $ to be disjoint by construction for any two $ i $'s and $ \{B_i\} $ is increasing. Moreover, $ \bunion_k B_k = A_n - \bintrs_{i}A_{n+i}$. Hence by first part, we have:
+	\begin{equation*}
+		\begin{split}
+			\m{\bunion_{k}B_k} &= \m{A_n - \bintrs_i A_{n+i}}\\
+			&= \m{A_n} - \m{\bintrs_i A_{n+i}}\;\;\;\;\text{(Since $ \{A_k\} $ is decreasing)}\\
+			&= \limit{k\to \infty}{\m{B_k}} = \limit{k\to \infty}{\m{A_n - A_{n+k}}}\;\;\text{(Part 1.)}\\
+			&= \m{A_n} - \limit{k\to\infty}{\m{A_{n+k}}}
+		\end{split}
+	\end{equation*} 
+Hence, we get the second result (from $ 2^{nd} $ and $ 4^{th} $ equality).
+\end{proof}
+\hrulefill
+
+\emph{The following partial converse of Proposition \ref{P-7} helps in checking whether finitely additive measure is countably additive.}
+\begin{proposition}
+	\label{P-8}
+	Let $ (X,\alg{A}) $ be a measurable space and let $ \mu$ be a \textbf{finitely additive} measure on $ (X,\alg{A}) $. Then $ \mu $ is a countably additive measure if \textbf{either}
+	\begin{itemize}
+		\item {The following holds for each \textbf{increasing sequence} $ \{A_k\} $ of sets that belong to $ \alg{A} $:
+	\[\limit{k}{\m{A_k}} = \m{\bunion_k A_k}\]	
+	or,
+	}
+\item {The following holds for each \textbf{decreasing sequence} $ \{A_k\} $ that belongs to $ \alg{A} $ which \textbf{satisfies} $ \bintrs_k A_k = \Phi $:
+\[\limit{k}\m{A_k} = 0.\]
+ }
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Consider any disjoint sequence of sets $ \{A_i\} $ in $ \alg{A} $. Let the first part be true. We can construct an increasing sequence from $ \{A_i\} $ by considering a new sequence $ \{B_i\} $ where $ B_k = \bunion_{j=1}^k A_j  $. Now, finite additivity of $ \mu $ means that $ \m{B_k}  = \m{\bunion_{j=1}^{k} A_j} = \sum_{j=1}^k \m{A_j}$. Also, by the condition of part 1, we have $ \limit{k\to \infty}{\m{B_k}}  = \m{\bunion_{k} B_k} = \m{\bunion_k A_k}$. Hence proved part 1.\\
+	For part 2, we simply have for any disjoint sequence $ \{A_i\} $ in $ \alg{A} $, a decreasing sequence $ \{B_k\} $ given as $ B_k = \bunion_{i=k}^\infty A_i $. Again, we can write,
+	\begin{equation*}
+		\begin{split}
+			\m{\bunion_{i=1}^\infty A_i} &= \m{\left (\bunion_{i=1}^k A_i\right ) \bunion \left (\bunion_{j=k+1}^\infty A_j\right )}\\
+			&= \m{\left (\bunion_{i=1}^k A_i\right ) \bunion B_{k+1}}\\
+			&= \m{\bunion_{i=1}^k A_i} + \m{B_{k+1}}\;\;\text{(Since these two are disjoint.)}\\
+			&= \sum_{i=1}^k \m{A_i} + \m{B_{k+1}}   
+		\end{split}
+	\end{equation*}
+	Taking $ \limit{k\to \infty}{} $ both sides then yields us 
+	\[\m{\bunion_{i=1}^\infty A_i} = \sum_{i=1}^\infty \m{A_i} + 0 \]
+as $ \limit{k\to \infty}{\m{B_k}} =0$ is given in the assumption of part 2.
+\end{proof}
+\hrulefill
+\newpage
+\subsection{Outer Measures}
+\begin{definition}
+	(\textbf{Outer Measure}) Let $ X $ be a set and let $  \pow{X} $ be the collection of all subsets of $ X $. An \emph{outer measure} on $ X $ is a function $ \mu^* : \pow{X} \longrightarrow [0,+\infty] $ such that:
+	\begin{itemize}
+		\item {For the empty set $ \Phi $,
+	\[\om{\Phi} = 0\]	
+	}
+		\item {If $ A\subseteq B\subseteq X $, then
+	\[\om{A}\le \om{B}.\]	
+	}
+\item {If $ \{A_n\} $ is an infinite sequence of subsets of $ X $, then
+\[\om{\bunion_n A_n} \le \sum_n \om{A_n}\]
+}
+	\end{itemize}
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Lebesgue Outer Measure on $ \R $}) For each subset $ A\subseteq \R $, let $ \alg{C}_A $ be the \emph{set of all infinite sequences} $ \{(a_i,b_i)\} $ of \emph{bounded open intervals} such that $ A\subseteq \bunion_i (a_i,b_i) $. That is, 
+	\[\alg{C}_A = \{\left \{(a_i,b_i)\}\where A\subseteq \union_i (a_i,b_i)\;\text{and}\;a_i,b_i\in \R\right \}\]
+	Then, $ \lambda^* : \pow{\R}\longrightarrow [0,+\infty]$ is the Lebesgue outer measure, defined by:
+	\begin{equation}
+		\lom{A} = \inf \left \{\left .\sum_{i} (b_i - a_i)\;\right \vert\;\{(a_i,b_i)\}\in \alg{C}_A \right \}
+	\end{equation} 
+\end{definition}
+\hrulefill
+
+\emph{To verify that $ \lambda^* $ is indeed an outer measure.}
+\begin{proposition}
+	\label{P-9}
+	Lebesgue outer measure on $ \R $ is an outer measure and it assigns to each subinterval of $ \R $ it's length.
+\end{proposition}
+\begin{proof}
+	Denote $ \set{C}_A = \{\{(a_i,b_i)\}\where A \subseteq \union_i(a_i,b_i)\}$. To show that $ \lambda^* $ is an outer measure, we first need to show that $ \lom{\Phi} = 0 $. For that, consider the set of all infinite sequences $ \{(a_i,b_i)\} \in \alg{C}_\Phi$, that is (trivially) $\Phi\subseteq  \union_{i}(a_i,b_i) $, such that $ \sum_{i}(b_i - a_i) <\epsilon $ for all $ \epsilon>0 $. Then, if we denote $ \alg{L}_A = \left \{\sum_{i} (b_i - a_i)\where \{(a_i,b_i)\}\in \alg{C}_A\right \} $, then $ \inf\alg{L}_\Phi = 0$ as for any lower bound $ l $ of $ \alg{L}_A $, if $ l>0 $ then $ \exists \; \{(a_i,b_i)\}\in  \set{C}_\Phi$ such that $ \sum_i(b_i - a_i) < l $, hence $ l\le 0 $, or $ \inf\set{L}_\Phi = 0$. \\
+	Second, we need to show that if $ A\subseteq B \subseteq X $, then $ \lom{A}\le \lom{B} $. For this, consider $ A\subseteq B $. Clearly, we have that $ \set{C}_B \subseteq \set{C}_A $, therefore $ \set{L}_B \subseteq \set{L}_A $ and hence $ \inf \set{L}_B \ge \inf \set{L}_A $.\\
+	Third, we need to show that for any infinite sequence $ \{A_n\} $ of subsets of $ X $,
+	\[\lom{\bunion_n A_n}\le \sum_{n}\lom{A_n}\]
+	For this, consider the Lebesgue outer measure of $ A_n $, that is, $ \lom{A_n} $. We must have, that for any infinite sequence $ \{(a_{n,i}, b_{n,i})\} \in \set{C}_{A_n} $, that 
+	\[\sum_{i=1}^\infty (b_{n,i} - a_{n,i}) \ge \lom{A_n}.\]
+	Hence, consider that the difference is upper bounded according to $ n $, that is the sequence $ \{(a_{n,i},b_{n,i})\}\in \set{C}_{A_n} $ is such that,
+	\[\sum_{i=1}^\infty (b_{n,i} - a_{n,i}) - \lom{A_n} \le \epsilon/2^n.\]
+	 Now, we can cover the entire $ \bunion_i A_i $ by the union of the above intervals, that is, 
+	 \[\bunion_i A_i \subseteq \bunion_n \bunion_i (a_{n,i},b_{n,i}).\]
+	 Now, we know that
+	 \begin{equation*}
+	 	\begin{split}
+	 		\lom{\bunion_iA_i} &= \inf\set{L}_{\union_iA_i}.
+	 	\end{split}
+	 \end{equation*}
+	 But since
+	 \[\sum_{n}\sum_i (b_{n,i}- a_{n,i}) \in \set{L}_{\union_i A_i},\]
+	 and
+	 \[\sum_n \left (\sum_i(b_{n,i}-a_{n,i}) - \lom{A_n}\right ) \le \sum_n \epsilon/2^n\]
+	 which is equal to 
+	 \[\sum_n \sum_i (b_{n,i}-a_{n,i}) - \sum_n \lom{A_n} \le \epsilon \times 1\]
+	 or, 
+	 	 \[\sum_n \sum_i (b_{n,i}-a_{n,i}) \le \sum_n \lom{A_n} +\epsilon \]
+	 	 and since $ \lom{\bunion_i A_i} = \inf\set{L}_{\bunion_i A_i} $, therefore,
+	 	 \[\lom{\bunion_i A_i} \le \sum_n\sum_i (b_{n,i}-a_{n,i}) \le \sum_n\lom{A_n}\]
+Hence proved. \\\\
+Now, we need to show that $ \lambda^* $ assigns each subinterval it's length.\\
+For this first show that $ \lom{[a,b]} \le b-a $. This is easy to show if we take,
+\[[a,b] = \bunion_{i} (a_i,b_i)\]
+where $ (a_1,b_1) = (a,b) $, $ (a_i,b_i) = (a-\epsilon/2^i,a) $ for all even $ i $ and $ (a_j,b_j) = (b,b+\epsilon/2^j) $ for all odd $ j $. Now,
+\begin{equation*}
+	\begin{split}
+		\sum_i (b_i-a_i) &= (b-a) + \sum_{i=2,4,\dots} \epsilon/2^i + \sum_{i=3,5,\dots} \epsilon/2^i\\
+		&= b-a + \sum_{i=1,2,\dots} \epsilon/2^i\\
+		&= b-a + \epsilon
+	\end{split}
+\end{equation*}
+therefore $ \lom{[a,b]} = \inf \set{L}_{[a,b]} \le b-a + \epsilon $ for all $ \epsilon>0 $, hence $ \lom{[a,b]} \le b-a $. \\
+Now, to show the converse that $ b-a \le\lom{[a,b]} $, we first note that $ [a,b] $ is compact, so for any infinite cover $ \{(a_i,b_i)\} \in \set{C}_{[a,b]} $, there exists a finite subcover $ \{(a_i,b_i)\}_{i=1}^n $ of $ [a,b] $. Now, since $ \lambda^* $ is an outer measure, therefore,
+\[  b-a \le \sum_{i=1}^n \lom{(a_i,b_i)}\le \sum_{i=1}^\infty \lom{(a_i,b_i)} \in \set{L}_{[a,b]} \] 
+Therefore, $ b-a $ is a lower bound of $ \set{L}_{[a,b]} $ and hence $ b-a \le \inf \set{L}_{[a,b]} = \lom{[a,b]} $.\\
+Hence $ \lom{[a,b]} = b-a $.\\
+Now since, one can construct subintervals of the form $ (a,b] $ or $ [a,b) $ from the following manner:
+\[(a,b] \subseteq (a,b) \bunion \left (\bunion_{n}[b,b+\epsilon/2^n]\right )\]
+from which we get that $ \lom{(a,b]} \le b-a  $ and also,
+\[[a,b] \subseteq (a,b] \bunion \left ( \bunion_n [a-\epsilon/2^n ,a] \right )\]
+which yields $ b-a \le \lom{(a,b]} $. Similarly for $ (-\infty,b] $ to show that $ \lom{(-\infty,b]} = +\infty $. 
+\end{proof}
+\hrulefill
+\newpage
+\subsection{Exercises - II}
+\begin{enumerate}
+	\item{\begin{proof}
+			Note that $ \Q  $ is dense, that is $ \closure{\Q} = \R $. Therefore, $ \closure{\Q\intrs [0,1]} = [0,1] $. Now, since \emph{closure of union is union of closures}\footnote{Proof done in diary : \emph{$ 3^{rd} $ March, 2018} - The date of reference.}, then we get,
+			\[\Q\intrs [0,1] \subseteq \closure{\Q\intrs [0,1]} = [0,1]\subseteq \bunion_{n=1}^m \closure{(a_n,b_n]} = \bunion_{n=1}^m [a_n,b_n]\]
+			Now since $ \lambda^* $ is an outer measure, therefore,
+			\[\lom{[0,1]} = 1 \le \lom{\bunion_{n=1}^m [a_n,b_n]} \le \sum_{n=1}^m l(I_n) \]
+			because $ [0,1] $ is a subinterval, closure of unions is union of closures and infinite subadditivity implies finite subadditivity. Hence proved.
+		\end{proof}
+}
+\item {\begin{proof}
+		Since $ \lom{A} = \inf \set{L}_A$ where
+		\[\set{L}_A = \left \{\sum_{i} (b_i - a_i)\where \{(a_i,b_i)\} \in \set{C}_A \right \}\]
+		and 
+		\[\set{C}_A = \{\{(a_i,b_i)\} \where A\subseteq \union_n (a_n,b_n) \}.\]
+		Therefore, for any $ \epsilon >0 $, and if we write $ \lom{A} +\epsilon $, then $ \exists$ $ \{(a_i,b_i)\} \in \set{C}_A $ such that $ \lom{A} + \epsilon \ge \sum_i (b_i - a_i) \ge \lom{\bunion_i (a_i,b_i)} $. We can clearly see that $ \bunion_i (a_i,b_i) $ is union of open intervals and since arbitrary union of open intervals is open, therefore, we have the union of the sequence $ \{(a_i,b_i)\} $ as the needed open interval.
+	\end{proof}
+}
+\item {\begin{proof}
+		We have $ A\subseteq \R $. For this, we have 
+		\[\lom{A} = \inf \set{L}_A\]
+		Therefore, for any $ \{(a_i,b_i)\} \in \set{C}_A $, 
+		\[\lom{A} \le \sum_i (b_i-a_i).\]
+		Now, consider,
+		\[B^n = \bunion_i (a_i^n, b_i^n)\;\text{for any }\{(a_i^n,b_i^n)\} \in \set{C}_A\]
+		Now, since $ B^n $ covers $ A $, that is $ A\subseteq B^n$ for all $ n $ so $ B^n $ is open as arbitrary union of open sets is open, therefore, 
+		\[A\subseteq \bintrs_n B^n = C\]
+		where $\bintrs_n B^n = C $ is clearly $ G_\delta $. Now we need to show both have the same outer measure. For this, we first trivially have that $ \set{C}_C \subseteq \set{C}_A $ because $ A\subseteq C $ and any infinite cover of $ C $ would then cover $ A $. But moreover, we also see that any infinite sequence $ \{(a_i^n,b_i^n)\}\in \set{C}_A $ for some $ n $, we have 
+		\[C =\bintrs_nB^n \subseteq B^n = \bunion_i(a_i^n,b_i^n).\]
+		That is, any infinite sequence in $ \set{C}_A $ also covers $ C $. Therefore $ \set{C}_A \subseteq \set{C}_C $. Hence $ \set{C}_A = \set{C}_C $. So that $ \set{L}_A = \set{L}_C $ and hence $ \lom{A} = \lom{C} $.
+\end{proof}}
+\item {\begin{proof}
+		Take any $ B\subseteq \R $. We are given a subset $ A\subseteq \R $ such that $ \lom{A} = 0 $. Note that 
+		\[\lom{B}\le \lom{A\union B}\le \lom{A} + \lom{B} = \lom{B}\]
+		Hence we already have that $ \lom{B}= \lom{A\union B} $. Now to show that $ \lom{A\union B} = \lom{B- A} $, first note that $ B-A = B\intrs \comp{A} $. Clearly, $ B\intrs \comp{A} \subseteq B $, therefore,
+		\[\lom{B\intrs \comp{A}}\le \lom{B} = \lom{A\union B}.\]
+		Now, to show the converse to complete the proof, we note that $ A\union B = A \union (B\intrs \comp{A}) $, hence, by countable sub-additivity, we finally have,
+		\[\lom{A\union (B\intrs \comp{A})} = \lom{A\union B} = \lom{B} \le \lom{A} + \lom{B\intrs \comp{A}} = \lom{B\intrs \comp{A}}\]
+		Hence the proof is complete.
+\end{proof}}
+\end{enumerate}
+\newpage
+\subsection{Lebesgue Measurability.}
+\begin{definition}
+	(\textbf{$ \mu^* $-measurable subset}) Let $ X $ be a set and let $ \mu^* $ be an \emph{outer measure} on $ X $. A subset $ B\subseteq X $ is $ \mu^* $-measurable if: 
+	\[\om{A} = \om{A\intrs B} + \om{A\intrs \comp{B}}\]
+	holds \textbf{for all} subsets $ A \subseteq X$.
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Lebesgue Measurable subset of $ \R $}) A subset $ B\subseteq \R $ is called a Lebesgue measurable subset of $ \R $ if \textbf{$ B $ is $ \lambda^* $-measurable.} That is, for \textbf{any} $ A\subseteq \R $, we must have:
+	\[\lom{A} = \lom{A\intrs B} + \lom{A\intrs \comp{B}}\]
+\end{definition}
+\begin{remark}
+	Important to note are the following:
+	\begin{itemize}
+		\item {Due to sub-additivity of $ \mu^* $ and $ A \subseteq (A\intrs B) \union (A\intrs \comp{B}) $, we already have that 
+	\[\om{A} \le  \om{A\intrs B} + \om{A\intrs \comp{B}}\]	
+for \emph{any} subsets $ A,B\subseteq X $.	
+}
+\item[$ \bigstar $]{Due to the above fact, \emph{all that remains to be shown to ascertain that $ B\subseteq \R $ is $ \mu^* $-measurable} is to show the following converse:
+\[\om{A}\ge \om{A\intrs B} + \om{A\intrs \comp{B}}.\]
+\textbf{for all} $ A\subseteq X $.
+}
+	\end{itemize}
+\end{remark}
+\hrulefill
+\begin{proposition}
+	\label{P-10}
+	Let $ X $ be a set and let $ \mu^* $ be an outer measure on $ X $. Then each subset $ B\subseteq X $ that satisfies $ \om{B} = 0 $ \textbf{or} that satisfies $ \om{\comp{B}} = 0 $ is $ \mu^* $-measurable.
+\end{proposition}
+\begin{proof}
+	This result actually proves that for subset $ B \subseteq X$ which has zero outer measure under $ \mu^* $, any other subset $ A\subseteq X $ would be such that $ \om{A\intrs B} = 0 $(!) After proving this, and from the remark above, we would just be left to show that if $ \om{B} = 0 $, then $ \om{A} \ge \om{A\intrs B} + \om{A\intrs \comp{B}}$. We show the former here, from which the latter follows naturally.\\\\
+	Consider $ B\subseteq X $ such that $ \om{B} = 0 $. It's true that $ A\intrs B \subseteq B $. Now since $ \mu^* $ is an outer measure on $ X $, therefore, we must have $ \om{A\intrs B} \le \om{B} = 0.$ This implies that $ \om{A\intrs B} = 0 $. Now, we would see that the required condition follows naturally from the previous. First, note the following:
+	\[A\intrs B \subseteq A\;\text{and}\; A\intrs \comp{B} \subseteq A.\]
+	Hence, we can write:
+	\[\om{A\intrs B} \le \om{A}\;\text{and}\;\om{A\intrs \comp{B}}\le \om{A}.\]
+	 Now if $ \om{B} = 0 $, then $ \om{A\intrs B} = 0 $ and then in the second inequality, we would have:
+	 \begin{equation*}
+	 	\begin{split}
+	 		\om{A\intrs \comp{B}} + \om{A\intrs B} \le \om{A} + 0
+	 	\end{split}
+	 \end{equation*}
+ 	Or, if $ \om{\comp{B}}  = 0$, then $ \om{A\intrs \comp{B}}= 0 $ and then in the first inequality, we would have:
+ 	\begin{equation*}
+ 		\begin{split}
+ 			\om{A\intrs B} + \om{A\intrs \comp{B}} \le \om{A} + 0.
+ 		\end{split}
+ 	\end{equation*}
+ Hence, $ B $ is $ \mu^* $-measurable for any $ B\subseteq X $ which satisfies that either $ \om{B} = 0 $ or $ \om{\comp{B}} = 0 $.
+\end{proof}
+\hrulefill
+
+\emph{The following theorem is a fundamental fact about outer measures.}
+\newpage
+
+\begin{theorem}
+	Let $ X $ be a set, let $ \mu^* $ be an outer measure on $ X $ and let $ \set{M}_{\mu^*} $ be the collection of all $ \mu^* $-measurable subsets of $ X $. Then,
+	\begin{itemize}
+		\item {$ \set{M}_{\mu^*} $ is a $ \sigma $-algebra.}
+		\item {The restriction of $ \mu^* $ to $ \set{M}_{\mu^*} $ is a measure on $ \set{M}_{\mu^*} $.}
+	\end{itemize}
+\end{theorem}
+\begin{proof}
+	\textbf{Act 1.} \emph{$ \msigm{\mu^*} $ is an algebra.}\\
+		First, it is clear that $ X,\Phi\in \msigm{\mu^*} $ from Proposition \ref{P-10}, because $ \om{\Phi} = \om{\comp{X}} = 0 $. Now, if $ B\in \msigm{\mu^*} $, then $ \om{A} = \om{A\intrs B} + \om{A\intrs \comp{B}} \;\forall\;A\subseteq X$. But if we replace $ B $ by $ \comp{B} $ in the above, we would get the same equation, hence $ \comp{B} \in \msigm{\mu^*} $. So $ \msigm{\mu^*} $ is closed under complements. Now, to show closed nature under finite unions, we take any two subsets $ B_1, B_2\in \msigm{\mu^*} $ and show that $ A\union B\in \msigm{\mu^*} $. First we have
+		\begin{equation*}
+			\begin{split}
+				\om{A} &= \om{A\intrs B_1} + \om{A\intrs \comp{B_1}}\\
+				&= \om{A\intrs B_2} + \om{A\intrs \comp{B_2}}
+			\end{split}
+		\end{equation*}
+	for any $ A\subseteq X $. Now, we see that from the fact that $ B_1\in \msigm{\mu^*} $,
+	\begin{equation*}
+		\begin{split}
+			\om{A\intrs (B_1\union B_2)} &= \om{A\intrs (B_1\union B_2) \intrs B_1} +\om{A\intrs (B_1\union B_2) \intrs \comp{B_1}} \\
+			&= \om{A\intrs B_1} + \om{A\intrs B_2 \intrs \comp{B_1}}
+		\end{split}
+	\end{equation*}
+Similarly, we have from the fact $ B_2\in\msigm{\mu^*} $,
+\begin{equation*}
+	\begin{split}
+		\om{A\intrs \comp{(B_1\union B_2)}} &= \om{A\intrs \comp{(B_1 \union B_2)} \intrs B_2} + \om{A\intrs \comp{(B_1 \union B_2)} \intrs \comp{B_2}}\\
+		&= \om{A\intrs \comp{B_1} \intrs \comp{B_2}\intrs B_2} + \om{A\intrs \comp{B_1} \intrs \comp{B_2} \intrs \comp{B_2}}\\
+		&= \om{\Phi} + \om{A\intrs \comp{B_1} \intrs \comp{B_2}}\\
+		&= \om{A\intrs \comp{(B_1\union B_2)}}
+	\end{split}
+\end{equation*}
+Now, adding the above results yield,
+\begin{equation*}
+	\begin{split}
+		\om{A\intrs \comp{(B_1 \union B_2)}} + \om{A\intrs (B_1 \union B_2)} &= \om{A\intrs \comp{(B_1\union B_2)}} + \om{A\intrs B_1} + \om{A\intrs B_2 \intrs \comp{B_1}}\\
+		&= \om{A\intrs \comp{B_1}\intrs \comp{B_2}} + \om{A\intrs \comp{B_1} \intrs B_2} + \om{A\intrs B_1}\\
+		&= \om{A\intrs \comp{B_1}} + \om{A\intrs B_1}\\
+		&= \om{A}.
+	\end{split}
+\end{equation*}
+Hence, $ B_1\union B_2 $ is $ \mu^* $-measurable, so $ B_1\union B_2\in \msigm{\mu^*} $. Now, we can, for a finite collection of subsets in $ \msigm{\mu^*} $, we can proceed like above, to show that $ \msigm{\mu^*} $ is closed under finite union, hence showing that $ \msigm{\mu^*} $ is an algebra.\\\\
+\textbf{Act 2.} \emph{$ \msigm{\mu^*} $ is a $ \sigma $-algebra.}\\
+All that is left to show that $ \msigm{\mu^*} $ is a $ \sigma $-algebra is to show that it is closed under countable union. We have already proved closed nature under finite union. We extend it via induction principle. Suppose $ \{B_i\} $ is a sequence of disjoint subsets in $ \msigm{\mu^*} $. For this, we first prove\footnote{But why to prove Eq. \ref{E-2}? The motivation for Eq. \ref{E-2} comes from Part 1. More specifically, notice in the equation where we added $ \om{A\intrs \comp{(B_1 \union B_2)}} $ and $ \om{A\intrs (B_1 \union B_2)} $. Note it's $ 2^\text{nd} $ line, this is the case when $ n=2 $ in Eq. \ref{E-2} combined with the fact that $ B_i $'s are disjoint. Now why to take $ B_i $'s to be disjoint? The reason for this comes from the fact that for any infinite sequence of subsets $ \{A_i\} $, one can construct infinite sequence of disjoint subsets, that is : $ A_1, A_2 \intrs \comp{A_1}, A_3\intrs \comp{(A_1\union A_2)},\dots $ and it's union is again $ \bunion_n A_n $. Hence if we prove that a disjoint infinite sequence is closed under union, then we could prove that any infinite sequence of subsets is closed under union too!} using induction that, for all $ A\subseteq X $ and $ n\in \N $, 
+\begin{equation}\label{E-2}
+	\text{To Prove : }\om{A} = \sum_{i=1}^n \om{A\intrs B_i} + \om{A\intrs \left (\bintrs_{i=1}^{n} \comp{B_i}\right )}
+\end{equation}
+For the case when $ n=1 $, we see that it Eq. \ref{E-2} reduces to $ \om{A} = \om{A\intrs B_1} + \om{A\intrs \comp{B_1}} $. But since $ B_i \in \msigm{\mu^*}\;\forall \;i\in \N$, therefore this is trivially true. Now, by the induction principle, we assume that Eq. \ref{E-2} is true uptill $ n $ and then we try to prove it for $ n+1 $ step. For this, since $ B_{n+1} \in \msigm{\mu^*}$ is disjoint to all other $ B_i $'s, we have,
+\begin{equation*}
+	\begin{split}
+		\om{A\intrs \bintrs_{i=1}^n \comp{B_i}} &= \om{\left ( A\intrs \bintrs_{i=1}^n \comp{B_i} \right ) \intrs B_{n+1}} +\om{\left ( A\intrs \bintrs_{i=1}^n \comp{B_i} \right ) \intrs \comp{B_{n+1}}} \\
+		&= \om{A\intrs B_{n+1}} + \om{A\intrs \bintrs_{i=1}^{n+1} \comp{B_i}}
+	\end{split}
+\end{equation*}
+where the last line follows from the fact that each $ B_i $ is disjoint to other $ B_j $'s, hence each $ \comp{B_j} $ would contain $ B_i $ and therefore $ B_{n+1}\subseteq \bintrs_{i=1}^n \comp{B_i}  $. Now, substituting the above equation in Eq. \ref{E-2} gives,
+\newpage
+\begin{equation*}
+	\begin{split}
+		\om{A} &= \sum_{i=1}^n \om{A\intrs B_i} + \om{A\intrs B_{n+1}} + \om{A\intrs \bintrs_{i=1}^{n+1} \comp{B_i}}\\
+		&= \sum_{i=1}^{n+1} \om{A\intrs B_i} + \om{A\intrs \bintrs_{i=1}^{n+1} \comp{B_i}}
+	\end{split}
+\end{equation*}
+Hence, by induction principle, Eq. \ref{E-2} is true for all $ n\in \N $. Hence, now we can write,
+\begin{equation*}
+	\begin{split}
+		\om{A} &\ge \sum_{i=1}^\infty \om{A\intrs B_i} + \om{A\intrs \bintrs_{i=1}^\infty \comp{B_i}}\\
+		&=\sum_{i=1}^\infty \om{A\intrs B_i} + \om{A\intrs \comp{\left (\bunion_{i=1}^\infty B_i\right)}}
+	\end{split}
+\end{equation*}
+Now, to prove that $ \bunion_i B_i \in \msigm{\mu^*}$, we need to show
+\[\text{To Show : }\om{A} \ge \om{A\intrs \bunion_{i} B_i} + \om{A\intrs \comp{\left (\bunion_i B_i\right )}}\]
+This comes from previous result as follows:
+\begin{equation*}
+	\begin{split}
+		\om{A} &\ge \sum_{i=1}^\infty \om{A\intrs B_i} + \om{A\intrs \left (\bunion_{i=1}^\infty B_i\right )^c}\\
+		&\ge \om{\bunion_{i=1}^\infty (A\intrs B_i)} + \om{A\intrs \left (\bunion_{i=1}^\infty B_i\right )^c} \\
+		&= \om{A\intrs \bunion_{i=1}^\infty B_i} + \om{A\intrs \left (\bunion_{i=1}^\infty B_i\right )^c}
+	\end{split}
+\end{equation*}
+Therefore, $ \bunion_i B_i  \in  \msigm{\mu^*}$. Now, as the previous footnote mentions, for every infinite sequence $ \{C_i\} $ in $ \msigm{\mu^*} $, we have a disjoint sequence of subsets as $ C_1,C_2\intrs \comp{C_1} , C_3\intrs \comp{C_2} \intrs C_1, ... $. Now, this disjoint sequence is closed under union as we just showed and since union of this disjoint sequence is equal to the union of $ \{C_i\} $, hence $ \bunion_i C_i \in \msigm{\mu^*} $ for any sequence $ \{C_i\} $ in $ \msigm{\mu^*} $. Thus, $ \msigm{\mu^*} $ is a $ \sigma $-algebra.\\\\
+\textbf{Act 3.}\emph{ $ \mu^* $ restricted to $ \msigm{\mu^*} $ is a measure.}\\
+Consider $ \{B_n\} $ be an infinite sequence of subsets in $ \msigm{\mu^*} $. Now, by finite subadditivity, we trivially have
+\[\om{\bunion_i B_i} \le \sum_i \om{B_i}\]
+Moreover, from Part 2 and setting $ A = \union_i B_i $, we get:
+\begin{equation*}
+	\begin{split}
+		\om{\bunion_i B_i} &\ge \sum_j\om{\bunion_i B_i \intrs B_j} + \om{\bunion_i B_i \intrs \left (\bunion_i B_i\right )^c}\\
+		&= \sum_j \om{B_j} + \om{\Phi}\\
+		&= \sum_j \om{B_j}. 
+	\end{split}
+\end{equation*}
+We hence have the complete proof.
+\end{proof}
+\hrulefill
+\end{document}
