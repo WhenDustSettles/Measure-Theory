@@ -127,6 +127,7 @@
 \newcommand{\lom}[1]{\lambda^*\left (#1\right )}
 \newcommand{\set}[1]{\mathscr{#1}}
 \newcommand{\msigm}[1]{\set{M}_{#1}}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
 \begin{document}
 \begin{titlepage}
@@ -615,6 +616,30 @@ which yields $ b-a \le \lom{(a,b]} $. Similarly for $ (-\infty,b] $ to show that
 		\[\lom{A\union (B\intrs \comp{A})} = \lom{A\union B} = \lom{B} \le \lom{A} + \lom{B\intrs \comp{A}} = \lom{B\intrs \comp{A}}\]
 		Hence the proof is complete.
 \end{proof}}
+\item {\begin{proof}
+		Take $ A\subseteq \R $ such that it is countable. Now, $ A $ can either be finite or countably infinite. Let's first take $ A $ to be finite, so that $ \exists n\in \N $ such that
+		\[A = \{a_1,a_2\dots,a_n\}.\]
+		Now, consider $ \{(a_i,b_i)\} \in \set{C}_A$ such that it covers each point with an exponentially decreasing interval, as follows:
+		\[\{I_j\} = \left \{(a_1-\frac{\epsilon}{2},a_1 + \frac{\epsilon}{2} ), \dots, (a_n - \frac{\epsilon}{2},a_n + \frac{\epsilon}{2}), (a_1 -\frac{\epsilon}{2^2},a_1 + \frac{\epsilon}{2^2}),\dots\right \}\]
+		In other words,
+		\[\{(a_i,b_i)\} = \left \{ \left (a_{i\%n + 1} - \frac{\epsilon}{2^{\ceil{i\% n}}}, a_{i\%n + 1} + \frac{\epsilon}{2^{\ceil{i\% n}}}\right ) \right \}\]
+		We clearly have that this sequence $ \{(a_i,b_i)\}\in \set{C}_A $ and since $ \lom{A} = \inf \set{L}_A $, therefore we must have that 
+		\[\lom{A} \le \sum_{i} (b_i - a_i) = \sum_i \frac{2\epsilon}{2^{\ceil{i\%n}}}= 4\epsilon = \epsilon^\prime\]
+		Now since $ \lambda^* : \pow{\R} \to [0,+\infty] $, therefore, $ \lom{A} = 0 $ as $ \epsilon >0$ is arbitrary. So far, we have proved that finite set has outer measure zero. For countably infinite set, we would have $ A = \{a_1,a_2,\dots\} $. On this, consider the cover $ \{(a_i,b_i)\} = \left \{\left ( a_i - \frac{\epsilon}{2^{i+1}}, a_i + \frac{\epsilon}{2^{i+1}} \right )\right \} $. Clearly, this sequence $ \{(a_i,b_i)\} $ is in $ \set{C}_A $. Moreover,
+		\[\lom{A} \le \sum_i (b_i - a_i) = \sum_i \frac{\epsilon}{2^i} = \epsilon\]
+		Now since $ \epsilon >0 $ is arbitrary, therefore, $ \lom{A} = 0 $ even for countably infinite set $ A $.\\
+		Now since $ \lom{\R} \neq 0 $, therefore $ \R $ is not countable.
+\end{proof}}
+\item {\begin{proof}
+		Isn't it very trivial? That is just the definition of Lebesgue Outer Measure.
+\end{proof}}
+\item {\begin{proof}
+		Consider $ \set{C}_A = \left \{\{(a_i,b_i)\}\where A \subseteq \bunion_i(a_i,b_i)\right \} $ and $ \set{C}_{\alpha A} = \left \{ \{(c_i,d_i)\}\where \alpha A \subseteq  \bunion_i (c_i,d_i) \right \} $. We will show that 
+		\[\text{To Show : }\set{C}_{\alpha A} = \alpha \set{C}_{A} = \left \{\{\alpha(a_i,b_i)\} \where A \subseteq \bunion_i(a_i,b_i)\right \}.\]
+		First, take any infinite sequence $ \{(a_i,b_i)\}\in \set{C}_A $. Then $ \{\alpha(a_i,b_i)\} \in \set{C}_{\alpha A} $ because if $ A \subseteq \bunion_i (a_i,b_i) $, then $ \alpha A \subseteq \bunion_i \alpha(a_i,b_i) $ where $ \alpha(a_i,b_i) = (\alpha a_i,\alpha b_i) $ if $ \alpha > 0 $ or $ = (\alpha b_i, \alpha a_i) $ if $ \alpha <0 $. Hence, 
+		\[ \alpha \set{C}_A \subseteq \set{C}_{\alpha A}. \]
+		To see the converse, first note that the case of $ \alpha = 0 $ is trivial, so we would take $ \alpha \neq 0 $. Now, take $ \{(c_i,d_i)\}\in \set{C}_{\alpha A} $. Hence $ \alpha A \subseteq \bunion_i (c_i,d_i)  $. Now, $ \frac{1}{\alpha} \cdot \alpha A = A \subseteq \bunion_i \frac{1}{\alpha}\left (c_i,d_i\right ) $. Therefore, $ \{\frac{1}{\alpha}(c_i,d_i)\} \in \set{C}_A \implies \{(c_i,d_i)\} \in \alpha \set{C}_A$. Hence $ \set{C}_{\alpha A} \subseteq \alpha \set{C}_A $. Hence $ \set{C}_{\alpha A} = \alpha\set{C}_A $. Hence, we get that $ \set{L}_{\alpha A} = \abs{\alpha}\set{L}_A $ because $ \sum_i l(\alpha I_n) = \sum_{i} \alpha(b_i-a_i)$ if $ \alpha > 0$ or $ = \sum_i \alpha(a_i-b_i) $ if $ \alpha<0 $. Hence we can write $ \alpha\set{L}_A = \{ \sum_i \abs{\alpha}(b_i - a_i)\where \{(a_i,b_i)\} \in \set{C}_A  \} $. Now, $ \inf \set{L}_{\alpha A} = \inf \abs{\alpha} \set{L}_A \implies \lom{\alpha A} = \abs{\alpha} \lom{A}$.
+\end{proof}}
 \end{enumerate}
 \newpage
 \subsection{Lebesgue Measurability.}
@@ -743,13 +768,13 @@ Hence, by induction principle, Eq. \ref{E-2} is true for all $ n\in \N $. Hence,
 Now, to prove that $ \bunion_i B_i \in \msigm{\mu^*}$, we need to show
 \[\text{To Show : }\om{A} \ge \om{A\intrs \bunion_{i} B_i} + \om{A\intrs \comp{\left (\bunion_i B_i\right )}}\]
 This comes from previous result as follows:
-\begin{equation*}
+\begin{equation}
 	\begin{split}
 		\om{A} &\ge \sum_{i=1}^\infty \om{A\intrs B_i} + \om{A\intrs \left (\bunion_{i=1}^\infty B_i\right )^c}\\
 		&\ge \om{\bunion_{i=1}^\infty (A\intrs B_i)} + \om{A\intrs \left (\bunion_{i=1}^\infty B_i\right )^c} \\
 		&= \om{A\intrs \bunion_{i=1}^\infty B_i} + \om{A\intrs \left (\bunion_{i=1}^\infty B_i\right )^c}
 	\end{split}
-\end{equation*}
+\end{equation}
 Therefore, $ \bunion_i B_i  \in  \msigm{\mu^*}$. Now, as the previous footnote mentions, for every infinite sequence $ \{C_i\} $ in $ \msigm{\mu^*} $, we have a disjoint sequence of subsets as $ C_1,C_2\intrs \comp{C_1} , C_3\intrs \comp{C_2} \intrs C_1, ... $. Now, this disjoint sequence is closed under union as we just showed and since union of this disjoint sequence is equal to the union of $ \{C_i\} $, hence $ \bunion_i C_i \in \msigm{\mu^*} $ for any sequence $ \{C_i\} $ in $ \msigm{\mu^*} $. Thus, $ \msigm{\mu^*} $ is a $ \sigma $-algebra.\\\\
 \textbf{Act 3.}\emph{ $ \mu^* $ restricted to $ \msigm{\mu^*} $ is a measure.}\\
 Consider $ \{B_n\} $ be an infinite sequence of subsets in $ \msigm{\mu^*} $. Now, by finite subadditivity, we trivially have
@@ -765,4 +790,48 @@ Moreover, from Part 2 and setting $ A = \union_i B_i $, we get:
 We hence have the complete proof.
 \end{proof}
 \hrulefill
+\newpage
+\begin{proposition}\label{P-11}
+	Every interval of form $ (-\infty, b] $ is Lebesgue measurable.
+\end{proposition}
+\begin{proof}
+	All we need to show that for $ B= (-\infty, b] $ and for all $ A\subseteq \R $, 
+	\[\text{To Show : } \lom{A} \ge \lom{A\intrs B} + \lom{A\intrs \comp{B}}.\]
+	Consider $ \{(a_i,b_i)\} \in \set{C}_A $. Therefore $ A \subseteq \bunion_i (a_i,b_i) $. Clearly, this implies that 
+	\[\lom{A} \le \sum_i (b_i-a_i).\]
+	Equivalently, $ \exists \;\epsilon >0 $ such that,
+	\[ \lom{A} + \epsilon \ge \sum_i (b_i-a_i). \]
+	Now, it's also clear that $ (a_k,b_k)\intrs B $ and $ (a_k,b_k) \intrs \comp{B}$ are disjoint for any $ k\in\N $. But we know that \textbf{for disjoint $ \lambda^{*} $-measurable sets $ C $ and $ D $, it's true that $ \lom{C\union D} = \lom{C} + \lom{D} $, which can be extended for countable union}\footnote{We need it's proof too.}. Hence, we can write:
+	\[(b_k - a_k) = \lom{(a_k,b_k)} = \lom{(a_k,b_k)\intrs B \bunion (a_k,b_k)\intrs \comp{B}} = \lom{(a_k,b_k)\intrs B} + \lom{(a_k,b_k)\intrs \comp{B}}.\]
+	Now since $ A\subseteq \bunion_i (a_i,b_i) $, therefore $ A\intrs B \subseteq \bunion_i (a_i,b_i)\intrs B $. Similarly, $ A\intrs \comp{B} \subseteq \bunion_i (a_i,b_i)\intrs \comp{B} $.\\
+	This implies that,
+	\begin{equation*}
+		\begin{split}
+			\lom{A\intrs B}&\le \lom{\bunion_i (a_i,b_i)\intrs B}\\
+			\lom{A\intrs \comp{B}} &\le \lom{\bunion_i (a_i,b_i)\intrs \comp{B}}
+		\end{split}
+	\end{equation*}
+Adding these equations, we get the desired result:
+\begin{equation*}
+	\begin{split}
+		\lom{A\intrs B} + \lom{A\intrs \comp{B}} &\le \lom{\bunion_i (a_i,b_i)\intrs B} + \lom{\bunion_i (a_i,b_i)\intrs \comp{B}}\\
+		&\le \sum_i \lom{(a_i,b_i)\intrs B}+\sum_i \lom{(a_i,b_i)\intrs \comp{B}}\\
+		&= \sum_i \lom{(a_i,b_i)}\;\;\;\;\text{(Shown above.)}\\
+		&= \sum_i (b_i-a_i)\\
+		&\le \lom{A} + \epsilon
+	\end{split}
+\end{equation*}
+which is true for all $ \epsilon >0 $, therefore 
+\[\lom{A\intrs B} + \lom{A\intrs \comp{B}} \le \lom{A}.\]
+\end{proof}
+\hrulefill
+\begin{proposition}
+	Every Borel subset of $ \R $ is Lebesgue Measurable.
+\end{proposition}
+\begin{proof}
+	From Proposition \ref{P-11}, we have that the subsets of the form $ (-\infty,b] $ are Lebesgue measurable. Remember that a subset $ B\subseteq \R $ is called borel if $ B\in \bor{\R} $; that is, it is present in the smallest $ \sigma $-algebra generated by open subsets of $ \R $. \\
+	Now, since $ (-\infty,b] $ is Lebesgue measurable, therefore $ (-\infty,b] \in \msigm{\lambda^*} $. But since $ \sigma $-algebra $ \bor{\R} $ is closed under complements, complement of open subset is closed and $ (-\infty,b] $ is closed, therefore all intervals of form $ (-\infty,b] $ are also in $ \bor{\R} $. Since $ \bor{\R} $ is the smallest $ \sigma $-algebra containing intervals of form $ (-\infty,b] $, therefore $ \bor{\R} \subseteq \msigm{\lambda^*} $.
+\end{proof}
+\hrulefill
+
 \end{document}
