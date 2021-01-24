@@ -128,6 +128,7 @@
 \newcommand{\set}[1]{\mathscr{#1}}
 \newcommand{\msigm}[1]{\set{M}_{#1}}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\newcommand{\lm}[1]{\lambda\left (#1\right )}
 
 \begin{document}
 \begin{titlepage}
@@ -195,6 +196,7 @@ The problem begins with Riemann Integrable functions when we see that functions 
 \begin{enumerate}
 	\item{Every open set in $ \mathbb{R} $ can be written as disjoint union of open intervals.
 \begin{proof}
+	\label{H1-1}
 	Let $ G\subseteq \R$ be a open subset. Now by definition of an open subset, we have that for any $ x\in G $, there exists atleast one open subset $ U $ such that $ x\in U \subseteq G $. Now consider the following union of all such open subsets of $ x $,
 	\[U_x = \bunion_{x\in U\subseteq G} U\]
 	It's now easy to see that $ U_x $ is the largest such subset of $ G $, as any other $ V\subseteq G $ such that $ x\in V $ is by definition contained in $ U_x $. Moreover, $ U_x $ is an interval as it is an arbitrary union of open intervals. Now, define the following relation on $ G $:
@@ -400,7 +402,7 @@ Outer measure is a function $ m^* : P(\R) \to [0,\infty] $.
 			&=  \mu(A) + \mu(B\intrs \comp{A})
 		\end{split}
 	\end{equation*}
-Since $ \mu(B\intrs \comp{A}) \ge 0$, hence $ \mu(A)\le \mu(B) $. Moreover, if $ \mu <\infty $, then we can additionally write $ \mu(B\intrs \comp{A})  = \mu(B) - \mu(A)$.
+Since $ \mu(B\intrs \comp{A}) \ge 0$, hence $ \mu(A)\le \mu(B) $. Moreover, if $ \mu(A) <\infty $, then we can additionally write $ \mu(B\intrs \comp{A})  = \mu(B) - \mu(A)$.
 \end{proof}
 \hrulefill
 \begin{definition}
@@ -587,6 +589,7 @@ which yields $ b-a \le \lom{(a,b]} $. Similarly for $ (-\infty,b] $ to show that
 		\end{proof}
 }
 \item {\begin{proof}
+		\label{E2-2}
 		Since $ \lom{A} = \inf \set{L}_A$ where
 		\[\set{L}_A = \left \{\sum_{i} (b_i - a_i)\where \{(a_i,b_i)\} \in \set{C}_A \right \}\]
 		and 
@@ -595,17 +598,29 @@ which yields $ b-a \le \lom{(a,b]} $. Similarly for $ (-\infty,b] $ to show that
 	\end{proof}
 }
 \item {\begin{proof}
-		We have $ A\subseteq \R $. For this, we have 
-		\[\lom{A} = \inf \set{L}_A\]
-		Therefore, for any $ \{(a_i,b_i)\} \in \set{C}_A $, 
-		\[\lom{A} \le \sum_i (b_i-a_i).\]
-		Now, consider,
-		\[B^n = \bunion_i (a_i^n, b_i^n)\;\text{for any }\{(a_i^n,b_i^n)\} \in \set{C}_A\]
-		Now, since $ B^n $ covers $ A $, that is $ A\subseteq B^n$ for all $ n $ so $ B^n $ is open as arbitrary union of open sets is open, therefore, 
-		\[A\subseteq \bintrs_n B^n = C\]
-		where $\bintrs_n B^n = C $ is clearly $ G_\delta $. Now we need to show both have the same outer measure. For this, we first trivially have that $ \set{C}_C \subseteq \set{C}_A $ because $ A\subseteq C $ and any infinite cover of $ C $ would then cover $ A $. But moreover, we also see that any infinite sequence $ \{(a_i^n,b_i^n)\}\in \set{C}_A $ for some $ n $, we have 
-		\[C =\bintrs_nB^n \subseteq B^n = \bunion_i(a_i^n,b_i^n).\]
-		That is, any infinite sequence in $ \set{C}_A $ also covers $ C $. Therefore $ \set{C}_A \subseteq \set{C}_C $. Hence $ \set{C}_A = \set{C}_C $. So that $ \set{L}_A = \set{L}_C $ and hence $ \lom{A} = \lom{C} $.
+		\label{E2-3}
+		From the previous question 2, we have that for $ A \subseteq \R $ and for any $ \epsilon>0 $, there exists an open subset $ O\supseteq A $ such that $ \lom{O} \le \lom{A} + \epsilon $. Now, consider the sequence $ \epsilon_n = 1/n $ and the corresponding open subsets $ O_n $ containing $ A $. Clearly, $ A \subseteq \bintrs_n O_n $. Since $ G = \bintrs_n O_n$ is countable intersection of open subsets, therefore $ G $ is a $ G_\delta $ set. Now, note that $ G = \bintrs_n O_n \subseteq O_m $ for any $ m\in \N $. Therefore, $ G \setminus E \subseteq O_m\setminus E $ for any $ m\in \N $. Hence,
+		\begin{equation*}
+			\begin{split}
+				\lom{G\setminus E} &\le \lom{O_m \setminus E}\\
+				&= \lom{O_m} - \lom{E}\;\;\;\;\text{(Since $ E\subseteq O_m $)}\\
+				&\le \frac{1}{n}
+			\end{split}
+		\end{equation*} 
+ 		for all $ n\in \N $. Therefore $ \lom{G\setminus E} = 0 $ which implies that 
+ 		\[\lom{G} = \lom{E}\]
+ 		as $ E\subseteq G $. 
+%		We have $ A\subseteq \R $. For this, we have 
+%		\[\lom{A} = \inf \set{L}_A\]
+%		Therefore, for any $ \{(a_i,b_i)\} \in \set{C}_A $, 
+%		\[\lom{A} \le \sum_i (b_i-a_i).\]
+%		Now, consider,
+%		\[B^n = \bunion_i (a_i^n, b_i^n)\;\text{for any }\{(a_i^n,b_i^n)\} \in \set{C}_A\]
+%		Now, since $ B^n $ covers $ A $, that is $ A\subseteq B^n$ for all $ n $ so $ B^n $ is open as arbitrary union of open sets is open, therefore, 
+%		\[A\subseteq \bintrs_n B^n = C\]
+%		where $\bintrs_n B^n = C $ is clearly $ G_\delta $. Now we need to show both have the same outer measure. For this, we first trivially have that $ \set{C}_C \subseteq \set{C}_A $ because $ A\subseteq C $ and any infinite cover of $ C $ would then cover $ A $. But moreover, we also see that any infinite sequence $ \{(a_i^n,b_i^n)\}\in \set{C}_A $ for some $ n $, we have 
+%		\[C =\bintrs_nB^n \subseteq B^n = \bunion_i(a_i^n,b_i^n).\]
+%		That is, any infinite sequence in $ \set{C}_A $ also covers $ C $. Therefore $ \set{C}_A \subseteq \set{C}_C $. Hence $ \set{C}_A = \set{C}_C $. So that $ \set{L}_A = \set{L}_C $ and hence $ \lom{A} = \lom{C} $.
 \end{proof}}
 \item {\begin{proof}
 		Take any $ B\subseteq \R $. We are given a subset $ A\subseteq \R $ such that $ \lom{A} = 0 $. Note that 
@@ -639,6 +654,16 @@ which yields $ b-a \le \lom{(a,b]} $. Similarly for $ (-\infty,b] $ to show that
 		First, take any infinite sequence $ \{(a_i,b_i)\}\in \set{C}_A $. Then $ \{\alpha(a_i,b_i)\} \in \set{C}_{\alpha A} $ because if $ A \subseteq \bunion_i (a_i,b_i) $, then $ \alpha A \subseteq \bunion_i \alpha(a_i,b_i) $ where $ \alpha(a_i,b_i) = (\alpha a_i,\alpha b_i) $ if $ \alpha > 0 $ or $ = (\alpha b_i, \alpha a_i) $ if $ \alpha <0 $. Hence, 
 		\[ \alpha \set{C}_A \subseteq \set{C}_{\alpha A}. \]
 		To see the converse, first note that the case of $ \alpha = 0 $ is trivial, so we would take $ \alpha \neq 0 $. Now, take $ \{(c_i,d_i)\}\in \set{C}_{\alpha A} $. Hence $ \alpha A \subseteq \bunion_i (c_i,d_i)  $. Now, $ \frac{1}{\alpha} \cdot \alpha A = A \subseteq \bunion_i \frac{1}{\alpha}\left (c_i,d_i\right ) $. Therefore, $ \{\frac{1}{\alpha}(c_i,d_i)\} \in \set{C}_A \implies \{(c_i,d_i)\} \in \alpha \set{C}_A$. Hence $ \set{C}_{\alpha A} \subseteq \alpha \set{C}_A $. Hence $ \set{C}_{\alpha A} = \alpha\set{C}_A $. Hence, we get that $ \set{L}_{\alpha A} = \abs{\alpha}\set{L}_A $ because $ \sum_i l(\alpha I_n) = \sum_{i} \alpha(b_i-a_i)$ if $ \alpha > 0$ or $ = \sum_i \alpha(a_i-b_i) $ if $ \alpha<0 $. Hence we can write $ \alpha\set{L}_A = \{ \sum_i \abs{\alpha}(b_i - a_i)\where \{(a_i,b_i)\} \in \set{C}_A  \} $. Now, $ \inf \set{L}_{\alpha A} = \inf \abs{\alpha} \set{L}_A \implies \lom{\alpha A} = \abs{\alpha} \lom{A}$.
+\end{proof}}
+\item {\begin{proof}
+		We have that $ B $ is the set of all points of $ \R $ which are present in infinite number of subsets $ A_n $. Now consider $ x\in B $. Then, there exists $ \{n\} $ such that the first element of the sequence $ n_1 $ is such that $ x\in A_{n_1} $, or $ x\in \bunion_{n\ge n_1} A_n $. Then, for any $ x\in B $, we have $ x\in\bintrs_{m=1}^{\infty}  \bunion_{n\ge m} A_n $. Hence,
+		\[B\subseteq \bintrs_{m=1}^{\infty}  \bunion_{n\ge m} A_n.\]
+		Now, take $ x\in \bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n $. Then $ x\in \bunion_{n\ge m} A_n $ for all $ m\in \N $. This implies that $ x\in A_{k_m} $ for some $ k_m \ge m $ for all $ m $. This implies that $ x\in A_n $ for infinitely many $ n $. Hence $ x\in B $, so that,
+		\[B = \bintrs_{m=1}^{\infty}\bunion_{n\ge m} A_n.\]
+		\textbf{COMPLETE THE PROOF.}
+\end{proof}}
+\item {\begin{proof}
+		
 \end{proof}}
 \end{enumerate}
 \newpage
@@ -825,7 +850,7 @@ which is true for all $ \epsilon >0 $, therefore
 \[\lom{A\intrs B} + \lom{A\intrs \comp{B}} \le \lom{A}.\]
 \end{proof}
 \hrulefill
-\begin{proposition}
+\begin{proposition}\label{P-12}
 	Every Borel subset of $ \R $ is Lebesgue Measurable.
 \end{proposition}
 \begin{proof}
@@ -833,5 +858,157 @@ which is true for all $ \epsilon >0 $, therefore
 	Now, since $ (-\infty,b] $ is Lebesgue measurable, therefore $ (-\infty,b] \in \msigm{\lambda^*} $. But since $ \sigma $-algebra $ \bor{\R} $ is closed under complements, complement of open subset is closed and $ (-\infty,b] $ is closed, therefore all intervals of form $ (-\infty,b] $ are also in $ \bor{\R} $. Since $ \bor{\R} $ is the smallest $ \sigma $-algebra containing intervals of form $ (-\infty,b] $, therefore $ \bor{\R} \subseteq \msigm{\lambda^*} $.
 \end{proof}
 \hrulefill
+\newpage
+\begin{definition}
+	(\textbf{Lebesgue Measure}) The restriction of Lebesgue outer measure on $ \R $ to the collection $ \msigm{\lambda^*} $ of Lebesgue measurable subsets of $ \R $ is called \emph{Lebesgue Measure}. It would be denoted by $ \lambda $. Hence, we would work with the measure space $ (\R,\msigm{\lambda^*},\lambda) $.
+\end{definition}
+\hrulefill
+\subsection{Does $ \lom{E} = 0 $ implies $ E $ is countable?}
+We would construct today a set which has measure 0, but not countable(!).
+\begin{enumerate}
+	\item {Take $ E_0 = [0,1] $.}
+	\item {Remove $ [1/3,2/3] $ from $ E_0 $ to form $ E_1 = [0,1/3] \union [2/3,1] $.}
+	\item {Proceed in the same way to form $ E_2 = [0,1/9]\union [2/9,3/4] \union [2/3,7/9]\union [8/9,1] $.}
+	\item {At $ n^{th} $ step, $ E_n $ contains $ 2^n $ subintervals and each of which is of length $ \frac{1}{3^n} $.}
+	\item {We clearly have $ E_0 \supset E_1 \supset E_2 \supset \dots $.}
+	\item {Here, note that each $ E_n $ is a closed and compact subset of $ \R $.}
+	\item {The set 
+\[P = \bintrs_{n=0}^{\infty} E_n \;\;\text{is known as \textbf{Cantor Set}.}\]	
+}
+\end{enumerate}
+\subsubsection{Properties of Cantor Set}
+\begin{proposition}
+	Lebesgue Measure of Cantor Set is 0.
+\end{proposition}
+\begin{proof}
+	Note that Cantor Set is Lebesgue measurable as it is countable intersection of closed sets, hence it is present in the Borel $ \sigma $-algebra $ \bor{\R} $ and hence is also in $ \msigm{\lambda^*} $ (Proposition \ref{P-12}). Hence, instead of $ \lambda^* $, we can now write $ \lambda $ as $ P\in \msigm{\lambda^*} $. Now, measure of Cantor set $ P $ can be written as:
+	\begin{equation*}
+		\begin{split}
+			\lm{P} &= \lm{\bintrs_n E_n}\\
+			&= \limit{n\to\infty}{\lm{E_n}}\;\;\;\;\text{(Proposition \ref{P-7})}\\
+			&= \limit{n\to\infty}{\frac{2^n}{3^n}}\\
+			&= \limit{n\to\infty}{\frac{1}{1.5^n}}\\
+			&= 0.
+		\end{split}
+	\end{equation*}
+\end{proof}
+\hrulefill
+\begin{proposition}
+	Cantor Set is Uncountable(!)
+\end{proposition}
+\begin{proof}
+ We will show that there exists a bijection between Cantor Set and an uncountable set, specifically ternary system. For this, consider the ternary representation of every number in $ [0,1] $. What this means is that every number in $ [0,1] $ can be represented only using the numbers $ 0,1 $ and 2. Hence, one write $ \frac{1}{3} $ as 0.1 and $ \frac{2}{3} $ as 0.2. Now, $ (1/3,2/3) = \comp{E_1} \intrs [0,1] $ is the set that has been removed from the process of creating $ E_1 $ from $ E_0 $. Clearly, every number in this $ \comp{E_1}\intrs [0,1] $ is of the form $ 0.1 \dots $ where $ \dots $ are all combinations of $ 0,1 $ and 2. Therefore, we are now left with the $ E_1 $ that has all the numbers represented as $ 0.0\dots $ or $ 0.2\dots $. \\
+ As we saw in the generation of $ E_1 $, the generation of $ E_2 $ from $ E_1 $ would hence involve removing numbers of the forms $ 0.01\dots $ and $ 0.21\dots $. And hence $ E_2 $ would then be the set of numbers whose first two decimal places are restricted to NOT have the digit 1; that is, $ E_2 $ would be of form $ 0.02\dots, 0.00\dots, 0.20\dots, 0.22\dots $.\\
+ Continuing like this, we see that $ E_n $ would have in ternary representation, all those numbers whose first $ n $ digits are NOT 1. Hence, for any $ p \in P $, $ p $ would have the ternary representation constructed only from 0 and 2, but NOT 1.\\
+ Now, consider the map $ f : P \to [0,1] $ such that $ f(p) $ replaces each occurence of $ 2 $ by 1 in the ternary representation of $ p $. We now show that this map is surjective(!) so that $ P $ has atleast as many elements as $ [0,1] $. To show this, take any $ x\in [0,1] $ in it's ternary form, and replace all $ 1 $ by $ 2 $ and denote it as $ x^\prime $. Clearly, $ x^\prime $ would be in $ P $ as $ x^{\prime} $ has all decimal digits generated by 0 and 2. But $ f(x^{\prime}) $ would be opposite action and would be equal to $ x $. Therefore, we showed that for any $ x\in [0,1],\exists\;x^{\prime} \in P$ such that $ f(x^{\prime}) = x $. Hence $ f $ is surjective. Therefore $ P $ has atleast as many elements as $ [0,1] $. But since $ P\subseteq [0,1] $ therefore $ P $ has atmost as many elements as $ [0,1] $. This dichotomy suggests that
+ \[\text{\emph{Cantor Set has as many elements as in $ [0,1] $ (!)}}\]
+ But since $ [0,1] $ is uncountable, therefore, $ P $ is uncountable.
+\end{proof}
+\hrulefill
 
+With this, we conclude that \textbf{for any set $ E\subseteq \R $, if $ \lom{E} = 0 $, then it's NOT necessarily true that $ E $ is countable}.\\
+We now see an extremely interesting example of a Non-measurable set.
+\subsection{A Non-measurable Set}
+\begin{theorem}
+	 There is a subset of $ \R $ that is not Lebesgue Measurable\footnote{See \cite{Solovay70} for more information.}.
+\end{theorem}
+\begin{proof} We construct the proof in the following \emph{Acts}:\\\\
+	\textbf{Act 1.} \emph{Equivalence Relation on $ \R $.}\\
+	Construct the following relation $ \sim  $ on $ \R $:
+	\[x\sim y \equiv x-y \in \Q.\]
+	Clearly, $ \sim $ is reflexive as $ x - x = 0$ is rational; it is also symmetric as negative of a rational is also a rational number; and it is also transitive as if $x-y $ and $ y-z $ is rational, then $ x-y + y-z = x-z$ is sum of two rationals, which is also rational. Hence $ \sim $ is an equivalence relation. Therefore $ \sim $ partitions the whole $ \R $ into equivalence classes. Note that each equivalence class of $ x $ would consist elements of the form $ \Q + x$. But since $ \Q $ is dense in $ \R $, therefore $ \Q +x $, that is each equivalence class, is dense in $ \R $. \\
+	Now, each equivalence class clearly intersects $ (0,1) $, therefore, inducing the Axiom of Choice on the set of all equivalence classes, we can form a subset $ E\subset (0,1) $ which contains exactly one element from each of the equivalence classes. We will later prove that $ E $ is not Lebesgue Measurable. \\\\
+	\textbf{Act 2.} \emph{$ E $ satisfies certain properties.}\\
+	Consider the set $ \Q \intrs (-1,1) $. Clearly, this is countable as it's subset of $ \Q $. Then, consider $ \{r_n\} $ to be the enumeration of $ \Q\intrs (-1,1) $. Construct the sequence of subsets $E_n = E + r_n $. We now verify that $ \{E_n\} $ satisfies the following properties:
+	\begin{enumerate}
+		\item {{The sets $ E_n $ are disjoint.}}
+		\item {{$ \bunion_n E_n $ is a subset of the interval $ (-1,2) $.}}
+		\item {{The interval $ (0,1) $ is included in $ \bunion_n E_n $.}}
+	\end{enumerate}
+	\emph{Property 1} : Assume that $ E_n \intrs E_m \neq \Phi$ for some $ n,m\in \N $ such that $ n\neq m $. Then $ \exists e_1,e_2 \in E $ such that $ e_1 + r_{n} = e_2 + r_m $ which means that $ e_1 - e_2 = r_m - r_n \in \Q$. But this cannot happen as $ e_1, e_2 $ are elements of $ E $ and $ E $ contains exactly one element from the equivalence class of $ \sim $ intersected with $ (0,1) $. Therefore $ e_1-e_2 \notin \Q $. Which is a contradiction. Hence $ E_n \intrs E_m = \Phi$ for all $ n,m\in \N $ such that $ n\neq m $.\\
+	\emph{Property 2} : Take $ x\in \bunion_n E_n $. This implies that $ x\in E_m $ for some $ m\in \N $. But $ E_m = E+r_m = \{e+r_m \where e\in E\} $. Since $ E\subset (0,1) $ and $ r_m \in \Q\intrs(-1,1) \subset (-1,1) $, therefore $x\in  E+r_m \subseteq (-1,2) $. Hence $ \bunion_n E_n \subseteq (-1,2) $.\\
+	\emph{Property 3} : Take any $ x\in (0,1) $. Now take the $ e\in E $ such that $ x\sim e $, or $ x-e \in \Q $. Hence $ x \in \Q + e $. That is $ x= r + e $. But since $ 0<e<1 $ and $ 0<x<1 $, therefore $ r = x-e \in \Q \intrs (-1,1) $. Hence $ x \in E +r $ and if we denote $ r = r_n $ for some $ n\in \N $, we get $ x\in E+r_n = E_n $, therefore $ x\in \bunion_i E_i $. Hence $ (0,1)\subseteq \bunion_i E_i $.\\\\
+	\textbf{Act 3.} \emph{$ E $ is Not Lebesgue Measurable.}  \\
+	Assume that $ E $ is in-fact Lebesgue Measurable. Now since $ E_n $ are disjoint (Property 1), therefore we can write:
+	\[\lm{\bunion_n E_n} = \sum_n \lm{E_n}.\]
+	Now, since \textbf{Lebesgue Measure is translation invariant}\footnote{Proof?}, therefore $ \lm{E_n} = \lm{E + r_n} = \lm{E} $. Two cases now arise for $ \lm{\bunion_n E_n} $:
+	\begin{enumerate}
+		\item {If $ \lm{E} $ = 0 : Then $ \lm{\bunion_n E_n} = 0$. But
+			\[\lm{(-1,2)} = 3 \le \lm{\bunion_n E_n}\;\;\;\;\text{(Property 3)}.\]
+			Therefore we have a contradiction.}
+		\item {If $ \lm{E} \neq 0 $ : Then $ \lm{\bunion_n E_n} = \sum_n \lm{E} = +\infty $. But
+	\[\lm{\bunion_n E_n}\le \lm{(-1,2)}=3\;\;\;\;\text{(Property 2).}\]	
+We again have a contradiction.	
+}
+	\end{enumerate}
+Hence, the set $ E $ is just not Lebesgue Measurable!
+\end{proof}
+\hrulefill
+\subsection{Regularity}
+First consider the following proposition.
+\begin{proposition}
+	Consider $ E \subseteq \R$. The following statements are equivalent:
+	\begin{enumerate}
+		\item {$ E $ is Lebesgue measurable.}
+		\item {$ \forall \;\epsilon >0$, $ \exists  $ an open set $ O $ such that 
+	\[E\subseteq O\;\text{and}\;\lom{O\setminus E} < \epsilon.\]	
+	}
+\item {$ \exists $ a $ G_\delta $ set $ G $ such that
+\[E\subseteq G\;\text{and}\;\lom{G\setminus E} = 0.\]
+}
+	\end{enumerate}
+\end{proposition}
+%\begin{proposition}
+%	Let $ A $ be a Lebesgue Measurable subset of $ \R $. Then there exist a $ G_\delta $ set $ G $ and an $ F_\sigma $ set $ F $ in $ \bor{\R} $ such that $ G\subseteq A \subseteq F $ and $ \lm{G-F} = 0 $.
+%\end{proposition}
+\begin{proof}The equivalence of each statement is as follows:\\
+	\textbf{1 $ \implies $ 2.} Consider $ E\subseteq  \R$ to be Lebesgue measurable. As Question \ref{E2-2} in Exercise 2 shows, for any $ E\subseteq \R $ and any $ \epsilon > 0 $, there exists open set $ U $ such that $ E\subseteq U $ which satisfies
+	\[\lom{U}\le \lom{E} + \epsilon.\]
+	Now since $ E\subseteq U $, therefore,
+	\begin{equation*}
+		\begin{split}
+			\lom{U\setminus E} &= \lom{U} - \lom{E}\\
+			&\le \epsilon
+		\end{split}
+	\end{equation*}
+\textbf{2 $ \implies $ 3.} Similarly, the Question \ref{E2-3} of Exercise 2 shows that there exists a $ G_\delta $ set $ G $ such that $ E\subseteq G $ which satisfies $ \lom{E} = \lom{G} $. This directly means that $ \lom{G\setminus E} = 0$ because $ E\subseteq G $ so $ \lom{G\setminus E} = \lom{G} -\lom{E} $.\\\\
+\textbf{3 $ \implies $ 1.} Since $ G $ is $ G_\delta $ set therefore it is intersection of open sets in $ \R $. Now since any open set in $ \R $ is an union of open intervals (Homework I, \ref{H1-1}) which is Lebesgue Measurable and therefore $ G $ is Lebesgue Measurable. Now, we can write $ E $ as
+\[E = G \setminus (G\setminus E)\]
+where $ G\setminus E $ is such that (from Statement 3) $ \lom{G\setminus E} = 0 $, therefore, by Proposition \ref{P-10}, $ G\setminus E $ is Lebesgue Measurable. Hence $ E $ is also Lebesgue Measurable.
+
+\end{proof}
+\hrulefill
+
+Now, consider the next proposition, which is dual of the above.
+\begin{proposition}
+	Consider $ E \subseteq \R$. The following statements are equivalent:
+	\begin{enumerate}
+		\item {$ E $ is Lebesgue measurable.}
+		\item {$ \forall \;\epsilon >0$, $ \exists  $ closed set $ C $ such that 
+			\[C\subseteq E\;\text{and}\;\lom{E\setminus C} < \epsilon.\]	
+		}
+		\item {$ \exists $ a $ F_\sigma $ set $ F $ such that
+			\[F\subseteq E\;\text{and}\;\lom{E\setminus F} = 0.\]
+		}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	content...
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\begin{thebibliography}{9}
+	\bibitem{Solovay70} 
+	Solovay, R. (1970). A Model of Set-Theory in Which Every Set of Reals is Lebesgue Measurable. Annals of Mathematics, 92(1), second series, 1-56.
+\end{thebibliography}
 \end{document}
