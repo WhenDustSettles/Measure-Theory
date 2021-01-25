@@ -722,6 +722,7 @@ for \emph{any} subsets $ A,B\subseteq X $.
 \newpage
 
 \begin{theorem}
+	\label{T-1}
 	Let $ X $ be a set, let $ \mu^* $ be an outer measure on $ X $ and let $ \set{M}_{\mu^*} $ be the collection of all $ \mu^* $-measurable subsets of $ X $. Then,
 	\begin{itemize}
 		\item {$ \set{M}_{\mu^*} $ is a $ \sigma $-algebra.}
@@ -947,6 +948,7 @@ Hence, the set $ E $ is just not Lebesgue Measurable!
 \subsection{Regularity}
 First consider the following proposition.
 \begin{proposition}
+	\label{P-15}
 	Consider $ E \subseteq \R$. The following statements are equivalent:
 	\begin{enumerate}
 		\item {$ E $ is Lebesgue measurable.}
@@ -993,9 +995,27 @@ Now, consider the next proposition, which is dual of the above.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	content...
+	Implications are as follows:\\
+	\textbf{1 $ \implies  $ 2.} Suppose $ E \subseteq \R$ is Lebesgue Measurable. Note that if $ E $ is Lebesgue Measurable (that is $ E \in \msigm{\lambda^*} $), then $ \comp{E} $ is also Lebesgue Measurable as $ \msigm{\lambda^*} $ is a $ \sigma $-algebra (Theorem \ref{T-1}). Hence, using Proposition \ref{P-15} on $ \comp{E} $ gives us an open set $ O $ for all $ \epsilon>0 $ such that $ \comp{E}\subseteq O $ and $ \lom{O\setminus \comp{E}} < \epsilon $. Now let's take it's complement. Therefore, $ C = \comp{O} \subseteq E $ where $ C $ is clearly closed. Now, $ E\setminus \comp{O} = O \setminus\comp{E}$\footnote{It's not difficult to see as for any $ x\in E\setminus \comp{O} $, $ x\in E $ but $x\notin \comp{O}  $. Therefore, $ x\in O $ but $x \notin \comp{E} $, that is $ x\in O\setminus \comp{E}$.}. Now, 
+	\begin{equation*}
+		\begin{split}
+			\lom{E\setminus \comp{O}} &= \lom{O\setminus \comp{E}}\\
+			&< \epsilon
+		\end{split}
+	\end{equation*}
+which proves the first implication.\\\\
+\textbf{2 $ \implies $ 3.} From Proposition \ref{P-15}, we have that $ \exists$ a $ G_\delta $ set $ G $ such that $ \comp{E} \subseteq G $ and $ \lom{G\setminus \comp{E}} =0 $. Note that the complement of countable intersection of open sets is countable union of closed sets. Therefore, $ F =\comp{G} $ is an $ F_\sigma $ set. Now, $ \comp{G} \subseteq \comp{(\comp{E})} = E $. Now, we know that $ E\setminus \comp{G} = G\setminus \comp{E}$. Therefore, we have the result as follows:
+\begin{equation*}
+	\begin{split}
+		\lom{E\setminus\comp{G}} &= \lom{G\setminus\comp{E}}\\
+		&= 0.
+	\end{split}
+\end{equation*}
+\textbf{3 $ \implies $ 1.} Since $ F $ is an $ F_\sigma $ set, therefore, $ F \in \msigm{\lambda^*}$. Moreover, as Statement 2 show, $ \lom{E\setminus F} = 0 $, thus by Proposition \ref{P-10}, $ E\setminus F \in \msigm{\lambda^*}$. Since,
+\[E = F \union (E\setminus F)\]
+that is $ E $ is union of two Lebesgue Measurable sets, therefore $ E \in \msigm{\lambda^*} $, completing the proof.
 \end{proof}
-
+\hrulefill
 
 
 
