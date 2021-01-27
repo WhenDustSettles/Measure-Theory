@@ -646,7 +646,28 @@ which yields $ b-a \le \lom{(a,b]} $. Similarly for $ (-\infty,b] $ to show that
 		Now since $ \lom{\R} \neq 0 $, therefore $ \R $ is not countable.
 \end{proof}}
 \item {\begin{proof}
-		Isn't it very trivial? That is just the definition of Lebesgue Outer Measure.
+		Take any open interval $ (a,b) $. We can see that 
+		\[ (a,b) \subseteq (a,b]  \]
+		and
+		\[(a,b] \subseteq (a,b) \union \bunion_n (b,b+\epsilon/2^n]\]
+		Therefore,
+		\begin{equation*}
+			\begin{split}
+				\lom{(a,b)} &\le \lom{(a,b]}\\
+				&= b-a.
+			\end{split}
+		\end{equation*}
+		and
+		\begin{equation*}
+			\begin{split}
+				\lom{(a,b]} =b-a &\le \lom{(a,b) \union \bunion_{n} (b,b+\epsilon/2^n]} \\
+				&\le \lom{(a,b)}  \sum_{n} b - (b+\epsilon/2^n)\\
+				&= \lom{(a,b)} + \sum_n b-b -\epsilon/2^n\\
+				&= \lom{(a,b)} + \sum_n \epsilon/2^n\\
+				&= \lom{(a,b)}.
+			\end{split}
+		\end{equation*}
+	Hence, $ l((a,b)) = \lom{(a,b)} = b-a $. Hence, one can take interval $ \{(a_n,b_n)\} $ as the sequence of intervals in the definition of Lebesgue Outer Measure as well, instead of $ \{(a_n,b_n]\} $.
 \end{proof}}
 \item {\begin{proof}
 		Consider $ \set{C}_A = \left \{\{(a_i,b_i)\}\where A \subseteq \bunion_i(a_i,b_i)\right \} $ and $ \set{C}_{\alpha A} = \left \{ \{(c_i,d_i)\}\where \alpha A \subseteq  \bunion_i (c_i,d_i) \right \} $. We will show that 
@@ -655,16 +676,86 @@ which yields $ b-a \le \lom{(a,b]} $. Similarly for $ (-\infty,b] $ to show that
 		\[ \alpha \set{C}_A \subseteq \set{C}_{\alpha A}. \]
 		To see the converse, first note that the case of $ \alpha = 0 $ is trivial, so we would take $ \alpha \neq 0 $. Now, take $ \{(c_i,d_i)\}\in \set{C}_{\alpha A} $. Hence $ \alpha A \subseteq \bunion_i (c_i,d_i)  $. Now, $ \frac{1}{\alpha} \cdot \alpha A = A \subseteq \bunion_i \frac{1}{\alpha}\left (c_i,d_i\right ) $. Therefore, $ \{\frac{1}{\alpha}(c_i,d_i)\} \in \set{C}_A \implies \{(c_i,d_i)\} \in \alpha \set{C}_A$. Hence $ \set{C}_{\alpha A} \subseteq \alpha \set{C}_A $. Hence $ \set{C}_{\alpha A} = \alpha\set{C}_A $. Hence, we get that $ \set{L}_{\alpha A} = \abs{\alpha}\set{L}_A $ because $ \sum_i l(\alpha I_n) = \sum_{i} \alpha(b_i-a_i)$ if $ \alpha > 0$ or $ = \sum_i \alpha(a_i-b_i) $ if $ \alpha<0 $. Hence we can write $ \alpha\set{L}_A = \{ \sum_i \abs{\alpha}(b_i - a_i)\where \{(a_i,b_i)\} \in \set{C}_A  \} $. Now, $ \inf \set{L}_{\alpha A} = \inf \abs{\alpha} \set{L}_A \implies \lom{\alpha A} = \abs{\alpha} \lom{A}$.
 \end{proof}}
-\item {\begin{proof}
+\item {\begin{proof}\footnote{This is the Borel-Cantelli Lemma(!)}
 		We have that $ B $ is the set of all points of $ \R $ which are present in infinite number of subsets $ A_n $. Now consider $ x\in B $. Then, there exists $ \{n\} $ such that the first element of the sequence $ n_1 $ is such that $ x\in A_{n_1} $, or $ x\in \bunion_{n\ge n_1} A_n $. Then, for any $ x\in B $, we have $ x\in\bintrs_{m=1}^{\infty}  \bunion_{n\ge m} A_n $. Hence,
 		\[B\subseteq \bintrs_{m=1}^{\infty}  \bunion_{n\ge m} A_n.\]
 		Now, take $ x\in \bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n $. Then $ x\in \bunion_{n\ge m} A_n $ for all $ m\in \N $. This implies that $ x\in A_{k_m} $ for some $ k_m \ge m $ for all $ m $. This implies that $ x\in A_n $ for infinitely many $ n $. Hence $ x\in B $, so that,
 		\[B = \bintrs_{m=1}^{\infty}\bunion_{n\ge m} A_n.\]
-		\textbf{COMPLETE THE PROOF.}
-\end{proof}}
-\item {\begin{proof}
-		
-\end{proof}}
+		We now show the following:
+		\begin{equation}
+			\label{E2-8.1}
+		\text{To Show : }	\left (\bunion_{n\ge m_0} A_n\right ) \setminus \left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right ) = \bunion_{n\ge m_0} A_n.
+		\end{equation}
+		for any $ m_0 \in \N $.
+%\[\left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right ) = \bunion_n A_n\]
+		To show this, we first note that the following is easily deduced:
+		\[\left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right ) \subseteq \bunion_n A_n\]
+		because for any $ x\in \left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right ) $, $ \exists k \in\N$ such that $ x \in  \bunion_{n\ge k} A_n \subseteq \bunion_{n} A_n$. Now, note the following:
+		\begin{equation}
+			\label{E2-8.2}
+			\begin{split}
+				\bunion_{n=1}^{m-1} A_n &\subseteq \comp{\left(\bunion_{n\ge m} A_n\right )}\\
+				\bunion_{m=1}^{\infty}\bunion_{n=1}^{m-1} A_n&\subseteq \bunion_{m=1}^{\infty} \comp{\left (\bunion_{n\ge m} A_n\right )}\\
+				\bunion_{n} A_n &\subseteq \bunion_{m=1}^{\infty} \comp{\left (\bunion_{n\ge m} A_n\right )}
+			\end{split}
+		\end{equation} 
+	Therefore, if we now expand Eq. \ref{E2-8.1}, we get the following:
+	\begin{equation}\label{E2-8.3}
+		\begin{split}
+			\left (\bunion_{n\ge m_0} A_n\right ) \setminus \left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right ) &= \bunion_{n\ge m_0} A_n \bintrs \comp{\left (\bintrs_{m=1}\bunion_{n\ge m} A_n\right )}\\
+			&= \bunion_{n\ge m_0} A_n \bintrs \comp{\left (\bunion_{m=1}^{\infty} \bintrs_{n\ge m}\comp{A_n}\right )}\\
+			&= \bunion_{n\ge m_0}A_n \bintrs \left (\bunion_{m=1}^{\infty}\comp{\left (\bunion_{n\ge m}A_n\right )} \right) \\
+			&= \bunion_{n\ge m_0}A_n\;\;\;\;\text{(Equation \ref{E2-8.2})}
+		\end{split}
+	\end{equation}
+Therefore, 
+\begin{equation*}
+	\begin{split}
+		\lom{\left (\bunion_{n\ge m_0} A_n\right ) \setminus \left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right )} &= \lom{\bunion_{n\ge m_0} A_n} - \lom{\left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right )}\\
+		\lom{\left (\bunion_{n\ge m_0} A_n\right ) \setminus \left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right )} - \lom{\bunion_{n\ge m_0} A_n} &= \lom{\left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right )}\\
+		0 &= \lom{\left (\bintrs_{m=1}^{\infty} \bunion_{n\ge m} A_n\right )} = \lom{B} \;\;\;\;\text{(From Eq. \ref{E2-8.3})}
+	\end{split}
+\end{equation*}
+Hence, proved.
+
+ \end{proof}}
+\item {\begin{proof} \textbf{This proof is wrong, write the correct solution.} We divide the proof as follows:\\\\
+		\textbf{Act 1.} \emph{$ A $ and $ B $ are disjoint.}\\
+		Take two subsets $ A,B \subseteq \R $ such that $ d(A,B) >0 $. Now, take any arbitrary pair $ a,b $ such that $ a\in A $ and $ b\in B $. Due to the fact that $ d(A,B) = \inf \{\abs{x-y}\where x\in A, \;y\in B\}$, therefore we have
+		\begin{equation*}
+			\begin{split}
+				\abs{a-b} &\ge \inf\{ \abs{x-y}\where x\in X\;,\;\;y\in Y\}\\
+				&>0 \;\;\;\;\;(\text{As per question}).
+			\end{split}
+		\end{equation*}
+	Therefore, for any arbitrary $ a\in A $ and $ b\in B $, we have that $ \abs{a-b} >0 $. This implies that either $ a < b $ or $ a > b $, but NOT $ a = b $ for any pair $ a,b$. This further implies that for any $ a\in A $ there does not exists $ b\in B $ such that $ a=b $. Hence $ A \intrs B  = \Phi$. \\\\
+	\textbf{Act 2.} \emph{$ \lambda^* $ for disjoint sets is countably additive.}\\
+	Now we show that for any subsets $ A, B\subseteq \R $ satisfying $ A\intrs B =\Phi $, we have
+	\[\lom{A\union B} = \lom{A} + \lom{B}.\]
+	For this, we first trivially have due to countable sub-additivity of $ \lambda^* $ that $ \lom{A \union B} \le \lom{A} + \lom{B} $. All that remains to be shown is 
+	\[\lom{A\union B}\ge \lom{A} + \lom{B}.\]
+	For this, first consider the set relation which is trivial to show
+	\[A\union B \supseteq A\setminus (A\intrs B) \union B\setminus (A\intrs B) \union (A\intrs B).\]
+	as for any $ x\in A\setminus (A\intrs B) \union B\setminus (A\intrs B) \union (A\intrs B) $, either $ x\in A $ or $ x\in B $. Now, due to the fact that $ A\intrs B = \Phi $, we get the following conclusion:
+	\begin{equation*}
+		\begin{split}
+			 B\setminus (A\intrs B) &= B\intrs \comp{(A\intrs B)}\\
+			 &= B\intrs (\comp{A} \union \comp{B})\\
+			 &= (B\intrs \comp{A}) \union (B\intrs \comp{B})\\
+			 &= B \union \Phi \;\;\;\;\;\text{($ B\subseteq \comp{A} $)}\\
+			 &= B
+		\end{split}
+	\end{equation*}
+Similarly, $ A\setminus (A\intrs B) = A $. Combining both of these results, we get,
+\begin{equation*}
+	\begin{split}
+		\lom{A\union B} &= \lom{A\setminus (A\intrs B) \union B\setminus (A\intrs B) \union (A\intrs B)}\\
+		&\le \lom{A} + \lom{B} + \lom{\Phi}\\
+		&= \lom{A} + \lom{B}\;\;\;\;\;\text{($ \lom{\Phi}= 0 $)}
+	\end{split}
+\end{equation*}
+Hence we have that $ \lom{A\union B} = \lom{A} + \lom{B} $ for disjoint sets $ A $ and $B $ of $ \R $. Therefore, for the sets $ A $ and $ B $ satisfying the question's criterion, we have the required result.
+ \end{proof}}
 \end{enumerate}
 \newpage
 \subsection{Lebesgue Measurability.}
@@ -1007,7 +1098,7 @@ which proves the first implication.\\\\
 \textbf{2 $ \implies $ 3.} From Proposition \ref{P-15}, we have that $ \exists$ a $ G_\delta $ set $ G $ such that $ \comp{E} \subseteq G $ and $ \lom{G\setminus \comp{E}} =0 $. Note that the complement of countable intersection of open sets is countable union of closed sets. Therefore, $ F =\comp{G} $ is an $ F_\sigma $ set. Now, $ \comp{G} \subseteq \comp{(\comp{E})} = E $. Now, we know that $ E\setminus \comp{G} = G\setminus \comp{E}$. Therefore, we have the result as follows:
 \begin{equation*}
 	\begin{split}
-		\lom{E\setminus\comp{G}} &= \lom{G\setminus\comp{E}}\\
+		\lom{E\setminus\comp{G}} &= \lom{G\setminus\comp{E}}\\	
 		&= 0.
 	\end{split}
 \end{equation*}
@@ -1017,6 +1108,33 @@ that is $ E $ is union of two Lebesgue Measurable sets, therefore $ E \in \msigm
 \end{proof}
 \hrulefill
 
+\newpage
+\section{Measurable Functions}
+We now see the definition and basic properties of Measurable Functions, which would later be used to define Lebesgue Integral.
+\begin{definition}
+	(\textbf{Measurable Function}) Let $ (X,\alg{A}) $ be a measurable space and let $ A \subseteq X$ which is in $ \alg{A} $. The function $ f : A\to [-\infty,+\infty] $, is called a Measurable function if 
+	\[\{x \where f(x) > \alpha\}\;\text{for any }\alpha \in \R \text{ is Measurable (belongs in $\alg{A} $).}\]
+\end{definition}
+\begin{remark}
+	Please note that the function $ f $ defined above has a measurable domain.
+\end{remark}
+\hrulefill
+\begin{proposition}
+	Let $ (X,\alg{A}) $ be a measurable space and $ A\in \alg{A} $. Let $ f : A\to [-\infty,+\infty]$ be a function. Then, the following statements are equivalent:
+	\begin{enumerate}
+		\item {$ f $ is a Measurable Function.}
+		\item {For all $ \alpha \in \R $, the set $ \{x\where f(x)\ge \alpha\} \in \alg{A}$.}
+		\item {For all $ \alpha \in \R $, the set $ \{x\where f(x)< \alpha\} \in \alg{A}$.}
+		\item {For all $ \alpha \in \R $, the set $ \{x\where f(x)\le \alpha\} \in \alg{A}$.}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	The equivalence is shown as follows:\\
+	\textbf{1 $ \implies $ 2.} Since $ f $ is a measurable, therefore for all $ \alpha \in \R $, the set $ \{x\where f(x) > \alpha\} \in \alg{A}$. This means that $ C_{\alpha - \frac{1}{n}} =\left \{x\where f(x) > \alpha - \frac{1}{n} \right \} \in \alg{A}$ for all $ n\in \N $. Now, the following set 
+	\[C = \bintrs_{n} C_{\alpha - \frac{1}{n}} = \{x\where f(x) \ge \alpha\}.\]
+	is Measurable as $ C \in \alg{A} $ because $ C_{\alpha - \frac{1}{n}} \in \alg{A}$ for any $ n\in \N $, hence the countable intersection would also be in $ \alg{A} $, hence measurable.\\
+	\textbf{2 $ \implies $ 3.}
+\end{proof}
 
 
 
