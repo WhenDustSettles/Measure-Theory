@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+
 \usepackage{amsfonts, amsmath, amssymb}
 \usepackage[english]{babel}
 % \usepackage{boisik}
@@ -10,6 +11,17 @@
 \usepackage[margin=0.5in]{geometry}
 \usepackage{empheq}
 \usepackage{calligra}
+
+%\usepackage[light,math]{anttor}
+%\usepackage[T1]{fontenc}
+%\usepackage[default]{fontsetup}
+%\usepackage{gfsartemisia-euler}
+%\usepackage[T1]{fontenc}
+
+%\usepackage{gfsartemisia}
+%\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage[light]{CormorantGaramond}
 
 
 %\usepackage{tgbonum}
@@ -23,12 +35,13 @@
 \usepackage{hyperref} %Uncomment for Hyperlinked Table of Contents.
 
 \hypersetup{
-	colorlinks,
+	colorlinks = true,
 	citecolor=blue,
 	filecolor=black,
 	linkcolor=blue,
 	urlcolor=blue
 }
+%\usepackage{cleveref}[nameinlink]
 
 \usepackage[skins,theorems]{tcolorbox}
 \tcbset{highlight math style={enhanced,
@@ -129,7 +142,14 @@
 \newcommand{\msigm}[1]{\set{M}_{#1}}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \newcommand{\lm}[1]{\lambda\left (#1\right )}
+\newcommand{\inv}[1]{{#1}^{-1}}
+\newcommand{\limitinf}[1]{\underset{#1}{\text{lim\;inf}}}
+\newcommand{\limitsup}[1]{\underset{#1}{\text{lim\;sup}}}
+\newcommand{\infim}[1]{\underset{#1}{\inf}}
+\newcommand{\suprem}[1]{\underset{#1}{\sup}}
+\newcommand{\setlow}[2]{\underbrace{\text{#2}}{#1}}
 
+%\pagecolor{lightgray}
 \begin{document}
 \begin{titlepage}
 	{\scshape\LARGE Indian Institute of Technology, Guwahati \par}
@@ -140,7 +160,7 @@
 	\vspace{2cm}
 	{\Large\itshape Prof. Pratyoosh \textsc{Kumar}\par}
 	\vfill
-	Scribe by\par
+	\emph{Written by}\par
 	Animesh Renanse
 	
 	\vfill
@@ -165,8 +185,28 @@ These are few of the basic definitions that one might remember from real analysi
 	\item {\textbf{Power Set} : Collection of all subsets of a set $ S $, written as $ P(S) $.}
 	\item {\textbf{Lower Bound} : 	A \emph{lower bound} of a subset $ S $ of a poset $ (P,\le) $ is an element $ a \in P$ such that $ a\le x $ for all $ x\in S $.}
 	\item {\textbf{Infimum} : A lower bound $ p\in P $ is called an \emph{infimum} of $ S $ if for all lower bounds $ y $ of $ S $ in $ P $, $ y\le p $.}
+	\item {\textbf{Limit Infimum} : For a sequence $ \{x_n\} $, limit inferior is defined by:
+\begin{equation}\label{liminf}
+	\begin{split}
+	\limitinf{n\to\infty}\; x_n &= \limit{n\to \infty}{\left ( \infim{m\ge n} x_m \right )}\\
+	&= \suprem{n\ge 0} \infim{m\ge n} x_m\\
+	 &= \sup \{\inf\{x_m \where m\ge n\}\where n\ge 0\}.
+	\end{split}
+\end{equation}
+}
 	\item {\textbf{Upper Bound} : An \emph{upper bound} of a subset $ S $ of a poset $  P$ is an element $ b\in P $ such that $ b\ge x $ for all $ x\in S $.}
 	\item {\textbf{Supremum} : An upper bound $ u\in P $ is called a \emph{supremum} of $ S $ if for all upper bounds $ z $ of $ S $ in $ P $, $ z \ge u $.}
+	\item {\textbf{Limit Supremum} :  For a sequence $ \{x_n\} $, limit supremum is defined by:
+	\begin{equation}\label{limsup}
+		\begin{split}
+			\limsup_{n\to \infty} x_n &= \limit{n\to \infty}{\left (\sup_{m\ge n} x_m\right )}\\
+			&= \inf_{n\ge 0} \sup_{m\ge n} x_m\\
+			&= \inf \{\sup\{x_m \where m\ge n\}\where n\ge 0\}
+		\end{split}
+	\end{equation}}
+\item {\textbf{Limit} : Consider the sequence $ \{x_n\} $ in $ [-\infty,+\infty] $, then $ \lim_{n} x_n $ is defined as
+	\[\liminf_{n\to \infty} x_n = \limsup_{n\to\infty} := \lim_{n\to \infty} x_n.\]
+}
 	\item {\textbf{Lower Sum} : $ l(f,\mathcal{P}) $ is the sum of the minimum functional values at the partition. That is,
 		\[\lsum{f}{P} = \sum_{i=0}^{n-1} m_i (a_{i+1} - a_i)\]
 		where $ m_i = \inf\{f(x)\;\vert\;x\in [a_{i-1},a_i]\}$.}
@@ -189,6 +229,9 @@ These are few of the basic definitions that one might remember from real analysi
 \[K\subseteq \bunion_{i}B_{r_i}(a_i)\implies \exists \;i_1,\dots,i_N,\;\;K \subseteq \bunion_{n=1}^N B_{r_{i_n}}(a_{i_n})\]
 Note that \emph{compact metric spaces are totally bounded (!)}. Also, \emph{compact sets are closed}.
 }
+\item {\textbf{Essential Supremum} : For a sequence $ \{x_n\} $, essential supremum is defined as,
+\[\]
+ }
 } 
 \end{itemize}
 The problem begins with Riemann Integrable functions when we see that functions like Dirichlet function ($ 1 $ on  irrational and $ 0 $ on rational points) can become \emph{measurable} even when the function is not continuous! This motivates the need of a formal notion of a \emph{measure}.
@@ -952,14 +995,14 @@ which is true for all $ \epsilon >0 $, therefore
 \hrulefill
 \newpage
 \begin{definition}
-	(\textbf{Lebesgue Measure}) The restriction of Lebesgue outer measure on $ \R $ to the collection $ \msigm{\lambda^*} $ of Lebesgue measurable subsets of $ \R $ is called \emph{Lebesgue Measure}. It would be denoted by $ \lambda $. Hence, we would work with the measure space $ (\R,\msigm{\lambda^*},\lambda) $.
+	(\textbf{Lebesgue Measure}) The restriction of Lebesgue outer measure on $ \R $ to the collection $ \msigm{\lambda^*} $ of Lebesgue measurable subsets of $ \R $ is called \emph{Lebesgue Measure}. It would be denoted by $ \lambda $. Hence, we would work with the measure space $ (\R,\msigm{\lambda^*},\lambda) $\footnote{From this point on-wards, whenever this text mentions that a given set is measurable in space $ (X,\alg{A},\mu) $, it must be assumed that the given set is in $ \alg{A} $, given that there is no ambiguity.}.
 \end{definition}
 \hrulefill
 \subsection{Does $ \lom{E} = 0 $ implies $ E $ is countable?}
 We would construct today a set which has measure 0, but not countable(!).
 \begin{enumerate}
 	\item {Take $ E_0 = [0,1] $.}
-	\item {Remove $ [1/3,2/3] $ from $ E_0 $ to form $ E_1 = [0,1/3] \union [2/3,1] $.}
+	\item {Remove $ (1/3,2/3) $ from $ E_0 $ to form $ E_1 = [0,1/3] \union [2/3,1] $.}
 	\item {Proceed in the same way to form $ E_2 = [0,1/9]\union [2/9,3/4] \union [2/3,7/9]\union [8/9,1] $.}
 	\item {At $ n^{th} $ step, $ E_n $ contains $ 2^n $ subintervals and each of which is of length $ \frac{1}{3^n} $.}
 	\item {We clearly have $ E_0 \supset E_1 \supset E_2 \supset \dots $.}
@@ -1107,19 +1150,37 @@ which proves the first implication.\\\\
 that is $ E $ is union of two Lebesgue Measurable sets, therefore $ E \in \msigm{\lambda^*} $, completing the proof.
 \end{proof}
 \hrulefill
-
+\begin{definition}\label{D-15}
+	(\textbf{Complete Measure Space}) The measure space $ (X,\alg{A},\mu) $ is complete if the for any $ A\in \alg{A} $ such that $ \m{A} = 0 $ implies that for any subset $ B\subseteq A $,
+	\[\m{B} = 0.\]
+\end{definition}
+\begin{remark} Trivial to see are the following:
+	\begin{itemize}
+		\item {Hence, if $ \mu^* $ is an outer measure defined on $ X $, then the space $ (X,\msigm{\mu^*}, \mu^*) $ is complete (follows from Proposition \ref{P-10}).}
+		\item {This means that the Lebesgue outer measure restricted to Lebesgue measurable subsets of $ \R $, $ (\R,\msigm{\lambda^*}, \lambda) $ is complete.}
+	\end{itemize}
+	
+\end{remark}
+\hrulefill
+\begin{definition}
+	(\textbf{Completion of a Measure Space}) Let $ (X,\alg{A}) $ be a measurable space and let $ \mu $ be a measure on $ \alg{A} $. The completion of $ \alg{A} $ under $ \mu $ is the collection $ \alg{A}_\mu $ of subsets $ A\subseteq X $ for which there are sets $ E $ and $ F $ in $ \alg{A} $ such that 
+	\[E\subseteq A\subseteq F\]
+	and
+	\[\m{E-F} = 0\footnote{Note that, in Exercise III, Q. 2, we proved that for any $A\in \alg{A} $, this is trivially true. That is, all $ \alg{A} $-measurable subsets are $ \alg{A}_\mu $-measurable. In particular, $ E $ was a $ F_\sigma $ set and $ F $ was a $ G_\delta $ set.}.\]
+\end{definition}
+\hrulefill
 \newpage
 \section{Measurable Functions}
 We now see the definition and basic properties of Measurable Functions, which would later be used to define Lebesgue Integral.
 \begin{definition}
-	(\textbf{Measurable Function}) Let $ (X,\alg{A}) $ be a measurable space and let $ A \subseteq X$ which is in $ \alg{A} $. The function $ f : A\to [-\infty,+\infty] $, is called a Measurable function if 
+	(\textbf{Measurable Function}) Let $ (X,\alg{A}) $ be a measurable space and let $ A \subseteq X$ which is in $ \alg{A} $. The function $ f : A\to [-\infty,+\infty] $, is called a Measurable function\footnote{One writes $ f $ as $ \alg{A} $-measurable function to denote the $ \sigma $-algebra over whose subset the function $ f $ is defined.} if 
 	\[\{x \where f(x) > \alpha\}\;\text{for any }\alpha \in \R \text{ is Measurable (belongs in $\alg{A} $).}\]
 \end{definition}
 \begin{remark}
-	Please note that the function $ f $ defined above has a measurable domain.
+	Please note that the function $ f $ defined above has a measurable domain. 
 \end{remark}
 \hrulefill
-\begin{proposition}
+\begin{proposition}\label{P-17}
 	Let $ (X,\alg{A}) $ be a measurable space and $ A\in \alg{A} $. Let $ f : A\to [-\infty,+\infty]$ be a function. Then, the following statements are equivalent:
 	\begin{enumerate}
 		\item {$ f $ is a Measurable Function.}
@@ -1134,17 +1195,453 @@ We now see the definition and basic properties of Measurable Functions, which wo
 	\[C = \bintrs_{n} C_{\alpha - \frac{1}{n}} = \{x\where f(x) \ge \alpha\}.\]
 	is Measurable as $ C \in \alg{A} $ because $ C_{\alpha - \frac{1}{n}} \in \alg{A}$ for any $ n\in \N $, hence the countable intersection would also be in $ \alg{A} $, hence measurable.\\
 	\textbf{2 $ \implies $ 3.}
+	Since $ \{x\where f(x) \ge \alpha\} \in \alg{A} $, therefore it's complement $ \{x\where f(x) < \alpha\} \in \alg{A}$ for any $ \alpha \in \R $.\\
+	\textbf{3 $ \implies $ 4.} Since $ \{x\where f(x)< \alpha\}\in \alg{A} $ for any $ \alpha\in \R $, thus, $ C_{\alpha +\frac{1}{n}} = \{x\where f(x) < \alpha + \frac{1}{n}\} \in \alg{A}$ for all $ n \in \N $, hence 
+	\[C = \bintrs_{n} C_{\alpha + \frac{1}{n}} = \{x\where f(x)\le \alpha\}\]
+	and since each $ C_{\alpha + \frac{1}{n}} \in \alg{A} $, therefore $ C \in \alg{A}$.\\
+	\textbf{4 $ \implies $ 1.} Since $ \{x\where f(x) \le \alpha \} \in \alg{A} $ then it's complement $ \{x\where f(x) >\alpha\} $ for all $ \alpha \in \R $, making $ f $ measurable.
 \end{proof}
-
-
-
-
-
-
-
-
+\hrulefill
+\begin{proposition}
+	\label{P-18}
+	The following are basic examples of measurable functions:
+	\begin{itemize}
+		\item {If $ f $ is a Measurable function, then the set $ \{x\where f(x) = \alpha\} $ is measurable for all $ \alpha \in R $.}
+		\item {Constant functions are Measurable.}
+		\item {The characteristic function $ \chi_A $ defined by:
+	\[\chi_A(x) = \begin{cases}
+		1 & x\in A\\
+		0 & x\notin A
+	\end{cases}\]	
+is Measurable if and only if $ A $ is measurable.	
+}
+\item {Continuous functions are Measurable.}
+\item {Let $ (X,\alg{A}) $ be a measurable space. If $ f $ and $ g $ are Measurable functions on $ X $, then the sets
+\begin{equation*}
+	\begin{split}
+		&\{x\in X\where f(x) \neq g(x)\}\\
+		&\{x\in X\where f(x)< g(x)\}
+	\end{split}
+\end{equation*}
+are measurable (belongs to $ \alg{A} $).
+}
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	The first example is trivial to see in light of Proposition \ref{P-17} by taking intersection of $ \{x\where f(x)\le \alpha\} $ and $ \{x\where f(x) \ge \alpha\} $, both of which are measurable.\\
+	For second, consider the constant function $ f(x) = b \;\forall \; x \in \R$. Now, for all $ \alpha \in\R $, consider the set $ \inv{f}((\alpha,\infty)) =  \{x\where f(x)>\alpha\}$.  If $ b > \alpha $, then we are done, if $ b\le \alpha $, then by previous result, $ \{x\where f(x) \le \alpha\} $ is also measurable (equal to $ \R $ and $ \R\in \alg{A} $).\\
+	For third example, consider the set $ \inv{\chi_A}(\alpha,\infty) = \{x\where \chi_A(x) > \alpha\} $ for any $ \alpha \in \R $. If $ \alpha >1 $, then $ \inv{f}(\alpha,\infty) =  \Phi \in \alg{A}$. If $ \alpha = 1 $, then $\inv{f}[\alpha,\infty) = A$, since $ \chi_A(x) $ is given measurable, hence $ A $ is measurable. Now, Assume that $ A $ is measurable. Then consider the set $ \inv{\chi_A}(\alpha,\infty) $ for any $ \alpha\in \R $. As we saw previously, the case for $ \alpha > 1 $ is trivial. For $ 0< \alpha \le 1 $, $ \inv{\chi_A}(\alpha,\infty) = A \in \alg{A}$. Finally, for $ \alpha\le 0 $, $ \inv{\chi_A} (-\infty,\alpha]  = \Phi \in \alg{A}$. Thus, $ \chi_A $ is measurable.\\
+	For fourth, since $ f $ is continuous (so inverse of open sets is open, by definition), therefore $ \inv{f} (\alpha,\infty) $ is open in $ \R $, hence it must be Borel, hence measurable for any $ \alpha \in \R $.\\
+	For fifth, since $ f $ and $ g $ are measurable. Then due to next Proposition \ref{P-19}, we know that $ f-g $ is also measurable. This means that for any $ \alpha \in \R $,
+	\begin{equation*}
+		\begin{split}
+			\{x\in X\where f(x)-g(x) < \alpha\}
+		\end{split}
+	\end{equation*}
+is measurable. Now set $ \alpha = 0 $ to get the result. Moreover, from this, we also get that $ \{x\in X\where f(x) -g(x) >0\} $ is also measurable. Hence,
+\[\{x\in X \where f(x)-g(x)\neq 0\} = \{x\in X\where f(x)- g(x) < 0\} \bunion \{x\in X \where f(x)-g(x) > 0\}\]
+is also measurable.
+\end{proof}
+\hrulefill
+\begin{proposition} \label{P-19}
+	Let $ (X,\alg{A}) $ be a measurable space and let $ A \in \alg{A}$. Consider two Measurable functions $ f,g : A \longrightarrow [0,+\infty] $ and $ c\in \R $. Then,
+	\begin{enumerate}
+		\item {$ f+ c $,}
+		\item {$ f\pm g $}
+		\item {$ cf $,}
+		\item {$ fg $}
+	\end{enumerate}
+are also Measurable.
+\end{proposition}
+\begin{proof}
+	\textbf{1.} Since $ f $ is measurable, therefore the set $ \{x\where f(x) > \alpha- c\} = \{x\where f(x) + c\ge \alpha\} $ is measurable for any $ \alpha \in \R $.\\
+	\textbf{2.} Both $ f $ and $ g $ are given measurable. The set $ \inv{(f+g)} (\alpha,\infty) $ can be written as:
+	\begin{equation*}
+		\begin{split}
+			\inv{(f+g)}(\alpha, \infty)  &= \{x \where f(x) + g(x) > \alpha\}\\
+			&= \{x\where f(x) > \alpha - g(x)\}\\
+			&= \{x\where f(x) > b\}
+		\end{split}
+	\end{equation*}
+where $ b\in [-\infty ,\alpha] $. Note that the case where $ g(x) = +\infty $ is trivial as $ f(x) > \alpha - (+\infty) \equiv f(x) > -\infty$, which is by definition of co-domain of $ f $. Now since $ \{x\where f(x) > b \}$ is measurable for any $ b\in \R \supset (-\infty,\alpha] $ for any $ \alpha\in \R $, therefore $ \inv{(f+g)}(\alpha,\infty) $ is measurable for any $ \alpha\in \R $. \\
+\textbf{3.} Note that for $ c=0 $, the function becomes constant and hence measurable (Proposition \ref{P-18}). Consider the set $ \inv{(cf)}(\alpha,\infty)$. We can write this as follows, 
+\begin{equation*}
+	\begin{split}
+		 \inv{(cf)}(\alpha,\infty) &= \{x\where cf(x) > \alpha\}\\
+		 &= \{x\where f(x)> \alpha / c\}
+	\end{split}
+\end{equation*}
+where $ c\neq 0 $. Since $ f $ is measurable, therefore $ \{x\where f(x)>\alpha/c\} $ is also measurable for any $ \alpha \in \R $. Hence $ cf $ is measurable.\\
+\textbf{4.} Consider the set $ \inv{(f^{2})}(-\infty,\alpha) $ for any $ \alpha \in \R $. 
+\begin{equation*}
+	\begin{split}
+		\inv{(f^{2})}(-\infty,\alpha) &= \{x\where f^2(x) < \alpha\}\\
+		&= \{x\where -\sqrt{\alpha} < f(x) < \sqrt{\alpha}\}\\
+		&= \{x\where f(x) < \sqrt{\alpha}\} \bintrs \{x\where f(x) > -\sqrt{\alpha}\}
+	\end{split}
+\end{equation*}
+Therefore if $ f $ is Measurable, then $ f^{2} $ is Measurable. With this, we can simply write $ fg $ as:
+\begin{equation*}
+	\begin{split}
+		fg = \frac{(f+g)^{2} - (f-g)^{2} }{4}
+	\end{split}
+\end{equation*}
+which, by previous results (2 \& 3), is measurable. 
+\end{proof}
+\hrulefill
+\begin{definition}
+	(\textbf{Sequence of fuctions}) If $ \{f_n\} $ is a sequence of $ [-\infty,+\infty] $ valued functions on $ A $, then $ \sup_{n} f_n : A \to [-\infty,+\infty]$ is defined by
+	\[\left (\sup_{n} f_n\right )(x) = \sup\{f_n(x)\where n \in \N\}.\]
+\end{definition}
+\begin{remark}
+	One similarly defines the following:
+	\begin{itemize}
+		\item {The infimum:
+	\[\left (\inf_{n} f_n\right )(x) = \inf\{f_n(x)\where n \in \N\}.\]	
+	}
+\item {The limit supremum:
+\[\left (\limsup_{n} f_n\right )(x) = \limsup\{f_n(x)\where n \in \N\}.\]
+}
+\item {The limit infimum:
+\[\left (\liminf_{n} f_n\right )(x) = \liminf\{f_n(x)\where n \in \N\}.\]
+}
+\item {The limit:
+\[\left (\lim_{n} f_n\right )(x) = \lim\{f_n(x)\where n \in \N\}.\]
+}
+	\end{itemize}
+\end{remark}
+\hrulefill
+\begin{proposition}\label{P-20}
+	Let $ (X,\alg{A}) $ be a measurable space and let $ A\in \alg{A} $. Consider $ \{f_n\} $ be a sequence of $ [-\infty,+\infty] $-valued measurable functions on $ A $. Then,
+	\begin{enumerate}
+		\item {The functions $ \sup_{n}f_n $ and $ \inf_n f_n $ are measurable.}
+		\item {The functions $ \limsup_{n}f_n $ and $ \liminf_{n} f_n$ are measurable.}
+		\item {The function $ \lim_{n} f_n $ (whose domain is $ \{x\in A \where \limsup_nf_n(x) = \liminf_nf_n(x)\} $) is measurable.}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Note that the set $ \inv{(\sup_{n}f_n)}(-\infty,\alpha] = \{x\in A\where (\sup_n f_n)(x) \le \alpha\} = \bintrs_n \{x\in A \where f_n(x)\le \alpha\}$. Therefore $ \sup_n f_n $ is measurable. Similarly, $ \inv{(\inf_n f_n)}(-\infty,\alpha)  = \{x\in A \where (\sup_nf_n)(x) <\alpha\} = \bunion_n \{x\in A\where f_n(x)<\alpha\}$. Now, denote $ g_k = \sup_{n\ge k}f_n $ and $ h_k = \inf_{n\ge k}f_n $. But since $ \limsup_{n} f_n = \inf_{n\ge 0} \sup_{k\ge n} f_k = \inf_{n\ge 0} g_n$ and $ \{g_n\} $ is measurable by $ 1^{st} $ property, therefore $ \limsup_{n} f_n $ is also measurable, similarly for $ \liminf_{n} $.
+\end{proof}
+\hrulefill
+\newpage
+\subsection{Almost Everywhere Property.}
+\begin{definition}
+	(\textbf{$ \mu $-almost everywhere}) Let $ (X,\alg{A},\mu) $ be a measure space. A property $ P $ of points of $ X $ is said to hold $ \mu $-almost everywhere if the set
+	\[N = \{x\in X\where P \text{ does not hold for }x \}\]
+	has measure zero. That is,
+	\[\m{N} = 0.\]
+	
+\end{definition}
+\begin{remark}
+	Note that it's not necessary for the set $ N $ to belong in $ \alg{A} $. The only requirement is for the set $ N $ to be contained in a set $ F \in \alg{A} $ and then $ \m{F} = 0 $ (which automatically implies that $ \om{N} = 0 $).\\\\
+	\textbf{But}, if $ \mu $ is complete then $ N \in \alg{A} $. See Definition \ref{D-15}.
+\end{remark}
+\hrulefill
+\begin{definition}
+	(\textbf{Almost everywhere convergence}) If $ \{f_n\} $ is a sequence of functions on $ X $ and $ f $ is a function on $ X $, then
+	\[\{f_n\}\longrightarrow f\;\text{almost everywhere.}\]
+	if the set
+	\[\{x\in X\where f(x)\neq \lim_nf_n(x)\}\]
+  is of measure zero.
+\end{definition}
+\hrulefill
+\begin{proposition}\label{P-21}
+	Let $ (X,\alg{A},\mu) $ be a measure space and let $ f $ and $ g $ be extended real valued functions on $ X $ that are equal almost everywhere. If $ \mu $ is \textbf{complete} and if $ f $ is Measurable, then $ g $ is also Measurable.
+\end{proposition}
+\begin{proof}
+Consider the region of non-equality as
+\[N = \{x\where f(x)\neq g(x)\}.\]
+Given to us is the fact that $ \om{N} = 0 $ and since $ \mu $ is complete, so $ N\in \alg{A} $. Now, consider the following for any $ \alpha\in \R $:
+\[\{x\where g(x)\ge \alpha\} = \left (\{x\where g(x)\ge \alpha\} \intrs N\right ) \bunion \left (\{x\where g(x)\ge \alpha\}\intrs \comp{N}\right ).\]
+Denote the set $ A = \{x\where g(x)\ge \alpha\} \intrs N $ and $B =\{x\where g(x)\ge \alpha\}\intrs \comp{N}$. Since for any $ x\in\left (\{x\where g(x)\ge \alpha\}\intrs \comp{N}\right ) $, $ f(x) = g(x) $, therefore, we can equivalently write $ B = \left (\{x\where f(x)\ge \alpha\}\intrs \comp{N}\right ) $. Now $ \comp{N} \in \alg{A}$ and due to Measurability of $ f $, $ \{x\where f(x)\ge \alpha\}\in \alg{A} $. Hence $ B\in \alg{A} $. Finally, due to $ \{x\where g(x)\ge \alpha\} \intrs N \subseteq N $ and $ \mu $ being complete with $ \m{N} = 0 $, we get $ \{x\where g(x)\ge \alpha\} \intrs N \in \alg{A} $, completing the proof. 
+\end{proof}
+\hrulefill
+\begin{proposition}
+	Let $ (X,\alg{A},\mu) $ be a measure space, let $ \{f_n\} $ be sequence of extended real valued functions on $ X $ and let $ f $ be an extended real valued function on $ X $ such that
+	\[\{f_n\}\longrightarrow f\;\text{almost everywhere.}\]
+	If $ \mu  $ is \textbf{complete} and if each $ f_n $ is Measurable, then $ f $ is Measurable.
+\end{proposition}
+\begin{proof}
+	As Proposition \ref{P-20} shows, $ \liminf_n f_n $ and $ \limsup_{n} f_n $ are Measurable. As the given condition shows, $ \liminf_{n}f_n $ is equal to $ f $ for almost all $ X $. Hence Proposition \ref{P-21} implies that $ f $ is also Measurable.
+\end{proof}
+\hrulefill
 
 \newpage
+\subsection{Cantor Set, again.}
+With the new tool in hand (measurable functions), we now turn back to the ever-interesting Cantor set, this time, to prove the sheer size of the $ \sigma $-algebra $ \msigm{\lambda^*} $ in comparison to the Borel $ \sigma $-algebra $ \bor{\R} $. In particular we show that $ \bor{\R} \subsetneq \msigm{\lambda^*} $.\\
+But before that, we look at following results:
+\begin{proposition}
+	Show that the function $ \phi $ defined by
+	\begin{equation*}
+		\begin{split}
+			\phi &: [0,1]\longrightarrow P\;\text{(Cantor Set), such that,}\\
+			\phi(\alpha) &= \sum_{n=1}^{\infty} \frac{2b_n}{3^n}\;\text{for }\alpha\in[0,1]
+		\end{split}
+	\end{equation*} 
+where $ b_n \in \{0,1\}\;\forall \; n\in\N$ is Measurable in $ \msigm{\lambda^*} $.
+\end{proposition}
+\begin{proof}
+	Note that $ \phi(\alpha) $ thus maps a decimal number to it's binary representation $ \{b_n\} $. First, we define the following function:
+	\begin{equation*}
+		\begin{split}
+			\phi_n &: [0,1]\longrightarrow \{0,1\}\\
+			\phi_n(\alpha) &= b_n. 
+		\end{split}
+	\end{equation*}
+That is, $ \phi_n $ maps $ \alpha $ to it's $ n^{th} $ binary digit. We can see that $ \phi_n(\alpha) $ can be written as the following:
+\begin{equation*}
+	\begin{split}
+		\phi_n(\alpha) = \chi_{E_n} = \begin{cases}
+			1&\text{ if }  \alpha \in E_n \\
+			0&\text{ otherwise.}
+		\end{cases}
+	\end{split}
+\end{equation*}
+where $ E_n $ is the intersection of countable sequence of sub-intervals of $ [0,1] $. Hence $ E_n $ is a Lebesgue measurable subset of $ \R $, so it is in $ \msigm{\lambda^*} $. But, as Proposition \ref{P-18}, statement 3 shows, $ \chi_{E_n} = \phi_n $ is then a Measurable function.\\
+Now, the following arguments:
+\begin{equation*}
+	\begin{split}
+		\frac{2}{3^n} \phi_n(\alpha) &= \frac{2b_n}{3^{n}} \text{ is measurable (Proposition \ref{P-19}).}\\
+		\left \{\frac{2\phi_n(\alpha)}{3^n}\right \}&\text{ is a sequence of measurale functions.}\\
+		\left \{\sum_{k=1}^{n} \frac{2\phi_n(\alpha)}{3^n}\right \}&\text{ is also a sequence of measurable functions (Proposition \ref{P-19}).}\\
+		\lim_{n\to \infty} \sum_{k=1}^{n} \frac{2\phi_n(\alpha)}{3^n}&\text{ is a measurable function (Proposition \ref{P-20}).}
+	\end{split}
+\end{equation*} 
+Hence the function which maps each real from $ [0,1] $ to it's binary representation is measurable.
+\end{proof}
+\hrulefill
+\begin{proposition}
+	Let $ (X,\alg{A}) $ be a measurable space. If $ f $ is a $ \alg{A} $-Measurable function on $ A $ and $ B\in \bor{\R} $, then $ \inv{f}(B) \in \alg{A}$.
+\end{proposition}
+\begin{proof}
+	Denote $ \alg{D} $ be the following set:
+	\[\alg{D} = \{B\subseteq \R\where \inv{f}(B) \in \alg{A}\}.\]
+	Now, note that,
+	\begin{enumerate}
+		\item {Since $ \inv{f}(\R) = A \in \alg{A}$, therefore $ \R \in \alg{D} $.}
+		\item {If $ B \in \alg{D} $, then 
+	\begin{equation*}
+		\begin{split}
+			\comp{B} &= \R \intrs \comp{B}\\
+		\end{split}
+	\end{equation*}	
+and
+\begin{equation*}
+	\begin{split}
+		\inv{f}(\comp{B}) &= \inv{f}(\R\intrs \comp{B})\\
+		&= \inv{f}(\R) \intrs \inv{f}(\comp{B})\\
+		&=A\intrs \left (\inv{f}(B)\right )^{\text{c}}\\
+	\end{split}
+\end{equation*}
+Now since $ A \in \alg{A}$ and $ \inv{f}(B) \in \alg{A} $ because $ B\in \alg{D} $, therefore $ \inv{f}(\comp{B})\in \alg{A} $ so that $ \comp{B} \in \alg{D} $.
+	}
+\item {We know that from the basic results of set functions that
+\begin{equation*}
+	\begin{split}
+		\inv{f}\left (\bunion_n B_n\right ) &= \bunion_n \inv{f}(B_n)
+	\end{split}
+\end{equation*}
+}
+	\end{enumerate}
+Hence $ \alg{D} $ is a $ \sigma $-algebra on $ \R $ (!) Now, due to measurability of $ f $, we know that the set $ \{x\where f(x)>\alpha\} $ is in $ \alg{A} $, which is equivalent to saying that $ \inv{f}(\alpha,\infty) \in \alg{A}$. This hence means that $ (\alpha,\infty) \in \alg{D} $ for any $ \alpha\in \R $. Proposition \ref{P-2} showed that a $ \sigma$-algebra generated by such subsets of $ \R $ is $ \bor{\R} $. Hence, for any $ B\in \bor{\R} $, we have that $ B\in \alg{D} $. Therefore for any Borel set $ B $, $\inv{f}(B) \in \alg{A}$\footnote{This is a very interesting way to prove such a statement. Notice how we analyzed the set of all possible subsets of $ \R $ for which $ \inv{f}(B) \in \alg{A}$ right from the start!}.
+\end{proof}
+\hrulefill
+\newpage
+\subsection{Sequence of Functions approximating a Measurable Function.}
+We now show that any measurable function can be defined in terms of a simple function and a step function. For this, we first define what we mean by simple functions in Definition \ref{D-21}. Before that, let's see few interesting-but-basic properties of measurable functions. 
+\begin{proposition}\label{P-25}
+	Let $ (X,\alg{A}) $ be a measurable space and $ f $ be an extended real valued function on $ A\in \alg{A} $. Define the following:
+	\[f^{+}(x) = \max (f(x),0)\;\text{and } f^{-}(x) = -\min (f(x),0).\]
+	Then, $ f $ is measurable if and only if $ f^{+} $ and $ f^{-} $ both are measurable on $ A $.
+\end{proposition}
+\begin{proof}
+	If $ f $ is measurable, then $ \{x\where f(x)\ge \alpha\} $ is measurable. Note that $ f^{+}(x) \ge 0$. Hence, for the case when $ \alpha > 0 $, the set $ \{x\where f^{+}(x)\ge \alpha\} = \{x\where f(x) > \alpha\}$ which is measurable due to measurability of $ f $. Similarly, if $ \alpha = 0 $, then $ \{x\where f^{+}(x)\ge 0\} = \{x\where f(x)> 0\} \bunion \{x\where f(x) = 0\} $ in which both sets are measurable in view of Proposition \ref{P-18}. Finally, for $ \alpha<0 $, we have $ \{x\where f^{+}(x)> \alpha\} = \{x\where f^{+}(x)\ge 0\}$ which again is measurable. Now, $ f^{-}(x) = -\min(f(x),0) = \max(-f(x),0)$ and since $ -f $ is also measurable (Proposition \ref{P-19}), therefore if $ f $ is a measurable function, then $ f^{+} $ and $ f^{-} $ are both measurable functions too.\\
+	To show the converse, note that $ f = f^{+} - f^{-} $ and since both are measurable, therefore $ f $ is also measurable (Proposition \ref{P-19}).
+\end{proof}
+\begin{remark}
+	Due to the above result, we can hence deduce that if $ f $ is a $ \alg{A} $-Measurable function then,
+	\[\abs{f} = f^{+} + f^{-}\;\text{is a Measurable function on $ A $.}\]
+\end{remark}
+\hrulefill
+\begin{proposition}
+	Let $ (X,\alg{A}) $ be a measurable space and $ A\in \alg{A} $. Let $ f : A\to [-\infty,+\infty]$. Then,
+	\begin{enumerate}
+		\item {If $ f $ is $ \alg{A} $-Measurable and if $ B $ is a subset of $ A \in \alg{A}$, then the restriction $ f_{B} $ of $ f $ to $ B $ is also $ \alg{A} $-Measurable. }
+		\item {If $ \{B_n\} $ is a sequence of sets that belong to $ \alg{A} $ such that $ A = \bunion_{n}B_n $ and $ f_{B_n} $ is $ \alg{A}$-Measurable for each $ n $, then $ f $ is also $ \alg{A} $-Measurable.}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	The first result follows directly from the following observation:
+	\[\{x \in B\where f_b(x)>\alpha\} = B\bintrs \{x\in A\where f(x)>\alpha\}\]
+	and the second result follows from the following:
+	\[\{x\in A\where f(x)>\alpha\} = \bunion_{n} \{x\in B_n\where f_{B_n}(x) > \alpha\}.\]
+	both for any $ \alpha\in \R $.
+\end{proof}
+\hrulefill
+\begin{definition}\label{D-21}
+	(\textbf{Simple Function}) A function is called simple if it has only finitely many values. Equivalently, we say that $ f $ is simple if we can write it as the following:
+	\[f = \sum_{k=1}^{N}\alpha_k \chi_{E_k}\;,\;\;\alpha_{k}\in \R\]
+	where each $ E_k $ is a measurable set of finite measure.
+\end{definition}
+\begin{remark}
+	Note that \begin{itemize}
+		\item {If $ E_k $ are intervals, then we say $ f $ to be a \textbf{step function}.}
+	\end{itemize}
+\end{remark}
+\hrulefill
+
+\emph{The following Proposition asserts that \textbf{any Measurable function can be approximated by an increasing sequence of simple functions.}}
+\begin{proposition}\label{P-27}
+	Let $ (X,\alg{A}) $ be a measurable space and let $ A \in \alg{A} $ with $ f :A\to[0,+\infty] $ be a Measurable function on $ A $. Then there exists a sequence $ \{f_n\} $ of \textbf{simple} $ [0,+\infty) $-valued Measurable functions on $ A $ that satisfy 
+	\[f_1(x)\le f_2(x)\le f_3(x)\le \dots\]
+	and 
+	\[\lim_{n\to\infty } f_{n}(x) = f(x)\]
+	for any $ x\in A $.
+\end{proposition}
+\begin{proof}
+	For the proof, construct the following sequence of sets, by dividing the whole interval $ [0,n] $ for any $ n \in \N$ into $ n2^n $ number of intervals each of length $ \frac{1}{2^n} $ and denote the following set:
+	\[A_{n,k} = \left \{x\in A\left\vert\frac{k-1}{2^n}\le f(x)<\frac{k}{2^n}\right.\right \}\]
+	for any $ n\in \N $ and $ k = 1,2,\dots,n2^n $. With this construction, we can now define the following function for each $ n $:
+	\begin{equation*}
+		\begin{split}
+			\phi_n &: A \to [0,\infty), \text{ defined as}\\
+			\phi_n(x)&= \begin{cases}
+				\frac{k-1}{2^n}\;&\text{ if }x\in A_{n,k}\;\text{for any $ k=1,2,\dots,n2^n $}\\
+				n\;&\text{ if } x\in A- \bunion_k A_{n,k}.
+			\end{cases} 
+		\end{split}
+	\end{equation*}
+	Note that we can alternatively write $ \phi_n(x) $ as the following (with more clarity):
+	\begin{equation*}
+		\begin{split}
+			\phi_n(x) = \begin{cases}
+				\frac{k-1}{2^n} &\text{ if }f(x)\le n\;,\;\;\text{where } \frac{k-1}{2^n} \le f(x) < \frac{k}{2^n} \;\text{for some k} \in  \{1,2,\dots,n2^n\} \\
+				n &\text{ if }f(x)>n.
+			\end{cases}
+		\end{split}
+	\end{equation*}
+	We now show that $ \phi_n(x)\le \phi_{n+1}(x) \;\forall\;x\in A$. Let's first show this for $ f(x) \le n $. \\
+	If $ f(x)\le n $, then,
+	\begin{equation*}
+		\begin{split}
+			\phi_n(x) = \frac{k_0  -1}{2^n}\;\text{for some }k_0 \in \{1,2,\dots,n2^n\}
+		\end{split}
+	\end{equation*}
+	such that $ \frac{k_0-1 }{2^n}\le f(x) < \frac{k_0}{2^n} $. Now, two cases arises:
+	\begin{itemize}
+		\item {\textbf{If} $ \frac{k_0-1}{2^n} \le f(x) < \frac{2k_0 -1}{2^{n+1}} $ : This is just the case that $ f(x) $ lies in the first half of the interval $ \left [\frac{k_0-1}{2^n}, \frac{k_0}{2^n}\right ] $. Hence, in this case we get that:
+			\[\frac{k_0-1}{2^n} = \frac{2k_0 - 2}{2^{n+1}} \le f(x) < \frac{2k_0 - 1}{2^{n+1}}\]
+			such that $ \phi_n(x) = \frac{k_0-1}{2^n} = \phi_{n+1}(x) $.	
+		}
+		\item {\textbf{If} $ \frac{2k_0 -1}{2^{n+1}} \le f(x) < \frac{k_0}{2^n}$ : This is the case when $ f(x) $ lies in the second half of the interval. In this case, we see that,
+			\[\frac{2k_0 -1}{2^{n+1}} \le f(x) < \frac{2k_0}{2^{n+1}} = \frac{k_0}{2^{n}}\]
+			so that $ \phi_n(x) = \frac{k_0 -1}{2^n} = \frac{2k_0 -2}{2^{n+1}} < \frac{2k_0 -1}{2^{n+1}} = \phi_{n+1}(x) $.
+		}
+	\end{itemize}
+	Hence from both the cases, we have $ \phi_n(x) \le \phi_{n+1} (x) $ for all $ x \in A$ such that $ f(x)\le n $. One can similarly see the same result for $ n<f(x) \le n+1$ and for $ f(x) >n+1 $, $ \phi_n(x) \le \phi_{n+1}(x) $ follows trivially. Hence, we have proved that $ \forall n\in \N $ and $ x\in A $, 
+	\begin{equation}
+		\label{monotone}
+		\phi_n(x) \le \phi_{n+1}(x).
+	\end{equation}
+	Now, one can write the function $ \phi_n $ as the following combination too:
+	\begin{equation}
+		\begin{split}
+			\phi_n(x) &= \sum_{k=1}^{n2^n} \frac{k-1}{2^n}\chi_{A_{n,k}} + n\chi_{A - \bunion_k A_{n,k}}
+		\end{split}
+	\end{equation}
+	Due to the above representation of $ \phi_n $, the following steps becomes easier (\& interesting) to see.\\
+	Now, first note that $ A_{n,k} $ is a measurable set because it's intersection of two measurable sets. Moreover, $ A- \bunion_{k}A_{n,k} $ is also a measurable set. Hence, in view of Proposition \ref{P-18}, Statemen\textit{\textit{}}t 3, we get that $ \phi_n(x) $ is a Measurable function for any $ n\in \N $. Therefore, $ \{\phi_n\} $ is a sequence of Measurable functions adhering \eqref{monotone}. We again find two cases:
+	\begin{itemize}
+		\item {\textbf{If $ f $ is finite} : Now since $ f $ is finite, therefore $ \exists n_0 \in \N$ such that $ f(x)\le n_0 $. Hence, one can further deduce the following for all $ n\ge n_0 $ (hence $ f(x) \le n_0 \le n$),
+			\begin{equation*}
+				\begin{split}
+					f(x) - \phi_n(x) &=  f(x) - \frac{k-1}{2^{n}}\;\;\text{for some }k\in\{1,2,\dots,n2^n\}\;\text{such that}\;\frac{k-1}{2^n}\le f(x)< \frac{k}{2^n}\\
+					&<\frac{1}{2^n}
+				\end{split}
+			\end{equation*}
+			Hence, as $ n\to \infty $, $ \abs{f(x) - \phi_n(x)} \to 0 $. 
+		}
+		\item {\textbf{If $ f $ is infinite for some $ x\in A $} : If $ f $ is infinite, then $ \forall n\in \N$, $ f(x) > n$. Hence,
+			\[\phi_n(x) = n\text{ for all }n\in N.\]
+			Therefore $ \lim_{n\to \infty} \phi_{n}(x) = +\infty = f(x) $ for particular $ x\in A $ where $ f $ is infinity.
+		}
+	\end{itemize}
+	Hence, in both cases, $ \{\phi_n\} $ converges to $ f $. The proof is therefore complete.
+\end{proof}
+\hrulefill
+
+\emph{The following can be considered as an\textbf{ important corollary of the above Proposition}.}
+\begin{proposition}
+	Let $ (X,\alg{A}) $ be a measurable space and let $ A \in \alg{A} $ with $ f :A\to[-\infty	,+\infty] $ be a Measurable function on $ A $. Then there exists a sequence $ \{f_n\} $ of \textbf{simple} $ (-\infty,+\infty) $-valued Measurable functions on $ A $ that satisfy 
+	\[\abs{f_1(x)}\le \abs{f_2(x)}\le \abs{f_3(x)}\le \dots\]
+	and 
+	\[\lim_{n\to\infty } f_{n}(x) = f(x)\]
+	for any $ x\in A $.
+\end{proposition}
+\begin{proof}
+	 	Since $ f $ is a Measurable function, therefore $ f^{+} $ and $ f^{-} $ are Measurable functions too (Proposition \ref{P-25}). Now, since any function $ f $ can be written as 
+	 	\[f = f^{+} - f^{-}\]
+	 	therefore, by Proposition \ref{P-27}, we have two sequences $ \{f_n^{(1)}\} $ and $ \{f_n^{(2)}\} $ such that
+	 	\[f_n^{(1)}\longrightarrow f^{+}\text{ and }f_n^{(2)}\longrightarrow f^{-}\]
+		where $ f_1^{(1)}(x) \le f_2^{(1)}(x)\le \dots $ and $f_1^{(2)}(x) \le f_2^{(2)}(x) \le \dots $. Denote 
+		\[f_n(x) = f_n^{(1)}(x) - f_n^{(2)}(x) \]
+		Therefore, we see that
+		 \[\abs{f_n(x)} = f_n^{(1)}(x) + f_n^{(2)}(x) \le f_{n+1}^{(1)}(x) + f_{n+1}^{(2)}(x) = \abs{f_{n+1}(x)}\]
+		Now, we can deduce that
+		\begin{equation*}
+			\begin{split}
+				\abs{f(x) - f_n(x)} &= \abs{f^{+}(x) - f^{-}(x) - f_n^{(1)}(x) + f_n^{(2)}(x) }\\
+				&= \abs{f^{+}(x) - f_n^{(1)}(x) - \left (f^{-}(x) - f_n^{(2)}(x)\right )}\\
+				&\le  \abs{f^{+}(x) - f_n^{(1)}(x)} + \abs{f^{-}(x) - f_n^{(2)}(x)}\\
+				&\to 0 + 0
+			\end{split}
+		\end{equation*}
+	Hence proved.
+\end{proof}
+\hrulefill
+\newpage
+\subsubsection{Replacing \emph{simple} functions by \emph{step} functions.}
+We now prove a similar result akin to Proposition \ref{P-27}, where we show that a measurable function can be approximated by a sequence of step functions, almost everywhere. But before that, we prove \textbf{a basic fact about Lebesgue measurable sets with finite measure.}
+\begin{proposition}
+	For any $ \lambda $-measurable set $ E $ of finite measure and a given $ \epsilon > 0 $, there exists a finite sequence of open intervals $ \{I_n\}_{n=1}^{N} $ such that 
+	\[\m{E\Delta \left (\bunion_{n=1}^{N}I_n\right )} < \epsilon.\]
+\end{proposition}
+\begin{proof}
+	Take any $ \epsilon > 0 $, then we have for any set $ E \subseteq\R $, a sequence of open intervals $ \{I_n\} $ such that $ E\subseteq \bunion_n I_n $ and $ \lm{\bunion_n I_n} \le \lm{E} + \epsilon $ or $ \lm{\bunion_n I_n \setminus E} \le \epsilon <2\epsilon$. Now since $ \{I_n\} $ is a disjoint sequence, therefore, $ \lm{\bunion_n I_n} = \sum_n \lm{I_n} $ and due to the fact that $ \lm{E} < + \infty $, we get that $ \sum_n  \lm{I_n} < + \infty$.\\
+%	 Now, we note the following:
+%	\begin{equation*}
+%		\begin{split}
+%			E\Delta \bunion_n I_n &= \left (E \intrs \left (\bintrs_n \comp{I_n}\right )\right ) \bunion \left (\comp{E} \intrs \bunion_n I_n\right )\\
+%			&= \Phi \bunion \left (\comp{E} \intrs \bunion_n I_n\right ) \;\;\;\;\text{($ \because \;E\subseteq \union_n I_n$ .)}\\
+%			&= \bunion_n I_n \setminus E
+%		\end{split}
+%	\end{equation*}
+Now, since $ \lm{E} < + \infty $, therefore the sum $ \sum_{n} \lm{I_n} <+\infty$, hence, $ \exists N \in \N $ such that $ \sum_{n=N+1}^{\infty}\lm{I_n} < \epsilon $. With this $ N $, we now see that:
+\begin{equation*}
+	\begin{split}
+		\lm{E\Delta \bunion_{n=1}^{N} I_n} &= \lm{E\setminus \bunion_{n=1}^{N} I_n} + \lm{\bunion_{n=1}^{N}I_n \setminus E} \;\;\;\;\;\text{(both are disjoint.)}\\
+		&\le \lm{E\setminus \bunion_{n=1}^{N} I_n} + \lm{\bunion_{n}I_n \setminus E}\\
+		&= \lm{E\setminus \bunion_{n=1}^{N} I_n} + \lm{\bunion_{n}I_n \setminus E}\\
+		&= \lm{E\intrs \left (\bunion_{n=1}^{N} I_n\right )^{\text{c}}} +  \lm{\bunion_{n}I_n \setminus E}\\
+		&\le \lm{\bunion_{n=N+1}^{\infty} I_n} +\lm{\bunion_{n}I_n \setminus E}\;\;\;\;\text{$ \because \; E\intrs \left (\bunion_{n=1}^{N} I_n\right )^{\text{c}}\subseteq \bunion_{n=N+1}^{\infty} I_n$ }\\
+		&\le \epsilon + \epsilon = 2\epsilon
+	\end{split}
+\end{equation*}
+Hence, we get that for any finite measurable set $ E $, for all $ \epsilon > 0 $, $ \exists  $ a sequence of open intervals $ \{I_n\}_{n=1}^{N} $ such that their symmetric difference is a set with measure $ \le \epsilon $.
+\end{proof}
+\hrulefill
+\begin{proposition}
+		Consider $ (X,\alg{A}) $ to be a measurable space and $ A\in \alg{A} $. Let $ f : A\to [-\infty,+\infty] $ be a Measurable function. Then there exists a sequence of step functions $ \{\phi_n\} $ such that
+		\[\phi_k \longrightarrow f\;\text{almost everywhere.}\]
+\end{proposition}
+\begin{proof}
+	
+\end{proof}
+\newpage
+\section{Integration of Non-Negative Functions}
+We can now write any measurable function as 
+\[f = \sum_{}\]
+\newpage	
 \begin{thebibliography}{9}
 	\bibitem{Solovay70} 
 	Solovay, R. (1970). A Model of Set-Theory in Which Every Set of Reals is Lebesgue Measurable. Annals of Mathematics, 92(1), second series, 1-56.
