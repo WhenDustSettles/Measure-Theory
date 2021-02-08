@@ -1116,7 +1116,7 @@ where $ G\setminus E $ is such that (from Statement 3) $ \lom{G\setminus E} = 0 
 \hrulefill
 
 Now, consider the next proposition, which is dual of the above.
-\begin{proposition}
+\begin{proposition}\label{P-16}
 	Consider $ E \subseteq \R$. The following statements are equivalent:
 	\begin{enumerate}
 		\item {$ E $ is Lebesgue measurable.}
@@ -1602,8 +1602,8 @@ We now show that any measurable function can be defined in terms of a simple fun
 \end{proof}
 \hrulefill
 \newpage
-\subsubsection{Replacing \emph{simple} functions by \emph{step} functions.}
-We now prove a similar result akin to Proposition \ref{P-27}, where we show that a measurable function can be approximated by a sequence of step functions, almost everywhere. But before that, we prove \textbf{a basic fact about Lebesgue measurable sets with finite measure.}
+\subsubsection{Replacing \emph{simple} functions by \emph{step} functions\protect\footnote{Unfortunately, this section onwards, we would tentatively only work with the Lebesgue Measure space $ (\R,\msigm{\lambda^*},\lambda) $ for pedagogical reasons of the instructor, so the abstract versions of the following results would need to wait.}.}
+We now prove a similar result akin to Proposition \ref{P-27}, where we show that \emph{\textbf{any measurable function can be approximated by a sequence of step functions, almost everywhere}}. But before that, we prove \textbf{a basic fact about Lebesgue measurable sets with finite measure.}
 \begin{proposition}\label{P-29}
 	For any $ \lambda $-measurable set $ E $ of finite measure and a given $ \epsilon > 0 $, there exists a finite sequence of open intervals $ \{I_n\}_{n=1}^{N} $ such that 
 	\[\lm{E\Delta \left (\bunion_{n=1}^{N}I_n\right )} < \epsilon.\]
@@ -1695,6 +1695,76 @@ where note that $K_n = \sum_{i=1}^{M_n} \alpha_i \psi_n^i  $ is a step function 
 therefore,
 \[K_n \longrightarrow f\;\text{almost everywhere.}\]
 Hence proved.
+\end{proof}
+\hrulefill
+\subsection{Egorov's Theorem}
+We now discuss a very important result in the theory of measurable functions named after Dmitri Fyodorovich Egorov, who published this result in 1911, thus establishing \textbf{a condition required for uniform convergence of a point-wise convergent sequence of Measurable functions.}
+\begin{theorem}
+	\label{T-3}
+	Let $ (\R,\msigm{\lambda^*},\lambda) $ be the Lebesgue measure space on $ \R $. Suppose $ \{f_k\} $ is a sequence of real-valued, Lebesgue Measurable functions on $ E \in \msigm{\lambda^*} $ where $ \lm{E} < +\infty $. If 
+	\[f_k \longrightarrow f\;\text{pointwise on $ E $,}\]
+	Then for each $ \epsilon > 0 $, there exists a \textbf{closed} set $ A_\epsilon \subset E$ such that
+	\begin{enumerate}
+		\item {$ \lm{E\setminus A_\epsilon} < \epsilon $, and}
+		\item {$ f_k \longrightarrow f $ \textbf{uniformly} on $ A_\epsilon $.}
+	\end{enumerate}
+\end{theorem} 
+\begin{proof} We break down the proof in the following 3 parts.\\\\
+	\textbf{Act 1.} \emph{A Basic Construction.}\\
+	 For each pair of integers $ n,k $, construct the following set:
+	\[E^{n}_k = \left \{x\in E\;:\; \abs{f_j(x) - f(x)} < \frac{1}{n}\;,\;\;\forall\; j>k\right \}.\]
+	Now, fix $ n $, so that we have the following observations:
+	\begin{equation}
+		\label{T-3.1}
+		E_k^{n} \subseteq E_{k+1}^{n}
+	\end{equation}
+	and since $ f_k \longrightarrow  f$ point-wise, therefore 
+\begin{equation}
+	\label{T-3.2}
+	\lim_{k\to \infty}\bunion_{i=1}^{k}E_i^{n} = E.
+\end{equation}
+Hence 
+\[\lm{E\setminus E_k^{n}} \longrightarrow 0 \;\text{as } k\to \infty.\]
+Note that the above result utilizes the fact that $ \lm{E} < +\infty $. Now by the above, we can say that $ \exists\; k_n $ such that 
+\[\lm{E\setminus E_{k_n}^{n}} < \frac{1}{2^n}\]
+which, by definition of $ E_k^{n} $ implies that 
+\[\abs{f_j(x) - f(x)} < \frac{1}{n}\;\text{whenever }j> k_n\text{ and } \underline{x\in E^{n}_{k_n}}.\]
+\textbf{Act 2.} \emph{Constructing $ A_\epsilon $.} \\
+Now choose $ N \in \N $ such that
+\[\sum_{n=N}^{\infty} \frac{1}{2^n} < \frac{\epsilon}{2}\]
+and define
+\begin{equation}
+	\tilde{A_\epsilon} = \bintrs_{n=N}^{\infty} E_{k_n}^{n}
+\end{equation}
+We now observe that
+\begin{equation*}
+	\begin{split}
+		\lm{E\setminus \tilde{A_{\epsilon}}} &= \lm{E \intrs \bunion_{n=N}^{\infty}\comp{\left (E_{k_n}^{n}\right )}}\\
+		&= \lm{ \bunion_{n=N}^{\infty}E \intrs \comp{\left (E_{k_n}^{n}\right )}}\\
+		&\le \sum_{n=N}^{\infty} \lm{E\intrs \comp{\left (E_{k_n}^{n}\right )}}\\
+		&= \sum_{n=N}^{\infty} \lm{E\setminus E_{k_n}^{n}}\\
+		&<\sum_{n=N}^{\infty} \frac{1}{2^n}\\
+		&< \frac{\epsilon}{2}
+	\end{split}
+\end{equation*}
+\textbf{Act 3.} \emph{Final\'e}.\\
+We now claim and prove the following: 
+\[\text{Claim : \textit{$ f_k \longrightarrow f $ uniformly on $ \tilde{A_\epsilon} $}.}\]
+For this, let $ \delta > 0 $ and choose $ n^{\prime}\ge N $ such that $ \frac{1}{n^{\prime}} < \delta $. Then
+\begin{equation}\label{T-3.4}
+	\text{if } x\in \tilde{A_{\epsilon}} \implies x\in E_{k_{n^{\prime}}}^{n^{\prime}} \implies \abs{f_j(x) - f(x)} < \frac{1}{n^{\prime}} <\delta\;,\;\;\forall\;j > k_{n^{\prime}}.
+\end{equation}
+Note that this is just the definition of uniform convergence. \\
+Finally, note that $ E_k^{n} $ is a Lebesgue measurable set due to Proposition \ref{P-18}, Statement 5. Hence, $ \tilde{A_\epsilon} $ is measurable. Now, by Proposition \ref{P-16}, Statement 2, there exists a closed set $ A_\epsilon \subset \tilde{A_\epsilon} $ such that \[\lm{\tilde{A_\epsilon} \setminus A_\epsilon} < \frac{\epsilon}{2}.\]
+Now,
+\begin{equation*}
+	\begin{split}
+	\epsilon &>	\lm{E\setminus \tilde{A_\epsilon} } + \lm{\tilde{A_\epsilon}\setminus A_\epsilon}\\
+	&\ge \lm{E\setminus \tilde{A_\epsilon} \bunion \tilde{A_\epsilon}\setminus A_\epsilon}\\
+	&= \lm{E\setminus A_\epsilon}.
+	\end{split}
+\end{equation*}
+Now, by \eqref{T-3.4}, we see that $ f_k \longrightarrow f $ uniformly for all $ x\in A_\epsilon \subset \tilde{A_\epsilon} $ such that $ \lm{E\setminus A_\epsilon}< \epsilon $ and $ A_\epsilon $ is closed. Proof is now complete.
 \end{proof}
 \hrulefill
 \newpage
