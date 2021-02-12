@@ -148,7 +148,7 @@
 \newcommand{\infim}[1]{\underset{#1}{\inf}}
 \newcommand{\suprem}[1]{\underset{#1}{\sup}}
 \newcommand{\setlow}[2]{\underbrace{\text{#2}}{#1}}
-
+\newcommand{\restrict}[2]{\left . #1 \right \vert_{#2}}
 %\pagecolor{lightgray}
 \begin{document}
 \begin{titlepage}
@@ -1003,7 +1003,7 @@ We would construct today a set which has measure 0, but not countable(!).
 \begin{enumerate}
 	\item {Take $ E_0 = [0,1] $.}
 	\item {Remove $ (1/3,2/3) $ from $ E_0 $ to form $ E_1 = [0,1/3] \union [2/3,1] $.}
-	\item {Proceed in the same way to form $ E_2 = [0,1/9]\union [2/9,3/4] \union [2/3,7/9]\union [8/9,1] $.}
+	\item {Proceed in the same way to form $ E_2 = [0,1/9]\union [2/9,1/3] \union [2/3,7/9]\union [8/9,1] $.}
 	\item {At $ n^{th} $ step, $ E_n $ contains $ 2^n $ subintervals and each of which is of length $ \frac{1}{3^n} $.}
 	\item {We clearly have $ E_0 \supset E_1 \supset E_2 \supset \dots $.}
 	\item {Here, note that each $ E_n $ is a closed and compact subset of $ \R $.}
@@ -1632,8 +1632,8 @@ Now, since $ \lm{E} < + \infty $, therefore the sum $ \sum_{n} \lm{I_n} <+\infty
 Hence, we get that for any finite Lebesgue measurable set $ E $, for all $ \epsilon > 0 $, $ \exists  $ a sequence of open intervals $ \{I_n\}_{n=1}^{N} $ such that their symmetric difference is a set with measure $ \le \epsilon $.
 \end{proof}
 \hrulefill
-\begin{proposition}
-		Consider $ (\R,\msigm{\lambda^*}) $ to be a measurable space and $ A\in \msigm{\lambda^*} $. Let $ f : A\to [-\infty,+\infty] $ be a $ \lambda $-Measurable function. Then there exists a sequence of step functions $ \{\phi_k\} $ such that
+\begin{proposition}\label{P-30}
+		Consider $ (\R,\msigm{\lambda^*}) $ to be the Lebesgue measurable space and $ A\in \msigm{\lambda^*} $. Let $ f : A\to [-\infty,+\infty] $ be a $ \lambda $-Measurable function. Then there exists a sequence of step functions $ \{\phi_k\} $ such that
 		\[\phi_k \longrightarrow f\;\text{almost everywhere.}\]
 \end{proposition}
 \begin{proof}
@@ -1699,10 +1699,10 @@ Hence proved.
 \hrulefill
 \subsection{Egorov's Theorem}
 We now discuss a very important result in the theory of measurable functions named after Dmitri Fyodorovich Egorov, who published this result in 1911, thus establishing \textbf{a condition required for uniform convergence of a point-wise convergent sequence of Measurable functions.}
-\begin{theorem}
+\begin{theorem} (\textbf{Egorov's Theorem})
 	\label{T-3}
 	Let $ (\R,\msigm{\lambda^*},\lambda) $ be the Lebesgue measure space on $ \R $. Suppose $ \{f_k\} $ is a sequence of real-valued, Lebesgue Measurable functions on $ E \in \msigm{\lambda^*} $ where $ \lm{E} < +\infty $. If 
-	\[f_k \longrightarrow f\;\text{pointwise on $ E $,}\]
+	\[f_k \longrightarrow f\;\text{pointwise on $ E $,}\]\footnote{From Proposition \ref{P-20}, the limit of a sequence of Measurable functions is also Measurable, hence there's no point in writing extraneously the requirement for $ f $ to be also Measurable.}
 	Then for each $ \epsilon > 0 $, there exists a \textbf{closed} set $ A_\epsilon \subset E$ such that
 	\begin{enumerate}
 		\item {$ \lm{E\setminus A_\epsilon} < \epsilon $, and}
@@ -1767,11 +1767,163 @@ Now,
 Now, by \eqref{T-3.4}, we see that $ f_k \longrightarrow f $ uniformly for all $ x\in A_\epsilon \subset \tilde{A_\epsilon} $ such that $ \lm{E\setminus A_\epsilon}< \epsilon $ and $ A_\epsilon $ is closed. Proof is now complete.
 \end{proof}
 \hrulefill
+\subsection{Lusin's Theorem}
+The following is the final important result on the basic theory of measurable functions, attributed to Nikolai Nikolaevich Luzin who penned this theorem around 1912.
+\begin{theorem}
+	(\textbf{Lusin's Theorem}) Consider the Lebesgue measure space $ (\R,\msigm{\lambda^*}, \lambda) $. Suppose $ f $ is a real-valued, Lebesgue Measurable function defined over a Lebesgue measurable set $ E $ with finite measure. Then for all $ \epsilon > 0 $, there exists a \textbf{closed} set $ F_{\epsilon} \subset E$ with 
+	\begin{enumerate}
+		\item {$ \lm{E\setminus F_{\epsilon}} < \epsilon $, and}
+		\item {The restriction $ \restrict{f}{F_{\epsilon}} $ of $ f $ over $ F_{\epsilon} $ is \textbf{continuous}.}
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	From the Proposition \ref{P-30}, we have a sequence $ \{f_n\} $ of step functions such that 
+	\[f_n \longrightarrow f\;\text{almost everywhere.}\]
+	Now, consider, for example the characteristic function over an interval $ \chi_{[a,b]} $. Then, we can define a function $ \phi(x) $ for any $ \delta > 0 $ as follows:
+	\begin{equation*}
+		\begin{split}
+			\phi(x) &= \begin{cases}
+				0 &\;\;x< a\\
+				\frac{x-a}{\delta /2}&\;\; a\le x\le a+\frac{\delta}{2}\\
+				1&\;\;a+\frac{\delta}{2} \le x \le b-\frac{\delta}{2}\\
+				\frac{b-x}{\delta/2}& b-\frac{\delta}{2}\le x\le b\\
+				0& \;\;x> b
+			\end{cases}
+		\end{split}
+	\end{equation*}
+which then satisfies 
+\begin{equation*}
+	\begin{split}
+		\{x\in \R\where \phi(x) \neq \chi_{[a,b]}\} &= \left (a,a+\frac{\delta}{2}\right ) \bunion \left (b-\frac{\delta}{2},b\right )
+	\end{split}
+\end{equation*} 
+which then implies that, 
+\[\lm{\{x\in \R\where \phi(x) \neq \chi_{[a,b]}\}} = \lm{\left (a,a+\frac{\delta}{2}\right ) \bunion \left (b-\frac{\delta}{2},b\right )} = \delta.\]
+Note that $ \phi(x) $ is also continuous over all $ \R $. Hence, for any step function (finite sum of $ \chi_{[a,b]} $-type functions) and $ \delta> 0 $, one can construct a continuous function which does not satisfies with the step function on a set with measure $ < \delta $.\\\\
+Hence, for step-functions $ \{f_n\} $, corresponding to each $ f_n $, $ \exists $ a continuous function $ \phi_n $ and a set $ E_n $ such that
+\[E_n = \{x\where \phi_n(x) \neq f_n(x)\}\;\text{and}\;\lm{E_n}<\frac{1}{2^{n}} .\]
+Now, for all $ \epsilon > 0 $, there exists a $ N \in \N $ such that
+\[\sum_{n\ge N} \frac{1}{2^{n}}< \frac{\epsilon}{3}.\]
+With the above fact, construct the set $ F^{\prime} $ as follows:
+\[F^{\prime} = \left (A_{\frac{\epsilon}{3}} \setminus \bunion_{n\ge N} E_n\right )\]
+where $ A_{\frac{\epsilon}{3}} $ is the closed subset $ A_{\frac{\epsilon}{3}} \subset E$ such that \textbf{1.} $ \lm{E\setminus A_{\frac{\epsilon}{3}}} <\frac{\epsilon}{3}$ and \textbf{2.} $ f_n \longrightarrow f $ \textbf{uniformly} on $ A_{\frac{\epsilon}{3}} $. This is guaranteed by Theorem \ref{T-3} (Egorov's Theorem).\\\\
+Note that $ \restrict{f_n}{F^{\prime}} $ is \textbf{continuous} $ \forall\;n\ge N $ because for any $ x\in F^{\prime} \implies \phi_n(x) = f_n(x)\;\forall\;n\ge N$ and since $ \phi_n $ are already continuous $ \forall n\in  \N $. \\\\
+Furthermore, since $ F^{\prime} \subset E$ and $ f_n\longrightarrow f $ uniformly, then the restriction $ \restrict{f_n}{F^{\prime}} $ is continuous and converges uniformly to $ \restrict{f}{F^{\prime}} $, which \textbf{due to uniform convergence, is also continuous!}\\\\
+Now, note that $ E_n $'s are measurable sets due to Proposition \ref{P-18}, Statement 5. Similarly, since $ A_{\frac{\epsilon}{3}} $ is closed, therefore it is also measurable. Hence, $ F^{\prime} $ is measurable.\\\\
+Now by Proposition \ref{P-16}, there exists a closed set $ F_{\epsilon} \subset F^{\prime}$ such that $ \lm{F^{\prime}\setminus F_{\epsilon}} < \frac{\epsilon}{3} $. Note that because $ F_{\epsilon}\subset  F^{\prime} $ and $ \restrict{f}{F^{\prime}} $ is continuous, therefore the restriction $ \restrict{f}{F_{\epsilon}} $ is also continuous.\\\\
+Finally, combining 
+\begin{enumerate}
+	\item {$ \sum_{n\ge N} \frac{1}{2^{n}} < \frac{\epsilon}{3}$,}
+	\item {$ \lm{E\setminus A_{\frac{\epsilon}{3}}} < \frac{\epsilon}{3} $,}
+	\item {$ \lm{F^{\prime} \setminus F_{\epsilon}} < \frac{\epsilon}{3} $}
+\end{enumerate}
+it can be easily seen that
+\begin{equation*}
+	\begin{split}
+		\left (E\setminus A_{\frac{\epsilon}{3}}\right ) \bunion \left (F^{\prime} \setminus F_{\epsilon}\right ) = E\setminus F_{\epsilon}
+	\end{split}
+\end{equation*}
+Hence,
+ \begin{equation*}
+	\begin{split}
+		 \lm{E\setminus F_{\epsilon}}&= \lm{\left (E\setminus A_{\frac{\epsilon}{3}}\right ) \bunion \left (F^{\prime} \setminus F_{\epsilon}\right )} \\&\le \lm{\left (E\setminus A_{\frac{\epsilon}{3}}\right )} + \lm{ \left (F^{\prime} \setminus F_{\epsilon}\right )} \\
+		 &< \frac{2\epsilon}{3}\\
+		 &< \epsilon.
+	\end{split}
+\end{equation*}
+which completes the proof.
+\end{proof}
+\hrulefill
 \newpage
-\section{Integration of Non-Negative Functions}
-We can now write any measurable function as 
-\[f = \sum_{}\]
-\newpage	
+\section{Integration of Measurable Functions}
+Let's first remind ourselves of the basic definition of a Riemann Integrable function. If we say that the function $ f : \R \to \R $ is Riemann Integrable, then the integral of $ f $ on $ [a,b] $, written as $ \int_a^{b} f $, is given by the following two constructions on a partition $ P $ of $ [a,b] $,
+\begin{itemize}
+	\item {Lower Sum :
+	\[L(f,P) = \sum_i m_i (a_i - a_{i-1}) \;\text{where $ m_i = \inf_{x\in [a_{i-1},a_i] }f(x)  $}\]}
+\item {Upper Sum:
+\[U(f,P) = \sum_i M_i (a_i - a_{i-1}) \;\text{where $ M_i = \sup_{x\in [a_{i-1},a_i] }f(x)  $}\]
+}
+\end{itemize}
+so that 
+\[\int_a^{b} f = L(f,P) = U(f,P).\]
+The chain of observations begins now. One can easily write the Lower and Upper Sum as the following simple functions (remember that the partition is finitely many) 
+\begin{equation*}
+	\begin{split}
+		L(f,P) &= \sum_i m_i \lm{[a_{i-1},a_i]}\\
+		U(f,P) &= \sum_i M_i \lm{[a_{i-1},a_i]}
+	\end{split}
+\end{equation*}
+Or, equivalently, we can define a lower step function as follows:
+\begin{equation*}
+	\begin{split}
+		\phi_P = \sum_i m_i \chi_{[a_{i-1},a_i]}
+	\end{split}
+\end{equation*}
+so that the Riemann Integral is simply
+\[\int_a^b f(x)dx = \sup_{P} \int_a^b \phi_P(x)dx\]
+where supremum is defined over all partitions. But since, by definition, $ \phi_P(x) \le f(x) \;\forall\;x\in \R$, we can alternatively define Riemann Integral as
+\begin{equation}\label{Eq 15}
+	\begin{split}
+		{\int_a^b f(x)dx = \sup_{\phi_P \le f} \int_a^b \phi_P(x)dx}
+	\end{split}
+\end{equation}
+where the supremum is defined for all step functions on any partition $ P $.\\\\
+ This definition presented in \eqref{Eq 15} provides the motivation for extending the definition of Integration from Riemann to Lebesgue. In particular, note the definition of $ \phi_P$, usual measure on the intervals is applied in Riemann's definition. But, since we know that Borel $ \sigma $-algebra is a proper subset of $ \msigm{\lambda^*} $, then it just makes sense to replace $ a_{i-1} - a_i $ by $ \lm{[a_{i-1},a_i]} $ in the motivation that it might generalize the notion of integration.\\\\
+  Therefore, the following definitions of integration for non-negative functions are motivated:
+ \newpage
+ \subsection{Integration of Non-Negative Measurable Functions}
+ \begin{definition}
+ 	(\textbf{Lebesgue Integral of a Simple Function}) Consider $ \phi: \R \to [0,+\infty) $ be a simple function as
+ 	\[\phi = \sum_{i=1}^{N} \alpha_i \chi_{E_i}\;\text{where $ \alpha_i \ge 0 $ and $ \lm{E_i} < +\infty $}\]
+ 	Then, the Lebesgue integral of $ \phi $ is defined as
+ 	\[\int \phi dx = \sum_{i=1}^{N}\alpha_i \lm{E_i}\]
+ \end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Lebesgue Integral of a Measurable Function}) Suppose $ f : \R\to [0,+\infty) $ is a $ \lambda $-Measurable function, then the Lebesgue Integral of $ f $ is defined as
+	\begin{equation*}
+		\begin{split}
+		\bigstar\;\;	\boxed{\int f dx = \sup_{\phi\le f} \int \phi dx\;\text{where $ \phi $ are the \textbf{simple} functions $ \le f $.}}\;\; \bigstar
+		\end{split}
+	\end{equation*}
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Lebesgue Integral over a measurable set}) Consider $ f : \R \to [0,+\infty) $ to be a $ \lambda $-Measurable function and $ E\subseteq \R $ is Lebesgue measurable. Then,
+	\[\int_E f dx = \int f \cdot\chi_E dx\]
+\end{definition}
+\begin{remark}
+	Therefore, the integral of a non-negative measurable function over a measurable set is given by the integral\footnote{From now on, any instance of \emph{integral} should be presupposed by Lebesgue integral, of-course, unless otherwise stated, in this text.} of restriction of $ f $ to it and zero otherwise.
+\end{remark}
+\hrulefill
+\begin{proposition}
+	Consider the two $ \lambda $-Measurable functions $ f,g : \R \to [0,+\infty) $ and $ \phi,\psi : \R \to [0,+\infty) $ be two simple-functions, then the Lebesgue Integral has the following properties:
+	\begin{enumerate}
+		\item {For any $ \alpha \in \R $,
+	\[\int \alpha fdx = \alpha \int fdx.\]	
+	}
+\item {}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	
+\end{proof}
+\subsection{Monotone Convergence Theorem}
+This is arguably one of the most important theorem in Integration theory,
+\begin{theorem}
+	(\textbf{Monotone Convergence Theorem}) Consider a sequence $ \{f_n\} $ of $ \R\to [0,+\infty)  $ $ \lambda $-Measurable functions which satisfies
+	\[f_n(x) \le f_{n+1}(x)\;\forall\;x\in \R.\]
+	Then,
+	\[\int \lim_{n\to \infty} f_n = \lim_{n\to \infty} \int f_n.\]
+\end{theorem}
+\begin{proof}
+	
+\end{proof}
+\newpage
+%\section{Integration of Non-Negative Functions}
+%We can now write any measurable function as 
+%\[f = \sum_{}\]
+%\newpage	
 \begin{thebibliography}{9}
 	\bibitem{Solovay70} 
 	Solovay, R. (1970). A Model of Set-Theory in Which Every Set of Reals is Lebesgue Measurable. Annals of Mathematics, 92(1), second series, 1-56.
