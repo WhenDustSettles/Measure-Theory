@@ -205,7 +205,7 @@ These are few of the basic definitions that one might remember from real analysi
 		\end{split}
 	\end{equation}}
 \item {\textbf{Limit} : Consider the sequence $ \{x_n\} $ in $ [-\infty,+\infty] $, then $ \lim_{n} x_n $ is defined as
-	\[\liminf_{n\to \infty} x_n = \limsup_{n\to\infty} := \lim_{n\to \infty} x_n.\]
+	\[\liminf_{n\to \infty} x_n = \limsup_{n\to\infty}x_n := \lim_{n\to \infty} x_n.\]
 }
 	\item {\textbf{Lower Sum} : $ l(f,\mathcal{P}) $ is the sum of the minimum functional values at the partition. That is,
 		\[\lsum{f}{P} = \sum_{i=0}^{n-1} m_i (a_{i+1} - a_i)\]
@@ -1225,14 +1225,16 @@ is Measurable if and only if $ A $ is measurable.
 \end{equation*}
 are measurable (belongs to $ \alg{A} $).
 }
+\item {\footnote{Question 3 of Exercise 3.} Monotone functions are Measurable.}
+\item {\footnote{Question 4 of Exercise 3.}Consider $ f : \R \to \R $ is a differentiable function. Then $ f^{\prime} $ is a $ \lambda $-Measurable function.}
 	\end{itemize}
 \end{proposition}
 \begin{proof}
-	The first example is trivial to see in light of Proposition \ref{P-17} by taking intersection of $ \{x\where f(x)\le \alpha\} $ and $ \{x\where f(x) \ge \alpha\} $, both of which are measurable.\\
-	For second, consider the constant function $ f(x) = b \;\forall \; x \in \R$. Now, for all $ \alpha \in\R $, consider the set $ \inv{f}((\alpha,\infty)) =  \{x\where f(x)>\alpha\}$.  If $ b > \alpha $, then we are done, if $ b\le \alpha $, then by previous result, $ \{x\where f(x) \le \alpha\} $ is also measurable (equal to $ \R $ and $ \R\in \alg{A} $).\\
-	For third example, consider the set $ \inv{\chi_A}(\alpha,\infty) = \{x\where \chi_A(x) > \alpha\} $ for any $ \alpha \in \R $. If $ \alpha >1 $, then $ \inv{f}(\alpha,\infty) =  \Phi \in \alg{A}$. If $ \alpha = 1 $, then $\inv{f}[\alpha,\infty) = A$, since $ \chi_A(x) $ is given measurable, hence $ A $ is measurable. Now, Assume that $ A $ is measurable. Then consider the set $ \inv{\chi_A}(\alpha,\infty) $ for any $ \alpha\in \R $. As we saw previously, the case for $ \alpha > 1 $ is trivial. For $ 0< \alpha \le 1 $, $ \inv{\chi_A}(\alpha,\infty) = A \in \alg{A}$. Finally, for $ \alpha\le 0 $, $ \inv{\chi_A} (-\infty,\alpha]  = \Phi \in \alg{A}$. Thus, $ \chi_A $ is measurable.\\
-	For fourth, since $ f $ is continuous (so inverse of open sets is open, by definition), therefore $ \inv{f} (\alpha,\infty) $ is open in $ \R $, hence it must be Borel, hence measurable for any $ \alpha \in \R $.\\
-	For fifth, since $ f $ and $ g $ are measurable. Then due to next Proposition \ref{P-19}, we know that $ f-g $ is also measurable. This means that for any $ \alpha \in \R $,
+	The\textbf{ first }example is trivial to see in light of Proposition \ref{P-17} by taking intersection of $ \{x\where f(x)\le \alpha\} $ and $ \{x\where f(x) \ge \alpha\} $, both of which are measurable.\\
+	For \textbf{second}, consider the constant function $ f(x) = b \;\forall \; x \in \R$. Now, for all $ \alpha \in\R $, consider the set $ \inv{f}((\alpha,\infty)) =  \{x\where f(x)>\alpha\}$.  If $ b > \alpha $, then we are done, if $ b\le \alpha $, then by previous result, $ \{x\where f(x) \le \alpha\} $ is also measurable (equal to $ \R $ and $ \R\in \alg{A} $).\\
+	For \textbf{third} example, consider the set $ \inv{\chi_A}(\alpha,\infty) = \{x\where \chi_A(x) > \alpha\} $ for any $ \alpha \in \R $. If $ \alpha >1 $, then $ \inv{f}(\alpha,\infty) =  \Phi \in \alg{A}$. If $ \alpha = 1 $, then $\inv{f}[\alpha,\infty) = A$, since $ \chi_A(x) $ is given measurable, hence $ A $ is measurable. Now, Assume that $ A $ is measurable. Then consider the set $ \inv{\chi_A}(\alpha,\infty) $ for any $ \alpha\in \R $. As we saw previously, the case for $ \alpha > 1 $ is trivial. For $ 0< \alpha \le 1 $, $ \inv{\chi_A}(\alpha,\infty) = A \in \alg{A}$. Finally, for $ \alpha\le 0 $, $ \inv{\chi_A} (-\infty,\alpha]  = \Phi \in \alg{A}$. Thus, $ \chi_A $ is measurable.\\
+	For \textbf{fourth}, since $ f $ is continuous (so inverse of open sets is open, by definition), therefore $ \inv{f} (\alpha,\infty) $ is open in $ \R $, hence it must be Borel, hence measurable for any $ \alpha \in \R $.\\
+	For \textbf{fifth}, since $ f $ and $ g $ are measurable. Then due to next Proposition \ref{P-19}, we know that $ f-g $ is also measurable. This means that for any $ \alpha \in \R $,
 	\begin{equation*}
 		\begin{split}
 			\{x\in X\where f(x)-g(x) < \alpha\}
@@ -1240,9 +1242,35 @@ are measurable (belongs to $ \alg{A} $).
 	\end{equation*}
 is measurable. Now set $ \alpha = 0 $ to get the result. Moreover, from this, we also get that $ \{x\in X\where f(x) -g(x) >0\} $ is also measurable. Hence,
 \[\{x\in X \where f(x)-g(x)\neq 0\} = \{x\in X\where f(x)- g(x) < 0\} \bunion \{x\in X \where f(x)-g(x) > 0\}\]
-is also measurable.
+is also measurable.\\
+For \textbf{sixth}, we proceed as follows:\\
+Consider the function $ f : A \to \R $ where $ A \in \msigm{\lambda^*}$ to be monotone. Now, consider the following two sets for any $ \alpha \in \R $:
+\begin{equation*}
+	\begin{split}
+		A_1 &= \{x\in A \where f(x) > \alpha\}\\
+		A_2 &= \left (\inv{f}(\alpha),\infty\right ) \intrs A
+	\end{split}
+\end{equation*}
+Now, take any $ x\in A_1 $, then $ f(x) > \alpha  \implies x > \inv{f}(\alpha)$. Now if $ \inv{f}(\alpha) \intrs A = \Phi $, then $ \{x\in A \where f(x) > \alpha\} = \Phi $ which is trivially measurable and we would be done. If however $ \inv{f}(\alpha) \intrs A \neq \Phi $, then $ \inv{f}(\alpha) = \{y\in A \where f(y) = \alpha\} $ so that $ f(y) > \alpha $ implies that $ y > \inv{f}(\alpha) $ so that $ f(y) > f(\inv{f}(\alpha))  = \alpha$. Therefore, $ x > \inv{f}(\alpha) $, that is $ x\in A_2 $, proving that $ A_1 \subseteq A_2 $. \\
+Similarly, take $ x\in A_2 $, therefore 
+\begin{align*}
+	x &> \inv{f}(\alpha) &&\\
+	f(x) &> f\left (\inv{f}(\alpha)\right )\\
+	f(x) &> \alpha\\
+	x&\in \{x\where f(x) > \alpha\}\\
+	x\in A_1.
+\end{align*}
+Therefore $ A_2 \subseteq A_1 $. Hence, $ A_1 = A_2 $. But since $ \left (\inv{f}(\alpha),\infty\right ) $ is an interval, hence measurable and $ A $ is given measurable, therefore $ A_2 = \left (\inv{f}(\alpha),\infty\right ) \intrs A$ is measurable, which makes $ A_1 = \{x\where f(x) > \alpha\}= A_2$ measurable for all $ \alpha \in \R $.\\
+For \textbf{seventh}, the result is simple to see since we are given that $ f $ is $ \lambda $-Measurable due to continuity (see Statement 4). Therefore, we can define the sequence of functions $ \{f_n\} $ as follows:
+\begin{equation*}
+	\begin{split}
+		f_n(x) &= \frac{f\left (x + \frac{1}{n}\right ) - f(x)}{\frac{1}{n}} \forall\;x\in \R.
+	\end{split}
+\end{equation*}
+As we can see, $ f_n $ is $ \lambda $-Measurable due to Proposition \ref{P-19}. Hence, we can see that because $ f^{\prime}(x) = \lim_{h\to 0}\frac{f(x+h)-f(x)}{h} $ for any $ x\in \R $, and since $ \lim_{n\to \infty} f_n(x) = f(x)$, therefore $ f_n \to f^\prime $ is $ \lambda $-Measurable (Proposition \ref{P-20}).
 \end{proof}
 \hrulefill
+\newpage
 \begin{proposition} \label{P-19}
 	Let $ (X,\alg{A}) $ be a measurable space and let $ A \in \alg{A}$. Consider two Measurable functions $ f,g : A \longrightarrow [0,+\infty] $ and $ c\in \R $. Then,
 	\begin{enumerate}
@@ -1289,6 +1317,20 @@ Therefore if $ f $ is Measurable, then $ f^{2} $ is Measurable. With this, we ca
 which, by previous results (2 \& 3), is measurable. 
 \end{proof}
 \hrulefill
+\begin{proposition}\footnote{Question 1 of Exercise 3.}
+Let $ (X,\alg{A}) $ be a measurable space. Consider a function $ f : A\to \R $ where $ A\in \alg{A} $. Then the following are equivalent:
+\begin{enumerate}
+	\item {$ f $ is a $ \alg{A} $-Measurable function.}
+	\item {$ \inv{f}(U) $ is a measurable set $ \forall $ open sets $ U \subseteq \R $.}
+	\item {$ \inv{f}(C) $ is a measurable set $ \forall $ closed sets $ C \subseteq \R $.}
+	\item {$ \inv{f}(B) $ is a measurable set $ \forall $ borel sets $ B \in \bor{R} $.}
+\end{enumerate}	
+\end{proposition}
+\begin{proof}
+	\emph{The proof is exactly the same as of Proposition \ref{P-24}.}
+\end{proof}
+
+\hrulefill
 \begin{definition}
 	(\textbf{Sequence of fuctions}) If $ \{f_n\} $ is a sequence of $ [-\infty,+\infty] $ valued functions on $ A $, then $ \sup_{n} f_n : A \to [-\infty,+\infty]$ is defined by
 	\[\left (\sup_{n} f_n\right )(x) = \sup\{f_n(x)\where n \in \N\}.\]
@@ -1320,7 +1362,7 @@ which, by previous results (2 \& 3), is measurable.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	Note that the set $ \inv{(\sup_{n}f_n)}(-\infty,\alpha] = \{x\in A\where (\sup_n f_n)(x) \le \alpha\} = \bintrs_n \{x\in A \where f_n(x)\le \alpha\}$. Therefore $ \sup_n f_n $ is measurable. Similarly, $ \inv{(\inf_n f_n)}(-\infty,\alpha)  = \{x\in A \where (\sup_nf_n)(x) <\alpha\} = \bunion_n \{x\in A\where f_n(x)<\alpha\}$. Now, denote $ g_k = \sup_{n\ge k}f_n $ and $ h_k = \inf_{n\ge k}f_n $. But since $ \limsup_{n} f_n = \inf_{n\ge 0} \sup_{k\ge n} f_k = \inf_{n\ge 0} g_n$ and $ \{g_n\} $ is measurable by $ 1^{st} $ property, therefore $ \limsup_{n} f_n $ is also measurable, similarly for $ \liminf_{n} $.
+	Note that the set $ \inv{(\sup_{n}f_n)}(-\infty,\alpha] = \{x\in A\where (\sup_n f_n)(x) \le \alpha\} = \bintrs_n \{x\in A \where f_n(x)\le \alpha\}$. Therefore $ \sup_n f_n $ is measurable. Similarly, $ \inv{(\inf_n f_n)}(-\infty,\alpha)  = \{x\in A \where (\inf_nf_n)(x) <\alpha\} = \bunion_n \{x\in A\where f_n(x)<\alpha\}$. Now, denote $ g_k = \sup_{n\ge k}f_n $ and $ h_k = \inf_{n\ge k}f_n $. But since $ \limsup_{n} f_n = \inf_{n\ge 0} \sup_{k\ge n} f_k = \inf_{n\ge 0} g_n$ and $ \{g_n\} $ is measurable by $ 1^{st} $ property, therefore $ \limsup_{n} f_n $ is also measurable, similarly for $ \liminf_{n} $.
 \end{proof}
 \hrulefill
 \newpage
@@ -1365,7 +1407,11 @@ Denote the set $ A = \{x\where g(x)\ge \alpha\} \intrs N $ and $B =\{x\where g(x
 	As Proposition \ref{P-20} shows, $ \liminf_n f_n $ and $ \limsup_{n} f_n $ are Measurable. As the given condition shows, $ \liminf_{n}f_n $ is equal to $ f $ for almost all $ X $. Hence Proposition \ref{P-21} implies that $ f $ is also Measurable.
 \end{proof}
 \hrulefill
-
+\subsubsection{A striking result}
+The following is an interesting result about Lebesgue Measurable functions on $ \R $.
+\begin{proposition}
+	Ci
+\end{proposition}
 \newpage
 \subsection{Cantor Set, again.}
 With the new tool in hand (measurable functions), we now turn back to the ever-interesting Cantor set, this time, to prove the sheer size of the $ \sigma $-algebra $ \msigm{\lambda^*} $ in comparison to the Borel $ \sigma $-algebra $ \bor{\R} $. In particular we show that $ \bor{\R} \subsetneq \msigm{\lambda^*} $.\\
@@ -1410,7 +1456,7 @@ Now, the following arguments:
 Hence the function which maps each real from $ [0,1] $ to it's binary representation is measurable.
 \end{proof}
 \hrulefill
-\begin{proposition}
+\begin{proposition}\label{P-24}
 	Let $ (X,\alg{A}) $ be a measurable space. If $ f $ is a $ \alg{A} $-Measurable function on $ A $ and $ B\in \bor{\R} $, then $ \inv{f}(B) \in \alg{A}$.
 \end{proposition}
 \begin{proof}
@@ -1447,10 +1493,10 @@ Hence $ \alg{D} $ is a $ \sigma $-algebra on $ \R $ (!) Now, due to measurabilit
 \end{proof}
 \hrulefill
 
-\emph{\textbf{WHY IS THIS STILL NOT COMPLETE?}}
+\textcolor{red}{\emph{\textbf{WHY IS THIS SUBSECTION STILL NOT COMPLETE!?}}}
 \newpage
 \subsection{Sequence of Functions approximating a Measurable Function.}
-We now show that any measurable function can be defined in terms of a simple function and a step function. For this, we first define what we mean by simple functions in Definition \ref{D-21}. Before that, let's see few interesting-but-basic properties of measurable functions. 
+We now show that any measurable function can be defined in terms of a simple function and a step function. For this, we first define what we mean by simple functions in Definition \ref{D-21}. Before that, let's see few more interesting-but-basic properties of measurable functions. 
 \begin{proposition}\label{P-25}
 	Let $ (X,\alg{A}) $ be a measurable space and $ f $ be an extended real valued function on $ A\in \alg{A} $. Define the following:
 	\[f^{+}(x) = \max (f(x),0)\;\text{and } f^{-}(x) = -\min (f(x),0).\]
@@ -1468,7 +1514,7 @@ We now show that any measurable function can be defined in terms of a simple fun
 \begin{proposition}
 	Let $ (X,\alg{A}) $ be a measurable space and $ A\in \alg{A} $. Let $ f : A\to [-\infty,+\infty]$. Then,
 	\begin{enumerate}
-		\item {If $ f $ is $ \alg{A} $-Measurable and if $ B $ is a subset of $ A \in \alg{A}$, then the restriction $ f_{B} $ of $ f $ to $ B $ is also $ \alg{A} $-Measurable. }
+		\item {If $ f $ is $ \alg{A} $-Measurable and if $ B $ is a subset of $ A $, then the restriction $ f_{B} $ of $ f $ to $ B $ is also $ \alg{A} $-Measurable. }
 		\item {If $ \{B_n\} $ is a sequence of sets that belong to $ \alg{A} $ such that $ A = \bunion_{n}B_n $ and $ f_{B_n} $ is $ \alg{A}$-Measurable for each $ n $, then $ f $ is also $ \alg{A} $-Measurable.}
 	\end{enumerate}
 \end{proposition}
@@ -1879,6 +1925,7 @@ where the supremum is defined for all step functions on any partition $ P $.\\\\
  	\[\int \phi dx = \sum_{i=1}^{N}\alpha_i \lm{E_i}\]
  \end{definition}
 \hrulefill
+
 \begin{definition}
 	(\textbf{Lebesgue Integral of a Measurable Function}) Suppose $ f : \R\to [0,+\infty) $ is a $ \lambda $-Measurable function, then the Lebesgue Integral of $ f $ is defined as
 	\begin{equation*}
@@ -1897,33 +1944,153 @@ where the supremum is defined for all step functions on any partition $ P $.\\\\
 \end{remark}
 \hrulefill
 \begin{proposition}
-	Consider the two $ \lambda $-Measurable functions $ f,g : \R \to [0,+\infty) $ and $ \phi,\psi : \R \to [0,+\infty) $ be two simple-functions, then the Lebesgue Integral has the following properties:
+	Consider the two $ \lambda $-Measurable functions $ f,g : \R \to [0,+\infty) $ and $ \phi: \R \to [0,+\infty) $ be a simple-function, then the Lebesgue Integral has the following properties:
 	\begin{enumerate}
+		\item {Consider two Lebesgue measurable subsets $ A $ and $ B $ of $ \R $ such that $ A\intrs B = \Phi $. Then,
+	\[\int_{A\union B}\phi dx = \int_A \phi dx + \int_B \phi dx.\]	
+	}
 		\item {For any $ \alpha \in \R $,
 	\[\int \alpha fdx = \alpha \int fdx.\]	
 	}
-\item {}
+\item {Integration is distributive:
+\[\int (f+g)dx = \int fdx + \int gdx.\]
+}
+\item {If $ f(x) \le g(x) $ holds for all $ x\in \R $, then 
+\[\int fdx \le \int gdx.\]
+}
+\item {Consider $ A $ and $ B $ be Lebesgue measurable subsets of $ \R $ such that $ A\subseteq B $. Then,
+\[\int_A f dx \le \int_B fdx.\]
+}
 	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\textbf{Part 1} : Since $ \phi $ is simple, therefore we can write
+	\[\phi = \sum_{i=1}^N \alpha_i \chi_{E_i}.\]
+	Now, by definition
+	\begin{align*}
+		\int_{A\union B} \phi dx &= \sum_{i=1}^{N} \alpha_i \lm{E_i \intrs (A\union B)}\\
+		&= \sum_{i=1}^{N} \alpha_i \lm{(E_i \intrs A) \union (E_i \intrs B)}\\
+		&= \sum_{i=1}^{N} \alpha_{i} \lm{E_i \intrs A} + \alpha_i \lm{E_i \intrs B} &&\text{$ \because E_i\intrs A$ and $ E_i \intrs B $ are disjoint.}\\
+		&= \int_{A} \phi dx + \int_{B} \phi dx
+	\end{align*}
+\textbf{Part 2 \& 3} : Can be seen easily from Theorem \ref{T-5}.\\\\
+\textbf{Part 4} : Note that we define
+\[\int fdx = \sup_{\phi \le f} \int \phi dx\text{ where $ \phi $ are simple functions.}\]
+Therefore, for any $ \phi \le f $, due to given condition $ f\le g $, we would have $ \phi \le g $. Hence,
+\begin{align*}
+	\int \phi dx \le \int g dx 
+\end{align*}
+Since this is true for all simple $ \phi \le f $, therefore $ \sup_{\phi \le f} \int \phi dx \le \int gdx $, proving the result.\\\\
+\textbf{Part 5} : Consider the following:
+\begin{align*}
+	\int_{A} f dx &= \int f\chi_{A} dx\\
+	&\le \int f\chi_{B} dx &&\text{$ \because \chi_{A} \le \chi_{B}$, then apply 4.}\\
+	&= \int_{B} f dx
+\end{align*}
+Hence proved.
+\end{proof}
+\subsection{Monotone Convergence Theorem}
+This is arguably one of the most important theorem in Integration theory,
+\begin{theorem}\label{T-5}
+	(\textbf{Monotone Convergence Theorem}) Consider a sequence $ \{f_n\} $ of $ \R\to [0,+\infty)  $ of $ \lambda $-Measurable functions which satisfies
+	\[f_n(x) \le f_{n+1}(x)\;\forall\;x\in \R \text{ and }n\]
+	 and suppose $ \lim_{n\to \infty} f_n $ exists. Then,
+	\[\int \lim_{n\to \infty} f_n = \lim_{n\to \infty} \int f_n.\]
+\end{theorem}
+\begin{proof}
+	Since $ f_n \le f_{n+1} $, therefore,
+	\[\int f_n \le \int f_{n+1}\le \int \lim_{n\to \infty} f_n.\]
+	Hence,
+	\[\lim_{n\to \infty} \int f_n \le \int \lim_{n\to \infty} f_n. \]
+	Therefore we have proved one inequality.\\\\
+	 Now to prove the other inequality, consider any simple function $ \phi \le \lim_{n\to \infty} f $. If we can show that $ \int f_n \ge \int \phi $ for any $ n \in \N $, then we are done. To this goal, consider $ \alpha \in (0,1) $. Construct the set\footnote{After reading the proof, it should appear striking to the reader on actually how much the proof depends on this construction. Both the claims in the following page utilizes this construction $ E_n $ to full extent! Hence, it is advised (by Instructor) to purse such effective constructions in the problem sheets and your own proofs.}
+	\[\boxed{E_n = \{x\where f_n(x) \ge \alpha \phi(x)\}}.\]
+	Clearly,
+	\[E_n \subseteq E_{n+1}\;\forall\;n\in \N.\]
+	Now,
+	\begin{equation}\label{T-5.1}
+		\int f_n \ge \int_{E_n} f_n \ge \alpha \int_{E_n}\phi.
+	\end{equation}
+	Moreover, we can see that
+	\[\text{Claim 1 : }\bunion_{n} E_n = \R.\]
+	This is easy to see as follows:
+	\begin{align*}
+		\text{Take }x\in \bunion_n E_n&\implies x\in E_{i_0} \text{ for some }i_0 \in \N.\\
+		&\implies x\in \R &&\because\text{ $ E_n $ are subsets of $ \R $.}\\
+		\text{Take }x\in \R &\implies \text{Either }(1)\; x\in \{x\where f_n(x) - \alpha \phi(x) \ge  0\} \text{ or } (2) \;x\in \{x\where f_n(x) - \alpha \phi(x) < 0\}  &&\text{for any $ n\in \N $.}\\
+		&\implies \text{If $ (1) $, then $ x\in E_n $, else if $ (2) $, then }\because \phi \le \lim_{n\to \infty}f_n, \;\exists \; n^{\prime} \;s.t.\; x\in E_{n^{\prime}}\\
+		&\implies x\in \bunion_{n} E_n. && \text{Hence Claim 1.}
+	\end{align*}
+Next, we can also see that
+\[\text{Claim 2 : }\int_{E_n}\phi \longrightarrow \int \phi\]
+This can be seen by expanding the \emph{simplicity} of $ \phi $ as follows:
+\begin{align*}
+\lim_{n\to \infty}	\int_{E_n} \phi &= \sum_{i=1}^{N} a_i\lim_{n\to \infty} \lm{A_i\intrs E_n}\\
+	&= \sum_{i=1}^{N} a_i \lm{\bunion_{n} A_i \intrs E_n} &&\because \text{ $ \{A_i\intrs E_n\}_n $ is increasing, use Proposition \ref{P-7}.}\\
+	&= \sum_{i=1}^{N} a_i \lm{A_i \intrs \bunion_n E_n}\\
+	&= \sum_{i=1}^{N}a_i \lm{A_i \intrs \R} &&\text{Claim 1.}\\
+	&= \sum_{i=1}^{N} a_i \lm{A_i} = \int \phi &&\text{Hence Claim 2.}
+\end{align*}
+Finally, take limit in \eqref{T-5.1} to get:
+\begin{align*}
+	\lim_{n\to \infty} \int f_n \ge \lim_{n\to \infty} \int_{E_n}f_n &\ge \alpha\lim_{n\to \infty} \int_{E_n} \phi &&\\
+	&=\alpha \int \phi&&\text{Claim 2.}\\
+	\lim_{n\to \infty} \int f_n &\ge \int \phi &&\because\text{ $ 0<\alpha <1 $ is arbitrary.}
+\end{align*}
+Hence, \textbf{for any} simple function $ \phi  \le \lim_{n\to \infty}f_n$, we have concluded that $ \int \phi \le \lim_{n\to \infty} \int f_n  $, hence it must be true that
+\begin{align*}
+	\int \lim_{n\to \infty} f_n = \sup_{\phi \le \lim_{n} f_n} \int \phi &\le \lim_{n\to \infty}\int f_n.
+\end{align*}
+Combining the converse inequality at the beginning, we hence get the desired result.
+\end{proof}
+\hrulefill
+\begin{proposition}
+	Consider a Lebesgue Measurable function $ f : \R\to [0,+\infty) $. Then,
+	\[ \int f dx = 0 \mathbf{\iff} f = 0 \;\text{almost everywhere.} \]
 \end{proposition}
 \begin{proof}
 	
 \end{proof}
-\subsection{Monotone Convergence Theorem}
-This is arguably one of the most important theorem in Integration theory,
+\hrulefill
+
+\newpage
+\subsection{Fatou's Lemma}
+
 \begin{theorem}
-	(\textbf{Monotone Convergence Theorem}) Consider a sequence $ \{f_n\} $ of $ \R\to [0,+\infty)  $ $ \lambda $-Measurable functions which satisfies
-	\[f_n(x) \le f_{n+1}(x)\;\forall\;x\in \R.\]
-	Then,
-	\[\int \lim_{n\to \infty} f_n = \lim_{n\to \infty} \int f_n.\]
+	If $ \{f_n\} $ is a sequence of Lebesgue Measurable functions from $ \R $ to $ [0,+\infty) $, then,
+	\[\int \liminf_n f_n \le \liminf_n \int f_n.\]
 \end{theorem}
 \begin{proof}
-	
+	We will use Monotone Convergence Theorem to prove this result. Define
+	\[g_k = \inf_{n\ge k} f_n\]
+	Therefore $ g_k \le g_{k+1} $ with $ g_k \le f_n \forall\; n\ge k$. Then,
+	\[\int g_k \le  \int f_n \forall\; n\ge k.\]
+	This implies that 
+	\[\int g_k \le \inf_{n\ge k} \int f_n.\]
+	We know that $ \lim g_k = \sup g_k = \liminf f_n$. Now, by MCT, 
+	\[\int \lim_k g_k = \lim_k \int g_k\]
+	Therefore 
+	\begin{equation*}
+		\begin{split}
+			\lim_{k\to \infty} \int g_k &= \sup_{k\ge n} \int g_k
+		\end{split}
+	\end{equation*}
 \end{proof}
-\newpage
+\begin{remark}
+	In fact,
+	\[\text{\textbf{Fatou's Lemma} $ \iff $ \textbf{Monotone Convergence Theorem}.}\]
+\end{remark}
+
+
+
+
+
 %\section{Integration of Non-Negative Functions}
 %We can now write any measurable function as 
 %\[f = \sum_{}\]
 %\newpage	
+
+\newpage
 \begin{thebibliography}{9}
 	\bibitem{Solovay70} 
 	Solovay, R. (1970). A Model of Set-Theory in Which Every Set of Reals is Lebesgue Measurable. Annals of Mathematics, 92(1), second series, 1-56.
