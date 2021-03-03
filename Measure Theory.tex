@@ -90,7 +90,7 @@
 \newcommand{\assum}[0]{\boxed{\textbf{\textit{Assumption}}}}
 \newcommand{\formula}[0]{\boxed{\textbf{\textit{Formula}}}}
 \newcommand{\defin}[0]{\boxed{\textbf{\textit{Definition}}}}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\newcommand{\abs}[1]{\left \vert #1\right \vert}
 \newcommand{\vect}[1]{\bm{#1}}
 \newcommand{\mat}[1]{\bm{\mathrm{#1}}}
 \newcommand{\norm}[1]{\Vert #1 \Vert}
@@ -1943,7 +1943,7 @@ where the supremum is defined for all step functions on any partition $ P $.\\\\
 	Therefore, the integral of a non-negative measurable function over a measurable set is given by the integral\footnote{From now on, any instance of \emph{integral} should be presupposed by Lebesgue integral, of-course, unless otherwise stated, in this text.} of restriction of $ f $ to it and zero otherwise.
 \end{remark}
 \hrulefill
-\begin{proposition}
+\begin{proposition}\label{P-33}
 	Consider the two $ \lambda $-Measurable functions $ f,g : \R \to [0,+\infty) $ and $ \phi: \R \to [0,+\infty) $ be a simple-function, then the Lebesgue Integral has the following properties:
 	\begin{enumerate}
 		\item {Consider two Lebesgue measurable subsets $ A $ and $ B $ of $ \R $ such that $ A\intrs B = \Phi $. Then,
@@ -1952,7 +1952,7 @@ where the supremum is defined for all step functions on any partition $ P $.\\\\
 		\item {For any $ \alpha \in \R $,
 	\[\int \alpha fdx = \alpha \int fdx.\]	
 	}
-\item {Integration is distributive:
+\item {Integration for positive valued Measurable functions is therefore distributive:
 \[\int (f+g)dx = \int fdx + \int gdx.\]
 }
 \item {If $ f(x) \le g(x) $ holds for all $ x\in \R $, then 
@@ -2044,19 +2044,47 @@ Hence, \textbf{for any} simple function $ \phi  \le \lim_{n\to \infty}f_n$, we h
 Combining the converse inequality at the beginning, we hence get the desired result.
 \end{proof}
 \hrulefill
-\begin{proposition}
+\begin{proposition}\label{P-34}
 	Consider a Lebesgue Measurable function $ f : \R\to [0,+\infty) $. Then,
-	\[ \int f dx = 0 \mathbf{\iff} f = 0 \;\text{almost everywhere.} \]
+	\[ \int f dx = 0 \mathbf{\iff} f \equiv 0 \;\text{almost everywhere.} \]
 \end{proposition}
 \begin{proof}
-	
+	\textbf{L $ \implies $ R} : Consider $ f $ is a non-negative real-valued function whose integral is zero. Construct the set,
+	\[E_n = \left \{ x\where f(x) \ge \frac{1}{n}\right \}.\]
+	In order to show that $ f \equiv 0$ almost everywhere, it is hence sufficient to show that $ \lm{E_n} = 0 \;\forall\; n\in\N$ because it equivalently proves that the measure of the set where $ f $ is greater than zero is zero.\\
+	Now, consider the following function
+	\[g_n = \frac{1}{n} \chi_{E_n}.\]
+	Clearly, because $ g_n $ is a simple function and 
+	\begin{equation*}
+		\begin{split}
+			\frac{1}{n} \chi_{E_n}(x) = \begin{cases}
+				\frac{1}{n}&\text{ if } f(x) \ge \frac{1}{n}\\
+				0 &\text{otherwise}
+			\end{cases}
+		\end{split}
+	\end{equation*}
+which clearly means that $ \frac{1}{n}\chi_{E_n} \le f $, therefore,
+	\begin{align*}
+		\int f = 0 &= \sup_{\phi \le f} \int \phi\\
+		&\ge \int \frac{1}{n} \chi_{E_n}\\
+		&= \frac{1}{n} \lm{E_n}\\
+		\implies & \lm{E_n} = 0\; \forall \;n\in \N.
+	\end{align*}
+\textbf{R $ \implies  $ L} : If a non-negative real-valued Measurable function $f $ is $ 0 $ almost everywhere, then for any simple function $ \phi \le f $, $ \phi $ must also be $ 0 $ almost everywhere, so that 
+\begin{equation*}
+	\begin{split}
+		\int \phi &= \sum_{i = 1}^{N} \alpha_{i} \lm{E_i}\\
+		&= 0
+	\end{split}
+\end{equation*}
+Since this is true for any simple $ \phi \le f$, therefore the supremum of all such $ \int\phi $ must also be zero, to make $ \int f = 0 $. 
 \end{proof}
 \hrulefill
 
 \newpage
 \subsection{Fatou's Lemma}
 
-\begin{theorem}
+\begin{theorem}\label{T-6}
 	If $ \{f_n\} $ is a sequence of Lebesgue Measurable functions from $ \R $ to $ [0,+\infty) $, then,
 	\[\int \liminf_n f_n \le \liminf_n \int f_n.\]
 \end{theorem}
@@ -2067,24 +2095,201 @@ Combining the converse inequality at the beginning, we hence get the desired res
 	\[\int g_k \le  \int f_n \forall\; n\ge k.\]
 	This implies that 
 	\[\int g_k \le \inf_{n\ge k} \int f_n.\]
-	We know that $ \lim g_k = \sup g_k = \liminf f_n$. Now, by MCT, 
+	Now, by MCT, 
 	\[\int \lim_k g_k = \lim_k \int g_k\]
 	Therefore 
-	\begin{equation*}
-		\begin{split}
-			\lim_{k\to \infty} \int g_k &= \sup_{k\ge n} \int g_k
-		\end{split}
-	\end{equation*}
+	\begin{align*}
+		\lim_{k\to \infty} \inf_{n\ge k} \int f_n = \liminf_k \int f_k &\ge \lim_{k\to \infty} \int g_k\\
+		&= \int \lim_{k\to \infty} g_k\\
+		&= \int \lim_{k\to \infty} \inf_{n\ge k} f_n\\
+		&= \int \liminf_k f_k
+	\end{align*}
+Hence Proved.
 \end{proof}
 \begin{remark}
 	In fact,
 	\[\text{\textbf{Fatou's Lemma} $ \iff $ \textbf{Monotone Convergence Theorem}.}\]
 \end{remark}
+\hrulefill
+\newpage
+\subsection{Integration of General Real-Valued Measurable Functions}
+With the notion of integration of non-negative Measurable function in place, it's not difficult to see how can one extend the same notion to Measurable functions which takes value in the whole real line.
+\begin{definition}
+	(\textbf{Lebesgue Integral of a Real-Valued Measurable Function}) Consider $ f: \R \to \R $ to be a Measurable function such that 
+	\begin{enumerate}
+		\item {$ \int f^{+}dx < \infty $, and}
+		\item {$ \int f^{-}dx < \infty $.}
+	\end{enumerate}
+If the above two conditions are satisfied, then $ f $ is called Lebesgue Integrable. Then, the Lebesgue Integral of $ f $ is defined as
+\[\bigstar \;\boxed{\int fdx = \int f^{+} dx - \int f^{-} dx} \;\bigstar \]
+\end{definition}
+\begin{remark}
+	It's important to note that the Integral $ \int fdx = \int f^{+} dx - \int f^{-} dx $ is easily defined for any measurable function, but $ f $ is called Lebesgue Integral only when it's value is finite!
+\end{remark}
+\hrulefill
+\begin{definition}
+	(\textbf{Lebesgue Integral over a Measurable Set}) Consider $ f : \R \to \R $ is Measurable, $ f\cdot \chi_{E} $ is an Lebesgue Integrable function and $ E \subseteq \R $ is also measurable. Then, 
+	\[\int_{E} f dx = \int f\cdot \chi_{E} dx .\]
+\end{definition}
+\hrulefill
+\subsubsection{Basic Properties of General Lebesgue Integral}
+The following properties are direct extensions of Proposition \ref{P-33} to the bigger class of Lebesgue Integrable functions.
+\begin{proposition}\label{P-35}
+	Consider $ f,g : \R\to \R $ to be Lebesgue Integrable functions. Then,
+	\begin{enumerate}
+		\item {For any $ \alpha \in \R $, we have:
+	\[\int \alpha fdx = \alpha\int fdx.\]	
+	}
+\item {$ f + g $ is also Lebesgue Integrable, with
+\[\int (f+g)dx = \int fdx + \int gdx.\]
+}
+\item {If $ f \equiv 0 $ almost everywhere on $ \R$, then,
+\[\int fdx = 0.\]
+}
+\item {If $ f\le g $ almost everywhere on $ \R $, then,
+\[\int fdx \le \int gdx.\]
+}
+\item {If $ A $ and $ B $ are measurable sets such that $ A\intrs B = \Phi $, then,
+\[\int_{A\union B} fdx = \int_{A} fdx + \int_{B} fdx.\]
+}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\textbf{S1} : Consider the case that $ \alpha \ge 0 $. Then,
+	\begin{align*}
+		(\alpha f)^{+} &= \max (\alpha f, 0) = \alpha \max(f,0) =\alpha f^{+}\\
+		(\alpha f)^{-} &= -\min(\alpha f,0) = -\alpha \min (f,0 = \alpha f^{-} 
+	\end{align*}
+and since $ \int f^{+}dx <\infty$ and $ \int f^{-} dx < \infty$, therefore $ \alpha f $ is also Lebesgue Integrable, with the integral given as
+\begin{align*}
+	\int \alpha f &= \int \alpha f^{+} - \int \alpha f^{-}\\
+	&= \alpha \left (\int f^{+} - \int f^{-}\right )\\
+	&= \alpha \int f
+\end{align*}
+Now consider that $ \alpha  < 0 $, then
+\begin{align*}
+	(\alpha f)^{+} &= \max(\alpha f, 0) = -\abs{\alpha} \min(f,0) = \abs{\alpha} f^{-}\\
+	(\alpha f)^{-} &= -\min(\alpha f, 0) = \abs{\alpha} \max (f,0) = \abs{\alpha} f^{+} 
+\end{align*}
+Hence, $ \alpha f $ is again Lebesgue Integrable, with the integral calculated as:
+\begin{align*}
+	\int \alpha f = \int (\alpha f)^{+} - \int (\alpha f)^{-} = \abs{\alpha} \left (\int f^{-} - \int f^{+}\right ) = -\abs{\alpha} \int f = \alpha \int f.
+\end{align*}
+\textbf{S2} : First,
+\begin{align*}
+	(f+g)^{+} &\le f^{+} + g^{+} \\
+	(f+g)^{-} &\le f^{-} + g^{-}
+\end{align*}
+for all $ x\in \R $, so that $ f+g $ is Lebesgue Integrable. Now,
+\begin{align*}
+	f + g &= (f+g)^{+} - (f+g)^{-} \\
+	&= f^{+} - f^{-} + g^{+} - g^{-}
+\end{align*}
+therefore,
+\begin{align*}
+	(f+g)^{+} - (f+g)^{-} &= f^{+} - f^{-} + g^{+} - g^{-}\\
+	(f+g)^{+} + f^{-} + g^{-} &= (f+g)^{-} + f^{+} + g^{+}\\
+	\int 	(f+g)^{+} + f^{-} + g^{-} &=  \int (f+g)^{-} + f^{+} + g^{+}\\
+	\int	(f+g)^{+} + \int f^{-} + \int g^{-} &=\int (f+g)^{-} + \int f^{+} + \int g^{+}&&(\text{$ \because $ of Proposition \ref{P-33}, S3.})\\
+\int	(f+g)^{+} -\int (f+g)^{-} &=  \int f^{+}  - \int f^{-}+ \int g^{+} - \int g^{-}\\
+\int	(f+g)^{+} -\int (f+g)^{-} &=  \int f + \int g
+\end{align*}
+\textbf{S3} : Given to us is that $ f \equiv  0 $ almost everywhere. This means that 
+\[\{x\in \R \where f(x) \neq 0\} \;\text{is of measure }0.\]
+We can write it equivalently as the union of the following two disjoint sets
+\begin{align*}
+	\{x\in \R \where f(x) \neq 0\} &= \{x\where f(x) > 0\} \union \{x\in \R \where f(x) < 0\}.\\
+	\lm{	\{x\in \R \where f(x) \neq 0\}}&=  \lm{\{x\where f^{+}(x) > 0\}} + \lm{\{x\where f^{-}(x) < 0\}}\\
+	&= 0
+\end{align*}
+Since measure is positive valued by definition, therefore, these two have to be individually be zero. That is,
+\[\lm{\{x\where f^{+}(x) > 0\}} = \lm{\{x\where f^{-}(x) < 0\}} = 0\]
+Now, by Proposition \ref{P-34}, we get that
+\[\int f^{+} = \int f^{-} = 0\]
+which implies that
+\[\int f = \int f^{+} - \int f^{-} = 0.\]
+\textbf{S4} : 
+\end{proof}
+\hrulefill
+\begin{proposition}
+	If $ f : \R \to \R $ is a Lebesgue Integrable Function, then,
+	\[\abs{\int fdx} \le \int \abs{f} dx\]
+\end{proposition}
+\begin{proof}
+	
+\end{proof}
+\hrulefill
+\newpage
+\subsection{Dominated Convergence Theorem}
+\begin{theorem}\label{T-7}
+	Let $ \{f_n\} $ be a sequence of Measurable functions such that there exists a Lebesgue Integrable function $ g $ which satisfies
+	\[\abs{f_n} \le g \;\forall\;n.\]
+	Suppose that the limit $ \lim_{n\to \infty} f_n $ exists. Then $ \lim_{n\to \infty} f_n $ is Lebesgue Integrable and, 
+	\[\lim_{n\to \infty} \int f_n dx = \int \lim_{n\to \infty} f_n dx.\]
+\end{theorem}
+\begin{proof}
+	Since $ \{f_n\} $ is a sequence of Measurable functions, therefore, $ \lim_{n\to \infty} f_n = f $ is also Measurable and $ \abs{f} $ is bounded by $ g $. But since $ g $ is Lebesgue Integrable, and $ f_n $ and $ f $ are bounded by $ g $, then each $ f_n $ and also $ f$ are also Lebesgue Integrable (Trivial to see). \\
+	Now, $ \{g + f_n\} $ is a sequence of Measurable functions. Moreover, since $ f_n \le g $ for all $ n $, therefore $ f_n + g \ge 0 $, so that $ \{f_n + g\} $ is a sequence of non-negative Measurable functions.\\
+	 Now using Fatou's Lemma (Theorem \ref{T-6}), we get,
+	\begin{align*}
+		\int \liminf_{n} (g+ f_n) dx &\le \liminf_{n} \int (g + f_n) dx\\
+		\int \left (g + \liminf_{n} f_n\right ) dx &\le  \int g dx+ \liminf_{n} \int f_n dx\\
+		\int gdx + \int \liminf_{n} f_n dx&\le \int gdx + \liminf_{n} \int f_n dx\\
+		\int \liminf_{n}f_n dx&\le \liminf_{n} \int f_n dx &&\text{$ \because g$ is L.I., so $ \int gdx < \infty $}\\
+		\int f dx &\le \liminf_{n}\int f_n dx&&\text{$ \because \limsup_{n} x_n = \liminf_{n} x_n = \lim_{n} x_n $.}
+	\end{align*}
+Similarly, since $ \{g - f_n\} $ is also a sequence of non-negative Measurable functions, therefore we can use Fatou's Lemma to conclude:
+\begin{align*}
+	\int \liminf_{n} (g-f_n) dx &\le \liminf_{n} \int (g-f_n)dx\\
+	\int \liminf_{n} \left (-f_n\right )dx&\le \liminf_{n} \left (-\int f_ndx \right )\\
+	-\int \limsup_{n} f_n dx&\le - \limsup_{n} \int f_n dx &&\text{$ \because \liminf_{n} (-x_n) = - \limsup_{n} x_n$.}\\
+	\int f dx & \ge \limsup_{n} \int f_n dx
+\end{align*}
+We hence have that 
+\[\limsup_{n} \int f_n dx \le \int fdx \le \liminf_{n} \int f_n dx\]
+But it is also true that 
+\[  \liminf_{n} \int f_n dx \le \limsup_{n}\int f_n dx.\] 
+Hence,
+\[\liminf_{n} \int f_n dx = \limsup_{n} \int f_n dx = \lim_{n} \int f_n dx = \int fdx\]
+Hence proved.
+\end{proof}
+\hrulefill
+\newpage
+\begin{proposition}
+	Consider $ \{f_n\} $ to be a sequence of Lebesgue Integrable functions such that
+	\[\sum_{n=1}^{\infty} \int \abs{f_n}dx < \infty.\]
+	Then, 
+	\begin{enumerate}
+		\item {The series
+		\[\sum_{n=1}^{\infty} f_n(x) \text{ converges almost everywhere on $ \R $.}\]}
+	\item {The sum
+\[f = \sum_{n=1}^{\infty}f_n\text{ is Lebesgue Integrable.}\]	
+}
+\item {The integral is
+\[\int \sum_{n=1}^{\infty}f_ndx = \sum_{n=1}^{\infty} \int f_n dx.\]
+}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\textbf{S1}. Denote the following:
+	\[\varphi = \sum_{n=1}^{\infty} \abs{f_n}\]
+	Clearly, $ \varphi $ is a non-negative Measurable function. Since we know that Lebesgue Integral for non-negative functions is countably additive, therefore,
+	\[\int \varphi dx = \sum_{n=1}^{\infty} \int \abs{f_n} dx < \infty.\]
+	Now, if $ \int \varphi < \infty$, then $ \varphi $ is finite almost everywhere on $ \R $\footnote{For a non-negative Measurable function $ f $ with given that $ \int fdx < \infty $, the set $ E =\{x\in \R\where f(x) = \infty\} $ together with supposition that $ \lm{E} > 0 $ is such that; since $ \int fdx = \sup_{\phi \le f} \int \phi $, therefore, if we take $ \phi = n\chi_{E} $ for any $ n > 0$ then $ n\chi{E} < f$. Hence $ \int fdx > n\lm{E} $ for all $ n $, so that $ \int fdx = \infty $. But it's a contradiction to $ \int fdx <\infty $. Therefore $ \lm{E} = 0 $.}. Now, since $ \sum_{n=1}^{\infty}f_n $ is absolutely convergent almost everywhere (last line), hence it is convergent almost everywhere too on $ \R $.\\\\
+	\textbf{S2}. Since $ \abs{\sum_{n=1}^{\infty} f_n} \le \sum_{n=1}^{\infty} \abs{f_n} = \varphi < \infty \;(\text{almost everywhere})$ and since we can modify the set where $ \varphi $ is not defined (infinite) arbitrarily to make a new function which would be Measurable and equal to $ \sum_{n=1}^{\infty} f_n $ almost everywhere, therefore $ \sum_{n=1}^{\infty}f_n $ would be Measurable.\\\\
+	\textbf{S3}. Define
+	\[\phi_{n} = \sum_{i=1}^{n} f_i.\]
+	Clearly, $ \phi_{n} \le \abs{\sum_{i=1}^{n}f_i} \le \sum_{i=1}^{n} \abs{f_i} \le \sum_{i=1}^{\infty} \abs{f_i} = \varphi$. Therefore, $ \phi_n $ is a sequence of Measurable functions and $ \phi_n \le \varphi $ where $ \varphi $ is an Integrable function (given). Therefore, using Dominated Convergence Theorem (\ref{T-7}), we get, 
+	\begin{align*}
+		\lim_n \int \phi_n dx &= \int \lim_{n}\phi_n dx\\
+		\lim_{n} \int \sum_{i=1}^{n} f_i dx&= \int \lim_{n} \sum_{i=1}^{n} f_i dx\\
+		\lim_{n}\sum_{i=1}^{n}\int f_i dx &= \int \sum_{i=1}^{\infty} f_i dx&&\text{$ \because $ Proposition \ref{P-35}, S2 }\\
+		\sum_{i=1}^{\infty} \int f_i dx &= \int \sum_{i=1}^{\infty} f_i dx.
+	\end{align*}
+\end{proof}
+Hence proved.
 
-
-
-
-
+\hrulefill
 %\section{Integration of Non-Negative Functions}
 %We can now write any measurable function as 
 %\[f = \sum_{}\]
