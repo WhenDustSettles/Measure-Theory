@@ -11,7 +11,8 @@
 \usepackage[margin=0.5in]{geometry}
 \usepackage{empheq}
 \usepackage{calligra}
-
+\usepackage{bm}
+\usepackage[]{microtype}
 %\usepackage[light,math]{anttor}
 %\usepackage[T1]{fontenc}
 %\usepackage[default]{fontsetup}
@@ -23,6 +24,7 @@
 \usepackage{mathpazo}
 \usepackage[light]{CormorantGaramond}
 
+\usepackage[alpine]{ifsym}
 
 %\usepackage{tgbonum}
 %\usepackage{cmbright}
@@ -81,7 +83,7 @@
 \newtheorem{proposition}{$\checkmark$ Proposition}
 
 \theoremstyle{definition}
-\newtheorem{lemma}{Lemma}
+\newtheorem*{lemma*}{Lemma}
 
 \usepackage{mathtools}
 \newcommand{\bb}[1]{\mathbb{#1}}
@@ -93,7 +95,7 @@
 \newcommand{\abs}[1]{\left \vert #1\right \vert}
 \newcommand{\vect}[1]{\bm{#1}}
 \newcommand{\mat}[1]{\bm{\mathrm{#1}}}
-\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\norm}[1]{\left \Vert #1 \right \Vert}
 \newcommand{\innerp}[2]{\langle #1, #2 \rangle}
 \newcommand{\expec}[2]{\mathbb{E}_{#1}\left[ #2\right]}
 \newcommand{\seq}[1]{\left\{#1\right\}}
@@ -149,6 +151,17 @@
 \newcommand{\suprem}[1]{\underset{#1}{\sup}}
 \newcommand{\setlow}[2]{\underbrace{\text{#2}}{#1}}
 \newcommand{\restrict}[2]{\left . #1 \right \vert_{#2}}
+\newcommand{\Lp}[1]{L^{p}\left (#1\right )}
+\newcommand{\wnorm}[2]{\left (\int \abs{#2}^{#1}\right )^{\frac{1}{#1}}}
+\newcommand{\LS}[2]{L^{#1}\left (#2\right )}
+\newcommand{\prem}[1]{\mu_{0}\left (#1\right )}
+\newcommand{\opm}[1]{\mu_{*}\left (#1\right)}
+\newcommand{\bv}[1]{\mathcal{BV}\left (#1\right )}
+\newcommand{\sm}[1]{\nu\left (#1\right )}
+\newcommand{\ms}{\perp}
+\newcommand{\tvsm}[1]{\abs{\nu}\left (#1\right )}  %Total Variation of a Signed Measure.
+\newcommand{\sblf}[1]{\alg{B}\left (#1\right )} %Space of Bounded Linear Functionals. 
+
 %\pagecolor{lightgray}
 \begin{document}
 \begin{titlepage}
@@ -229,9 +242,6 @@ These are few of the basic definitions that one might remember from real analysi
 \[K\subseteq \bunion_{i}B_{r_i}(a_i)\implies \exists \;i_1,\dots,i_N,\;\;K \subseteq \bunion_{n=1}^N B_{r_{i_n}}(a_{i_n})\]
 Note that \emph{compact metric spaces are totally bounded (!)}. Also, \emph{compact sets are closed}.
 }
-\item {\textbf{Essential Supremum} : For a sequence $ \{x_n\} $, essential supremum is defined as,
-\[\]
- }
 } 
 \end{itemize}
 The problem begins with Riemann Integrable functions when we see that functions like Dirichlet function ($ 1 $ on  irrational and $ 0 $ on rational points) can become \emph{measurable} even when the function is not continuous! This motivates the need of a formal notion of a \emph{measure}.
@@ -762,7 +772,7 @@ Therefore,
 Hence, proved.
 
  \end{proof}}
-\item {\begin{proof} \textbf{This proof is wrong, write the correct solution.} We divide the proof as follows:\\\\
+\item {\begin{proof} \textbf{This proof is wrong, write the correct solution from the \emph{Diary}.} We divide the proof as follows:\\\\
 		\textbf{Act 1.} \emph{$ A $ and $ B $ are disjoint.}\\
 		Take two subsets $ A,B \subseteq \R $ such that $ d(A,B) >0 $. Now, take any arbitrary pair $ a,b $ such that $ a\in A $ and $ b\in B $. Due to the fact that $ d(A,B) = \inf \{\abs{x-y}\where x\in A, \;y\in B\}$, therefore we have
 		\begin{equation*}
@@ -1166,7 +1176,7 @@ that is $ E $ is union of two Lebesgue Measurable sets, therefore $ E \in \msigm
 	(\textbf{Completion of a Measure Space}) Let $ (X,\alg{A}) $ be a measurable space and let $ \mu $ be a measure on $ \alg{A} $. The completion of $ \alg{A} $ under $ \mu $ is the collection $ \alg{A}_\mu $ of subsets $ A\subseteq X $ for which there are sets $ E $ and $ F $ in $ \alg{A} $ such that 
 	\[E\subseteq A\subseteq F\]
 	and
-	\[\m{E-F} = 0\footnote{Note that, in Exercise III, Q. 2, we proved that for any $A\in \alg{A} $, this is trivially true. That is, all $ \alg{A} $-measurable subsets are $ \alg{A}_\mu $-measurable. In particular, $ E $ was a $ F_\sigma $ set and $ F $ was a $ G_\delta $ set.}.\]
+	\[\m{F-E} = 0\footnote{Note that, in Exercise III, Q. 2, we proved that for any $A\in \alg{A} $, this is trivially true. That is, all $ \alg{A} $-measurable subsets are $ \alg{A}_\mu $-measurable. In particular, $ E $ was a $ F_\sigma $ set and $ F $ was a $ G_\delta $ set.}.\]
 \end{definition}
 \hrulefill
 \newpage
@@ -2216,7 +2226,15 @@ which implies that
 	\[\abs{\int fdx} \le \int \abs{f} dx\]
 \end{proposition}
 \begin{proof}
-	
+Simply note the following:
+\begin{align*}
+	\abs{\int fdx} &= \abs{\int \left ( f^{+} - f^{-}\right )dx}\\
+	&= \abs{\int f^{+}dx - \int f^{-}dx}\\
+	&\le \abs{\int f^{+}dx} + \abs{\int f^{-}dx}\\
+	&= \int f^{+} dx + \int f^{-}dx\\
+	&= \int \left (f^{+} + f^{-}\right )dx\\
+	&= \int \abs{f}dx.
+\end{align*}	
 \end{proof}
 \hrulefill
 \newpage
@@ -2290,11 +2308,1219 @@ Hence proved.
 Hence proved.
 
 \hrulefill
+\newpage
+\section{The $ L^{p}$ Spaces}
+We now turn into some more abstract formulation for analysis of measurable functions, by analyzing their class formed under certain definitions.
+\begin{definition}
+	(\textbf{$ L^{p} $ Norm of a function}) Consider any function $ f $ and $ p>0 $. The $ L^{p} $ norm of $ f $, denoted $ \norm{f}_p $, is defined as:
+	\[\norm{f}_p = \wnorm{p}{f}\]
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{The $ L^{p}$ Space}) Consider $ (X,\alg{A},\mu) $ to be a measure space. Suppose $ p> 0 $. Then, the class of measurable functions defined as:
+	\[\Lp{X,\alg{A},\mu} = \left \{f : X \to \R \where \norm{f}_p < \infty \right \}/(f\sim g \iff f=g\;\text{a.e.}).\]
+	Moreover, two measurable functions $ f,g \in \Lp{X,\alg{A},\mu} $ are said to be equal if and only if:
+	\[f = g\;\text{almost everywhere on $ \R $.}\]
+\end{definition}
+\begin{remark}
+	Note that $ \Lp{X,\alg{A},\mu} $ is just the class of Integrable functions when $ p=1 $.
+\end{remark}
+\begin{remark}
+	Note carefully the use of word \emph{class} rather than set. It is because that an element of $ \Lp{X,\alg{A},\mu} $ is not a function, but a class of functions identified by the relation $ f \sim g $ if and only if $ f = g $ almost everywhere. But for out purposes, one can get away by writing $ f \in  \Lp{X,\alg{A},\mu} $ to mean that $ f $ is Measurable and $ \norm{f}_p < \infty $ so that $ \abs{f}^{p}$ is Integrable.
+\end{remark}
+%\footnote{A class, naively speaking, is supposed to be that collection which cannot be a set, otherwise it would lead to contradictions. The set of such functions would be "too big"/"will cause paradoxes" to be a set, hence it is called a class. Perhaps a more concrete notion would be developed in a set theory course, not now.}
+\hrulefill
+\subsection{Algebraic Properties of $ L^{p} $ Space}
+We will now see some of the properties of $ L^{p} $ Spaces which reflects it's algebraic nature. In particular, we would prove that $ L^{p} $ is a vector space for any $ p> 0 $. But proving that $ \norm{\cdot }_{p} $ is actually the norm for functions in $ L^{p} $ ($ p\ge 1 $) would require a lot of construction.
+\subsubsection{$ L^{p} $ is a Vector Space}
+\begin{proposition}\label{P-38}
+	Consider $ (X,\alg{A},\mu) $ to be a measure space. Then, the $ L^{p} $ space
+	\[\Lp{X,\alg{A},\mu} \text{ is a \textbf{Vector Space}}.\]
+\end{proposition}
+\begin{proof}
+	First, let's deal with the scalar multiplication. Note that the ground field here is $ \R $. For any $ a,b\in \R $ and $ f,g \in \Lp{X,\alg{A},\mu} $, we trivially have:
+	\begin{align*}
+		(ab)f &= a(bf)\\
+		1f &= f\\
+		a(f + g) &= af + ag\\
+		(a+b)f &= af+ bf
+	\end{align*}
+Now, to show that $ L^{p}(X,\alg{A},\mu) $ is an abelian group under addition, the associativity, commutativity, identity ($ f $ such that $ f = 0 $ a.e.) and inverse (for $ f $, $ -f $ is the inverse) follows trivially. What remains to be shown is that for $f,g \in \Lp{X,\alg{A},\mu}  $, $ f + g \in \Lp{X,\alg{A},\mu} $ too. To see this, note that we know already, that $ f +g $ is Measurable, what we need to then show is that 
+\[\text{To Show : }\norm{f+ g}_p < \infty\]
+for any $ p > 0 $. All we need to show is therefore,
+\[\int \abs{f + g}^{p} < \infty\]
+To see this, note:
+\begin{align*}
+	\abs{f + g}^{p} &\le \left (\abs{f} + \abs{g}\right )^{p}\\&\le 2^{p}\max\left (\abs{f}^{p},\abs{g}^{p}\right )\\
+	&\le 2^{p}\left (\abs{f}^{p} + \abs{g}^{p}\right )
+\end{align*}
+By Proposition \ref{P-35} S4,
+\[\int \abs{f+ g}^{p} \le 2^{p}\left ( \int \abs{f}^{p} + \int \abs{g}^{p}\right) < \infty\]
+Therefore, $ \Lp{X,\alg{A},\mu} $ is a Vector Space.
+\end{proof}
+\hrulefill
+
+\newpage
+\subsubsection{Norm on $ L^{p} $ Vector Space}
+We first see that the norm defined at the beginning is actually not a norm in the case when $ p< 1 $. Therefore, $ L^{p} $ Vector Space with norm $ \norm{\cdot }_{p} $ would make sense only when $ p \ge 1 $.
+\begin{definition}
+	(\textbf{Norm on a Vector Space}) Consider a Vector Space $ (V,\R) $. A norm $ \norm{\cdot} $ on $ V $ is a function 
+	\[\norm{\cdot } : (V,\R) \to [0,\infty)\]
+	satisfying following three conditions:
+	\begin{enumerate}
+		\item {For any $ x\in (V,\R) $,
+	\[\norm{x} = 0\;\iff\;x = 0_{V}\]	
+	}
+\item {For any $ x\in (V,R) $ and $ \alpha \in \R $,
+\[\norm{\alpha x} = \abs{\alpha}\norm{x}\]
+}
+\item {For any $ x,y \in (V,\R) $
+\[\norm{x + y}\le \norm{x} + \norm{y}\]
+}
+	\end{enumerate}
+\end{definition}
+\hrulefill
+\\
+Now suppose $ 0<p<1 $, then, it is simple to see $ \norm{\cdot}_p $ does not follow Triangle Inequality on $ \Lp{X,\alg{A},\mu} $. To see this, note that for any $ a,b > 0 $ and $ p\in (0,1) $, we have:
+\begin{equation}\label{E-17}
+		a^{p} + b^{p}  > (a+b)^{p}
+\end{equation}
+This comes naturally from the relation:
+\[t^{p-1} > (a+t)^{1-p}\]
+and then it's integration.\\
+Using \eqref{E-17}, we can see that for any two sets $ E,F \in \alg{A} $ such that $ E\intrs F = \Phi $, if we write 
+\begin{align*}
+	a&= \m{E}^{1/p} = \wnorm{p}{\chi_{E}} = \norm{\chi_{E}}_{p}\\
+	b&= \m{F}^{1/p} = \wnorm{p}{\chi_{F}} = \norm{\chi_{F}}_{p}
+\end{align*}
+then, 
+\begin{align*}
+	\norm{\chi_{E} + \chi_{F}}_{p}&= \wnorm{p}{\chi_{E} + \chi_{F}}\\
+	&= \left (\int \left (\chi_{E} + \chi_{F}\right )^{p}\right )^{\frac{1}{p}}\\
+	&= \left (\int \left (\chi_{E}^{p} + \chi_{F}^{p} \right) \right )^{\frac{1}{p}}&&\text{$ \because \chi_{E} \cdot \chi_{F} = \chi_{E\intrs F} = \chi_{\Phi} = 0$ }\\
+	&= \left (\int \chi_{E}^{p} + \int \chi_{F}^{p}\right )^{\frac{1}{p}}\\
+	&=\left (a^{p} + b^{p}\right )^{\frac{1}{p}}  \\
+	&> a+b &&\text{Take power $ \frac{1}{p}$ both sides of Eq. \eqref{E-17}}\\
+	&= a+b\\
+	&= \norm{\chi_{E}}_p + \norm{\chi_{F}}_p
+\end{align*}
+Hence, there exists functions in Vector Space $ \Lp{X,\alg{A},\mu} $ for $ p\in (0,1) $ such that $ \norm{\cdot}_p $ does not satisfies the $ \Delta $-Inequality, hence $ \norm{\cdot}_p $ is not a norm on the vector space $ \Lp{X,\alg{A},\mu} $ for $ p\in (0,1) $.\\\\
+$ \bigstar $ \textbf{But what about $ p \ge 1 $?} It turns out we need more revelations, in terms of results, to prove that for $ p\ge 1 $, $ \norm{\cdot}_p $ is a norm on the vector space $ \Lp{X,\alg{A},\mu} $. We now discuss those \emph{revelations}.
+\newpage
+\begin{lemma*}
+	Consider $ a\ge 0  $, $ b\ge 0 $ and $ 0<\lambda < 1 $, then 
+	\[a^{\lambda}b^{1-\lambda} \le \lambda a + (1-\lambda) b.\]
+\end{lemma*}
+\begin{proof}
+	Consider the convex function $e^{x}  $. Since it is convex, therefore,
+	\begin{equation*}
+		\begin{split}
+			a^{\lambda} b^{1-\lambda} &= e^{\lambda  \ln a + (1-\lambda) \ln b}\\ &\le \lambda e^{\ln a} + (1-\lambda) e^{\ln b}\\
+			&= \lambda a + (1-\lambda ) b
+		\end{split}
+	\end{equation*}
+\end{proof}
+\hrulefill
+\subsubsection{H\"older's Inequality}
+One of the important \& frequently used inequalities which would be a stepping stone to show that $ \norm{\cdot}_p $ is a norm on $ \Lp{X,\alg{A},\mu} $ for $ p\ge 1 $.
+\begin{theorem}\label{T-8}
+	(\textbf{H\"older's Inequality}) Consider $ 1<p,q<\infty $ such that 
+	\[\frac{1}{p} + \frac{1}{q} = 1.\]
+	Then, for any $ f \in \LS{p}{X,\alg{A},\mu}$ and $ g\in \LS{q}{X,\alg{A},\mu} $
+	\begin{enumerate}
+		\item { \[\begin{aligned}[t]
+				fg \in \LS{1}{X,\alg{A},\mu}
+			\end{aligned}\]}
+		\item {\[\begin{aligned}[t]
+				\int \abs{fg}\le \wnorm{p}{f} \cdot \wnorm{q}{g}
+			\end{aligned}\].\\
+		OR\\
+\[\begin{aligned}[t]
+	\norm{fg}_1\le \norm{f}_p\cdot \norm{g}_q 
+\end{aligned}\]
+}
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	From the above Lemma, we have that for any $ a > 0 $ and $ b> 0	 $, the following holds:
+	\begin{align*}
+		a^{\frac{1}{p}} b^{\frac{1}{q}} \le \frac{a}{p} + \frac{b}{q}
+	\end{align*}
+Now, if we set 
+\begin{align*}
+	a &= \frac{\abs{f}^{p}}{{\left (\norm{f}_p\right )}^{p}}\\
+	b &= \frac{\abs{g}^{q}}{{\left (\norm{g}_q\right )}^{q}}
+\end{align*}
+and then use the inequality in above lemma, we get:
+\begin{align*}
+	\frac{\abs{f} \abs{g}}{\norm{f}_{p} \norm{g}_{q}} \le \frac{1}{p}\cdot \frac{\abs{f}^{p}}{{\left (\norm{f}_p\right )}^{p}} + \frac{1}{q} \cdot \frac{\abs{g}^{q}}{{\left (\norm{g}_q\right )}^{q}}.
+\end{align*}
+Now, because $ \abs{f}\abs{g} = \abs{fg} $, therefore from above inequality, we see that
+\[\int \abs{fg} < \infty\]
+hence $ fg \in \LS{1}{X,\alg{A},\mu} $. Furthermore, since we know that inequality is preserved in Integration, therefore integrating the above inequality leads to the following:
+\begin{align*}
+	\int \frac{\abs{f} \abs{g}}{\norm{f}_{p} \norm{g}_{q}} &\le \int \frac{1}{p}\cdot \frac{\abs{f}^{p}}{{\left (\norm{f}_p\right )}^{p}} + \int \frac{1}{q} \cdot \frac{\abs{g}^{q}}{{\left (\norm{g}_q\right )}^{q}}\\
+	\frac{1}{\norm{f}_p\norm{g}_q}\int \abs{fg} &\le \frac{1}{p \left (\norm{f}_p\right )^{p}}\int  \abs{f}^{p} + \frac{1}{q \left (\norm{g}_q\right )^{q}}\int  \abs{g}^{q}\\
+	\frac{\norm{fg}^{1}_1}{\norm{f}_p\norm{g}_q} &\le \frac{1}{p} + \frac{1}{q} =1\\
+	\norm{fg}_1&\le \norm{f}_p \norm{g}_q
+\end{align*}
+Hence proved.
+\end{proof}
+\begin{remark}
+	With H\"older's Inequality, we are one step closer to proving that $ \norm{f+g}_p \le\norm{f}_p + \norm{g}_p  $ for any $ f,g\in \LS{p}{X, \alg{A}, \mu} $ where $ 1\le p < \infty $, to formally make $ \norm{\cdot}_p $ a norm on the vector space $ \Lp{X,\alg{A},\mu} $. \textbf{This is finally proved by Minkowski's Inequality} which we prove now: 
+\end{remark}
+\hrulefill
+\subsubsection{Minkowski's Inequality}
+\begin{theorem}\label{T-9}
+	(\textbf{Minkowski's Inequality}) : Consider any $ f,g \in \Lp{X,\alg{A},\mu} $ and $ 1\le p < \infty $. Then
+	\[\wnorm{p}{f +g} \le \wnorm{p}{f} + \wnorm{p}{g}\]
+	OR, 
+	\[\norm{f +g}_p \le \norm{f}_p + \norm{g}_p.\]
+\end{theorem}
+\begin{proof}
+	Since $ \abs{f+g} \le \abs{f} + \abs{g} $, therefore if $ p = 1 $, then the result follows immediately. \\
+	Now consider $ p > 1 $. Moreover, suppose that $ q> 1 $ is such that
+	\[\frac{1}{p} + \frac{1}{q} = 1.\]
+	Note that this also leads to following equations
+	\begin{align*}
+		(p-1)q &= p\\
+		p\left (1-\frac{1}{q}\right ) &=1
+	\end{align*}
+	Now, with this, we can bound $ \norm{f+ g}_p^{p} $ as follows:
+	\begin{align*}
+		\norm{f+g}_{p}^{p} &= \int \abs{f+g}^{p}\\
+		&= \int \abs{f+g} \cdot \abs{f+g}^{p-1}\\
+		&\le \int \left (\abs{f} + \abs{g}\right )\cdot \abs{f+g}^{p-1}\\
+		&= \int \abs{f}\cdot \abs{f+g}^{p-1} + \int \abs{g}\cdot \abs{f+g}^{p-1}\\
+		&= \int \abs{\abs{f} \cdot\abs{f+g}^{p-1}} + \int \abs{\abs{g}\cdot \abs{f+g}^{p-1} }\\
+		&= \int \abs{f\cdot (f+g)^{p-1}} + \int \abs{g \cdot (f+g)^{p-1}}\\
+		&= \norm{f\cdot (f+g)^{p-1}}_1 + \norm{g\cdot (f+g)^{p-1}}_1\\
+		&\le \norm{f}_p \cdot\norm{(f+g)^{p-1}}_q + \norm{g}_p\cdot \norm{(f+g)^{p-1}}_q&&\text{H\"older's Inequality (\ref{T-8})}\\
+		&= \left (\norm{f}_p + \norm{g}_p\right )\cdot \norm{(f+g)^{p-1}}_q\\
+		&= \left (\norm{f}_p + \norm{g}_p\right ) \cdot \wnorm{q}{(f+g)^{p-1}}\\
+		&= \left (\norm{f}_p + \norm{g}_p\right ) \cdot \left (\int (f+g)^{(p-1)q}\right )^{\frac{1}{q}}\\
+		&= \left (\norm{f}_p + \norm{g}_p\right ) \cdot \left (\int (f+g)^{p}\right )^{\frac{1}{q}}\\
+		&= \left (\norm{f}_p + \norm{g}_p\right )\cdot \left (\int (f+g)^{p}\right )^{\frac{1}{p}\cdot \frac{p}{q}}\\
+	 &= \left (\norm{f}_p + \norm{g}_p\right )\cdot \norm{f+g}_p^{\frac{p}{q}}\\
+		\frac{\norm{f+g}_p^{p}}{\norm{f+g}_p^{\frac{p}{q}}} &\le  \left (\norm{f}_p + \norm{g}_p\right )\\
+		\norm{f+g}_p^{p\left (1-\frac{1}{q}\right )} &\le  \left (\norm{f}_p + \norm{g}_p\right )\\
+		\norm{f+g}_p &\le \norm{f}_p + \norm{g}_p
+	\end{align*}
+Hence proved.
+\end{proof}
+\begin{remark}
+ $ \bigstar $ Hence, in continuation of our effort to prove that \textbf{$ \norm{\cdot}_p $ is a norm on the vector space $ \Lp{X,\alg{A},\mu} $ for $ 1\le p<\infty $}, we can now satisfactorily say that it is indeed such, especially by Minkowski's Inequality just proved. One also calls a vector space with norm a norm space.
+\end{remark}
+
+\hrulefill
+\newpage
+\subsection{Completeness of Norm Space $ \Lp{X,\alg{A},\mu} $}
+We now see that the norm space $ \Lp{X,\alg{A},\mu} $ is actually a complete metric space on the metric induced by the norm! But before stating the result, let us revisit the definitions of \emph{series}, \emph{Cauchy Sequences} \& \emph{completeness} for any arbitrary norm space $ (V,\R,\norm{\cdot}) $.    
+\subsubsection{General Definitions and Results in Normed Spaces}
+\begin{definition}
+	(\textbf{Convergent Sequence}) Let $ (V,\R,\norm{\cdot}) $ be a norm space and $ \{x_n\} $ be a sequence in it. Then $ \{x_n\} $ is said to converge to $ x\in (V,\R,\norm{\cdot}) $ if 
+	\[\norm{x_n - x} \longrightarrow 0\;\text{ as }n\to \infty.\]
+\end{definition}
+\hrulefill
+
+\begin{definition}
+	(\textbf{Cauchy Sequence}) Let $ (V,\R,\norm{\cdot}) $ be a norm space and $ \{x_n\} $ be a sequence in it. Then $ \{x_n\} $ is said to be a Cauchy Sequence in $ (V,\R,\norm{\cdot}) $ if
+	\[\forall \epsilon > 0, \;\exists \; N\in \N \;\text{such that}\; \norm{x_n - x_m} < \epsilon\;\forall \;n,m \ge N.\]
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Complete Norm Space} or \textbf{Banach Space}) A norm space $ (V,\R,\norm{\cdot}) $ is called a Complete Metric Space or a Banach Space if 
+	\[\text{Every Cauchy Sequence in $ (V,\R,\norm{\cdot}) $ is convergent in $ (V,\R,\norm{\cdot}) $.}\]
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Series in a Norm Space}) A series in a norm space $ (V,\R,\norm{\cdot}) $ is defined as 
+	\[\sum_{n=1}^{\infty} x_n\;\text{where }x_n \in (V,\R,\norm{\cdot}).\]
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Convergent Series in a Norm Space}) A series $ \sum_{n=1}^{\infty} x_n$ in a norm space $ (V,\R,\norm{\cdot}) $ is said to be convergent if the sequence 
+	\[\{S_n\} \text{ where }S_n = \sum_{i=1}^{n} x_i\text{ is convergent in $ (V,\R,\norm{\cdot}) $.}\]
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Absolutely Convergent Series}) Consider a series $ \sum_{n=1}^{\infty}x_n $ in a norm space $ (V,\R,\norm{\cdot}) $. Then it is called absolutely convergent if and only if
+	\[\sum_{n=1}^{\infty} \norm{x_n} < \infty.\]
+\end{definition}
+\hrulefill
+
+We now see the equivalent condition needed for a norm space to become a complete norm space:
+\begin{theorem}\label{T-10}
+	(\textbf{\emph{Equivalent condition for a Banach Space}}) Suppose that $ (V,\R,\norm{\cdot}) $ is a norm space. Then,
+	\[\text{ $ (V,\R,\norm{\cdot}) $ is a Complete Norm Space (or Banach Space) $ \bm{\iff} $ Every Absolutely Convergent Series is also Convergent in $ (V,\R,\norm{\cdot}) $.}\]
+\end{theorem}
+\begin{proof}
+	\textbf{L $ \implies  $ R} : Suppose $ (V,\R,\norm{\cdot}) $ is a Banach Space. Hence any Cauchy sequence in it converges at a point within it. Now, take any Absolutely Convergent series, say,
+	\[\sum_{n=1}^{\infty} x_n\]
+	in $ (V,\R, \norm{\cdot}) $. This means that
+	\[\sum_{n=1}^{\infty}\norm{x_n} < \infty.\]
+	Now this also means that if we write $ S_n = \sum_{i=1}^{n} x_i $, then 
+	\begin{align*}
+		\norm{S_n - S_m} &= \norm{\sum_{i=1}^{n} x_i - \sum_{i=1}^{m} x_i}\\
+		&= \norm{\sum_{i=n}^{m} x_i }\\
+		&\le \sum_{i=n}^{m} \norm{x_i}
+	\end{align*}
+Now since $ \sum_{n=1}^{\infty} x_n$ is absolutely convergent, therefore, 
+\[\sum_{i=n}^{m} \norm{x_i} \le \sum_{i=1}^{\infty} \norm{x_i} < \infty\;\forall\;n\le m\in\N \]
+also with the fact that $ \sum_{i=n}^{m} \norm{x_i} \longrightarrow 0$ as $ n,m \to \infty $.
+Hence,
+\[\norm{S_n-S_m} < \infty \;\text{and}\;\norm{S_n-S_m}\to 0 \;\text{as }n,m\to \infty.\]
+Hence, $ \{S_n\} $ is a Cauchy Sequence in $ (V,\R,\norm{\cdot}) $ and thus is convergent. Therefore, $ \sum_{i=1}^{\infty}x_i $ is also convergent.\\\\
+\textbf{R $ \implies  $ L} : Suppose that $ (V,\R,\norm{\cdot}) $ is a norm space with given that every absolutely convergent series converges. Since we need to show that $ (V,\R,\norm{\cdot}) $ is then a Banach space, hence we now consider any arbitrary Cauchy sequence, say, $ \{x_n\} $.\\
+Now, construct a new sequence from the taken Cauchy sequence $ \{x_n\} $ as $ \{y_n\} $ defined by the following:
+\begin{align*}
+	y_1 &= x_{N_1} \;\text{where } N_1 \text{ is such that } \norm{x_n - x_m} < \frac{1}{2^{1}}  \;\forall\; n,m\ge N_1\\
+		y_2 &= x_{N_2} - x_{N_1} \;\text{where } N_2 \text{ is such that } \norm{x_n - x_m} < \frac{1}{2^{2}}  \;\forall\; n,m\ge N_2 > N_1\\
+		\vdots &= \vdots\\
+			y_k &= x_{N_k} - x_{N_{k-1}} \;\text{where } N_k \text{ is such that } \norm{x_n - x_m} < \frac{1}{2^{k}}  \;\forall\; n,m\ge N_k > N_{k-1}.
+\end{align*}
+Now, with $ \{y_n\} $ in hand, we see some peculiar properties of it, such as:
+\[\sum_{j=1}^{k} y_j= x_{N_k}.\]
+and especially, we see that $ \sum y_n $ is absolutely convergent(!) as follows:
+\begin{align*}
+	\sum_{j=1}^{\infty} \norm{y_j} &\le \norm{y_1} + \sum_{j=1}^{\infty} \norm{y_j}\\
+	&\le \norm{x_{N_1}} + \sum_{j=1}^{\infty} \frac{1}{2^{j}}\\
+	&= \norm{x_{N_1}} + 1 < \infty&&\text{$ \because \{x_n\}$ is Cauchy, so $ \norm{x_i} < \infty\forall i$. }
+\end{align*} 
+Now, since we are given that every absolutely convergent series in $ (V,\R,\norm{\cdot}) $ converges, therefore $ \sum y_n $ also converges in $ (V,\R,\norm{\cdot}) $. But convergence of a series means convergence of it's sequence of partial sums $ S_n = \sum_{i=1}^{n} y_i $ and $ S_n = x_{N_{n}} $ as shown above. Therefore, we have
+\[\{x_{N_{n}}\} \text{ converges in $ (V,\R,\norm{\cdot}) $.} \] 
+Since $ \{x_{N_n}\} $ converges, therefore, if we suppose $ x_{N_n}\to x $, then:
+\begin{align*}
+	\norm{x_n - x} &=\norm{x_n - x_{N_n} + x_{N_n} - x}\\
+	&\le \norm{x_n - x_{N_n}} + \norm{x_{N_n} - x}&&\text{$ 2^{nd} $ term $ \to 0 $.}\\
+	&= \norm{x_n -x_{N_n}} 
+\end{align*}
+Now, we know that $ n < N_n $, therefore, $ \exists p\in \N$ such that $ N_n > n \ge N_{n-p} $. Hence
+\[\norm{x_n - x_{N_n}} < \frac{1}{2^{n-p}}\]
+and as $ n\to \infty $, $ \norm{x_n - x_{N_n}} \to 0 $ too.
+Therefore,
+\[\norm{x_n - x} \to 0.\]
+Hence, $ \{x_n\} $ is a convergent sequence, apart from being Cauchy. Since the choice of $ \{x_n\} $ was arbitrary, therefore all Cauchy sequences are convergent. Hence $ (V,\R,\norm{\cdot}) $ is a Complete Norm Space or Banach Space.
+\end{proof}
+\hrulefill
+\newpage
+\subsubsection{$ \Lp{X,\alg{A},\mu} $ is a Banach Space!}
+We now see that $ \Lp{X,\alg{A},\mu} $ is a Complete Norm Space.
+\begin{theorem}
+	The normed vector space $ \Lp{X,\alg{A},\mu} $ for $ 1\le p < \infty $ is a Banach Space.
+\end{theorem}
+\begin{proof}
+	From the Theorem \ref{T-10}, we just need to equivalently show that any absolutely convergent series is convergent.\\
+	 Now consider $ \{f_k\} $ in $ \Lp{X,\alg{A},\mu} $ to be absolutely convergent, so that
+	\[\sum_{k=1}^{\infty}\norm{f_k}_p = B < \infty.\]
+	Also consider the following sequence:
+	\[G_n = \sum_{k=1}^{n} \abs{f_k}\;\text{and}\; G = \sum_{k=1}^{\infty} \abs{f_k}.\]
+	Clearly, for all $ n\in \N $ we have
+	\begin{align*}
+		\norm{G_n}_p &= \norm{\sum_{k=1}^{n} \abs{f_k}}\\
+		&\le \sum_{k=1}^{n}\norm{f_k}_p \le B < \infty.
+	\end{align*}
+	Also note that $ \{G_n\} $ is an increasing sequence of positive-valued Measurable functions.\\
+	Since $ \lim_{n} G_n $ exists, therefore, by the Monotone Convergence Theorem (Theorem \ref{T-5}), we have:
+	\begin{align*}
+		\int \lim_{n} G_n^{p} &= \int G^{p} \\
+		&= \lim_{n}\int G_n^{p} \\
+		&\le B^{p}
+	\end{align*}
+Therefore, we have that $ \int G^{p} $ is finite almost everywhere on $ \R $ (just consider the above result that $ \int \left (G^{p} - \chi_{X}\right ) = 0 $ where $ \m{X} = B^{p}$.)\\
+Since $ G^{p} $ is finite almost everywhere, therefore $ G $ is finite almost everywhere. Hence, we get 
+\begin{align*}
+	\sum_{k=1}^{\infty}{f_k} &\le \sum_{k=1}^{\infty} \abs{f_k}\\
+	&= G < \infty\;\;\text{almost everywhere.}
+\end{align*}
+Now write 
+\[F = \sum_{k=1}^{\infty}f_k.\]
+Clearly, we have
+\begin{align*}
+	\abs{F} &= \abs{\sum_{k=1}^{\infty} f_k}\\
+	&\le \sum_{k=1}^{\infty} \abs{f_k}\\
+	&= G < \infty
+\end{align*}
+and since $ f_k $ are members of the vector space $ \Lp{X,\alg{A},\mu} $, we also have that $ F \in \Lp{X,\alg{A},\mu} $.\\
+Now, we see that
+\begin{align*}
+	\abs{F - \sum_{k=1}^{n}f_k}^{p} &\le \abs{F} + \abs{\sum_{k=1}^{n}f_k}\\
+	&\le G + G = 2G\\
+	&\le (2G)^{p} \;\;\text{$ \because $ $ 1\le p < \infty $.}\\
+	&< \infty
+\end{align*}
+Now since $ \abs{F - \sum_{k=1}^{n} f_k}^{p} < \infty$, hence it is in $ \LS{1}{X,\alg{A},\mu} $.\\
+With the above inequality, we see that $ \abs{F - \sum_{k=1}^{n}} $ is finite and is absolutely bounded by another Measurable function for each $ n $, hence, we can now use the Dominated Convergence Theorem (Theorem \ref{T-7}) to write 
+\begin{align*}
+	\left (\lim_{n} \int \abs{F - \sum_{k=1}^{n}f_k}^{p}\right )^{\frac{1}{p}} &= \left (\int \lim_{n} \abs{F - \sum_{k=1}^{n}f_k}^{p}\right )^{\frac{1}{p}}\\
+\lim_{n}\norm{F- \sum_{k=1}^{n}f_k}_p	&= 0&&\text{Note that $ F = \sum_{k=1}^{\infty} f_k \in  \Lp{X,\alg{A},\mu}$.}
+\end{align*}
+Hence, we have
+\[\sum_{k=1}^{\infty} f_k = F \in \Lp{X,\alg{A},\mu}\]
+that is, the absolutely convergent series $ \sum_{k=1}^{f_k} $ is also convergent in the same space! Therefore, $ \Lp{X,\alg{A},\mu} $ is a Banach Space. 
+ \end{proof}
+\hrulefill
+\newpage
+\section{Product Measure}
+We now turn to product measure spaces. This concept would help us to formalize the notion of double (or higher) integration over the so defined \emph{product measure spaces}. In fact, this concept actually shows the generality of the concept of measure spaces, which we might discuss afterwards.\\\\
+To introduce formal notion of product measure space, we need a definition based framework to work in, which we learn now:
+\begin{definition}
+	(\textbf{Premeasure}) Consider an \textbf{algebra}\footnote{Note that this just an algebra, not a $ \sigma $-algebra.} $ \alg{A}$ over a set $ X $. The map 
+	\[\mu_{0} : \alg{A} \longrightarrow [0,+\infty]\]
+	is called a premeasure if it satisfies:
+	\begin{enumerate}
+		\item {$ \prem{\Phi} = 0$, and}
+		\item {For $ A_1,A_2,\dots $ a sequence of disjoint sets from $ \alg{A} $,
+	\[\prem{\bunion_{i=1}^{\infty} A_i} = \sum_{i=1}^{\infty} \prem{A_i}\]	
+	}
+	\end{enumerate}
+\end{definition}
+\hrulefill
+\begin{definition}\label{D-37}
+	(\textbf{Outer Measure by Premeasure}) Consider an algebra $ \alg{A} $ defined on set $ X $. Suppose $ \mu_{0} : \alg{A} \to [0,+\infty] $ is a premeasure on it. We then define $ \mu_{*} $ as the following:
+	\[\mu_{*} : \alg{A} \longrightarrow [0,+\infty]\]
+	defined by, for $ A \subseteq X $:
+	\[\mu_{*}(A) = \inf \left \{\sum_{n=1}^{\infty} \prem{E_n} \where A \subseteq \bunion_{n=1}^{\infty} E_n\text{ where } \{E_n\}\text{ is a sequence in $ \alg{A} $}\right \}\]
+\end{definition}
+\hrulefill
+\begin{proposition}\label{P-39}
+	For an algebra $ \alg{A} $ on $ X $, $ \mu_{*} $ satisfies the following:
+	\begin{enumerate}
+		\item {$ \mu_{*} $ is an Outer Measure.}
+		\item {The collection of $ \mu_{*} $ measurable sets, $ \msigm{\mu_{*}} $, is a $ \sigma $-algebra.}
+		\item {The $ \sigma $-algebra generated by algebra $ \alg{A} $, $ \alg{B} $, is a proper subset of $ \msigm{\mu_{*}} $. That is,
+	\[\alg{B} \subsetneq \msigm{\mu_{*}}\]	
+}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Clearly, $ \opm{\Phi} = 0$ as, the $ \infty $ sequence of $ \Phi $, $ \{A_n\} $ where $ A_i = \Phi \;\forall\;i$, is such that
+	\[\Phi \subseteq \bunion_{i}A_i\]
+	and 
+	\[\sum_{i} \prem{A_i} = 0.\]
+	The next parts has proof similar to one done for Lebesgue Outer Measure.
+\end{proof}
+\hrulefill
+\newpage
+\subsection{Some Set Theoretic Concepts}
+We would need this concepts for later discussions.
+\begin{definition}
+	(\textbf{Elementary Class/Family}) A collection of sets denoted by $ \alg{E} $ is called an elementary class if:
+	\begin{enumerate}
+		\item {$ \Phi \in \alg{E} $,}
+		\item {For any $ E,F \in \alg{E} $, then 
+	\[E\intrs F \in \alg{E}\]	
+	}
+\item {If $ E\in \alg{E} $, then
+\[\exists\; \{F_n\}_{n=1}^{N} \;\text{where $ F_n $'s are disjoint and in $ \alg{E} $}\;\text{such that } \comp{E} = \bunion_{n=1}^{N} F_n\]
+}
+	\end{enumerate}
+\end{definition}
+\hrulefill
+\begin{proposition}\label{P-40}
+	If $ \alg{E} $ is an Elementary Class, then the collection $ \alg{A} $ defined as:
+	\[\text{For any $ A \in \alg{A} $, }\exists \;\{E_n\}_{n=1}^{N} \;\text{where $ E_n $'s are disjoint and in $\alg{E}  $ such that } A = \bunion_{n=1}^{N} E_n\]
+	is an Algebra.
+\end{proposition}
+\begin{proof}
+	We already have $ \Phi \in \alg{A} $ as $ \Phi $ is in $ \alg{E} $. Moreover, we have for any $ A\in \alg{A} $ a sequence of disjoint sets, $ \{E_n\}_{n=1}^{N} $, from $ \alg{E} $, such that,
+	\[A = \bunion_{n=1}^{N} E_n.\]
+	Now, note that for $ \comp{A} $, we have:
+	\begin{align*}
+		\comp{A} &= \bintrs_{n=1}^{N} \comp{E_n}\\
+		&= \bintrs_{n=1}^{N} \bunion_{i=1}^{M_n} F_i^{n} 
+	\end{align*} 
+where last line follows because $ E_n \in \alg{E} $ where $ \alg{E} $ is an elementary class, so for each $ \comp{E_n} $, there exists a finite sequence of disjoint sets $ \{F^{n}_i\}_{i=1}^{M_n} $ in $ \alg{E} $  whose union is $ \comp{E_n} $. \textbf{\emph{Complete the proof later, in diary.}}
+\end{proof}
+\hrulefill
+\begin{definition}
+	(\textbf{Monotone Class}) A collection of subsets of a set $ X $ denoted $ \alg{C} \subseteq \pow{X}$ is called a monotone class if:
+	\begin{enumerate}
+		\item {For if $ \{E_n \} $ is a sequence of monotonically increasing sets from $ \alg{C} $, that is,
+	\[E_1\subseteq E_2 \subseteq \dots \]	
+	then,
+\[\bunion_{n=1}^{\infty} \in \alg{C}.\]
+ }
+\item {For if $ \{E_n \} $ is a sequence of monotonically decreasing sets from $ \alg{C} $, that is,
+	\[E_1\supseteq E_2 \supseteq \dots \]	
+	then,
+	\[\bintrs_{n=1}^{\infty} \in \alg{C}.\]}
+	\end{enumerate}
+\end{definition}
+\hrulefill
+\newpage
+\begin{proposition}
+	Consider a family of monotone class given as $ \{\alg{C}_n\} $. Then,
+	\[\bintrs_{n} \alg{C}_n \text{ is a monotone class.}\]
+\end{proposition}
+\begin{proof}
+	Take any sequence of sets $ \{I_n\} $ from $ \bintrs_{n=1}^{\infty}  \alg{C}_n $ such that they are monotonically increasing,
+	\[I_1\subseteq I_2 \subseteq \dots.\]
+	Now, because each $ I_i \in \alg{C}_n \forall \; n$ and it is a monotonically increasing sequence, therefore $ \bunion_{i=1}^{\infty} I_i \in \alg{C}_n\;\forall\;n$. Hence,
+	\[\bunion_{i=1}^{\infty} I_i \in \bintrs_{n}\alg{C}_n.\]
+	Similarly, suppose $ \{J_n\} $ is a monotonically decreasing sequence of sets from $ \bintrs_{n}\alg{C}_n $,
+	\[J_1\supseteq J_2 \supseteq \dots\]
+	Hence, each $ J_i \in \alg{C}_n \;\forall\;n$. Since each $ \alg{C}_n $ is a monotone class, therefore, $ \bintrs_{i=1}^{\infty} J_i \in \alg{C}_n \;\forall\;n$. Hence,
+	\[\bintrs_{i=1}^{\infty} J_i \in \bintrs_{n}\alg{C}_n.\]
+	Hence proved.
+\end{proof}
+\hrulefill
+\begin{definition}
+	(\textbf{Generated Monotone Class}) Consider any $ \alg{S} \subset \pow{X} $. Then, $ \alg{C}(\alg{S}) $ is called the monotone class generated by $ \alg{S} $ if $ \alg{C}(\alg{S}) $ is the smallest monotone class containing $ \alg{S} $.
+\end{definition}
+\hrulefill
+\begin{proposition}
+	Let $ \alg{A} $ be an Algebra. Suppose 
+	\begin{itemize}
+		\item {$ \alg{C}(\alg{A}) $ is the Monotone Class generated by $ \alg{A} $, and}
+		\item {$ \alg{M} $ is the $ \sigma $-Algebra generated by $ \alg{A} $.} 
+	\end{itemize}
+Then,
+\[\alg{M} =  \alg{C}(\alg{A}).\]
+\end{proposition}
+\begin{proof}
+	\emph{Typeset the proof later. Written in Diary at $ 4^{th} $ August, 2018.}
+\end{proof}
+\hrulefill
+\newpage
+\subsection{Product Measure Space}
+\begin{definition}
+	(\textbf{Measurable Rectangle}) Suppose $ (X,\alg{A},\mu) $ and $ (Y,\alg{B},\nu) $ are two measure spaces. Suppose $ X\times Y $ is the Cartesian Product of the sets $ X $ and $ Y $. Then, $ A\times B \subseteq X\times Y$ is called a Measurable Rectangle if
+	\[A\in \alg{A}\text{ and } B\in \alg{B}\]
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Elementary Rectangles}) Suppose $ (X,\alg{A},\mu) $ and $ (Y,\alg{B},\nu) $ are measure spaces. Denote by $ \alg{K} $ the collection of all Measurable Rectangles. Then, we define Elementary Rectangles, $ \alg{E} $, as the collection :
+	\[\text{For any $ A \in \alg{E} $, }\exists \;\{E_n\}_{n=1}^{N} \;\text{where $ E_n $'s are disjoint Measurable Rectangles in $\alg{K}  $ such that } A = \bunion_{n=1}^{N} E_n.\]
+\end{definition}
+\begin{remark}
+$ \bigstar $ It is important to note that\textbf{ Elementary Rectangles $ \alg{E} $ is an Algebra}, due to Proposition \ref{P-40}.
+\end{remark}
+\hrulefill
+\begin{definition}
+	(\textbf{Product of Measurable Spaces}) Denote $ \alg{A} \times \alg{B}$ to be the $ \sigma $\textbf{-Algebra generated by} $ \alg{E} $. Then, 
+	\[(X\times Y, \alg{A}\times\alg{B})\]
+	is the product of Measurable Spaces $ (X,\alg{A}) $ and $ (Y,\alg{B}) $.
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Product Measure Space}) Suppose $ (X,\alg{A},\mu) $ and $ (Y,\alg{B},\nu) $ are two Measure Spaces. The product of these two Measure Spaces is defined as the following triple:
+	\[\left (X\times Y, \alg{A}\times \alg{B},\mu \times \nu\right )\]
+	where
+	\begin{enumerate}
+		\item {$ X\times Y $ is the Cartesian Product of $ X $ and $ Y $.}
+		\item {$ \alg{A}\times\alg{B} $ is the $ \sigma $-Algebra generated by Elementary Rectangles of the product $ X\times Y $ under respective measure spaces.}
+		\item {$ \mu \times \nu $ is defined as:
+	\[\left (\mu \times \nu\right )(A\times B) = \mu(A) \cdot \nu(B)\]	
+	where $ A\times B $ is a Measurable Rectangle.
+	}
+	\end{enumerate}
+\end{definition}
+\begin{remark}
+	$ \bigstar $ Note the following:
+	\begin{itemize}
+		\item {$ \mu \times \nu $ defines a premeasure on Elementary Rectangles, $ \alg{E} $, which is an Algebra. }
+		\item {With the premeasure $ \mu \times \nu $ on $ \alg{E} $, we then construct the outer measure $ \mu_{*}\times \nu_{*} $ by premeasure as done in Definition \ref{D-37}.}
+		\item {As Proposition \ref{P-39} shows, the collection of $ \mu_{*} \times \nu_{*}$ measurable sets from $ \alg{E} $ forms a $ \sigma $-Algebra, that is, the $ \sigma $-Algebra generated from all Elementary Rectangles. This is exactly what we did now.}
+	\end{itemize}
+\end{remark}
+\hrulefill
+\newpage
+\subsubsection{Properties of Product Measure Space}
+\begin{definition}
+	(\textbf{$ x $ \& $  y $ Sections}) Suppose $ E\subseteq X\times Y $. Then we define
+	\begin{enumerate}
+		\item {$ x $-Section as all $ y $ available in $ E $ if $ x $ is fixed:
+	\[E_x = \{y\in Y \where (x,y) \in E\}\]	
+	}
+		\item {$ y $-Section as all $ x $ available in $ E $ if $ y $ is fixed:
+	\[E^y = \{x\in X \where (x,y) \in E\}\]	
+}
+	\end{enumerate}
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{$ x $ \& $ y $ Sections of a Function}) Suppose $ f $ is a function on $ X\times Y $. Then,
+	\begin{enumerate}
+		\item {$ x $-Section of $ f $ given $ x\in X $ is just $ f_x(y) = f(x,y) $.	
+	}
+\item {$ y $-Section of $ f $ given $ y \in Y$ is just $ f^{y}(x) = f(x,y) $}
+	\end{enumerate}
+\end{definition}
+\hrulefill
+\begin{proposition}\label{P-43}
+
+		{Suppose $ (X,\alg{A}) $ and $ (Y,\alg{B}) $ are two measurable spaces and $ E\subseteq \alg{A}\times \alg{B} $. Then,
+			\begin{enumerate}
+				\item {$ E_x \in \alg{B} $ $ \forall x\in X $ , and}
+				\item {$ E^{y} \in \alg{A} $ $ \forall y\in Y $.}
+			\end{enumerate}
+			That is, each section of a subset of product of measurable spaces, $ \alg{A} \times \alg{B}$, is itself measurable.}
+
+\end{proposition}
+\begin{proof}
+	 \emph{Trivial, but done in Diary at $ 13^{th} $ August, 2018.}
+\end{proof}
+\hrulefill
+\begin{proposition}
+	Suppose $ f : \alg{A}\times \alg{B} \longrightarrow \R$ is a $ \alg{A} \times \alg{B}$-Measurable Function. Then,
+	\begin{enumerate}
+		\item {$ f_x : \alg{B}\longrightarrow \R $ is a $ \alg{B} $-Measurable Function $ \forall x\in X $.}
+		\item {$ f^y : \alg{A}\longrightarrow \R $ is a $ \alg{A} $-Measurable Function $ \forall y\in Y $.}
+	\end{enumerate}
+That is, each section of a Measurable Function on product Measurable space is itself a Measurable function.
+
+\end{proposition}
+
+\begin{proof}
+	\emph{Trivial, same as Proposition \ref{P-43}.}
+\end{proof}
+\hrulefill
+\newpage
+\subsection{The Fubini-Tonelli Theorem}
+This is perhaps the most important result of this course, whose proof can be found in any course book, available on webpage.
+\begin{theorem}
+	 (\textbf{Tonelli's Theorem}) Suppose $ (X,\alg{A},\mu) $ and $ (Y,\alg{B},\nu) $ are two $ \sigma $-finite\footnote{This means that there are finite $ \{A_n\} $ sets in $ \alg{A} $ with finite measure such that $ \bunion_{n} A_n = X $. Similarly for $ (Y,\alg{B},\nu) $.} measure spaces. Consider an $ \alg{A}\times \alg{B} $-Measurable function 
+	 \[f : X\times Y \longrightarrow [0,+\infty].\]
+	 Then,
+	 \begin{enumerate}
+	 	\item {The function:
+	\begin{itemize}
+		\item {$ g : X\to [0,+\infty] $ given by:
+	\[g(x) = \int_{Y} f_xd\nu\]	
+	is $ \alg{A} $-Measurable.
+	}
+\item {$ h : Y\to [0,+\infty] $ given by:
+	\[h(y) = \int_{X} f_yd\mu\]	
+	is $ \alg{B} $-Measurable.}
+	\end{itemize} 	
+ 	}
+ \item {$ f $ satisfies:
+\begin{align*}
+	\int_{X\times Y} f  d(\mu\times\nu) &= \int_{X}\left (\int_{Y} f_x d\nu\right ) d\mu\\
+	&= \int_{Y} \left (\int_{X} f_y d\mu \right ) d\nu
+\end{align*} 
+}
+	 \end{enumerate}
+\end{theorem}
+\hrulefill
+\begin{theorem}
+	(\textbf{Fubini's Theorem}) Suppose $ (X,\alg{A},\mu) $ and $ (Y,\alg{B},\nu) $ be $ \sigma $-finite measurable spaces. Consider an $ \alg{A}\times \alg{B} $-Measurable function which is also $ \mu\times\nu $-Integrable given as:
+	\[f : X\times Y \longrightarrow [-\infty,+\infty]\footnote{\textbf{Note the target set here!}}.\]
+	Then,
+	\begin{enumerate}
+		\item {We have that
+	\begin{itemize}
+		\item {$ f_x $ is $ \nu $-Integrable \textbf{almost everywhere} on $ Y $.}
+		\item {$ f_y $ is $ \mu $-Integrable \textbf{almost everywhere} on $ X $.}
+	\end{itemize}	
+	}
+\item {The following relation holds:
+\begin{align*}
+	\int_{X\times Y} fd(\mu\times \nu) &= \int_{X}\left (\int_{Y} f_x d\nu\right ) d\mu\\
+	&= \int_{Y} \left (\int_{X} f_y d\mu \right ) d\nu
+\end{align*}
+}
+	\end{enumerate}
+\end{theorem}
+\hrulefill
+
 %\section{Integration of Non-Negative Functions}
 %We can now write any measurable function as 
 %\[f = \sum_{}\]
 %\newpage	
+\newpage
+\section{Differentiation}
+We now study some of the interconnections between integration and differentiation and related notions.
+\subsection{Differentiability}
+\begin{definition}
+	(\textbf{Upper/Lower Left \& Upper/Lower Right Derivatives}) Suppose $ f : \R \longrightarrow [-\infty,+\infty]$ is a function such that for all $ x \in \R $, $ f $ is defined on some open interval around $ x $, then we define the following quantities:
+	\begin{itemize}
+		\item {\textbf{\emph{Upper Right Derivative}} : 
+	\[D^{+}f(x) = \limsup_{h\to 0^{+}} \frac{f(x+h) - f(x)}{h}\]	
+	}
+\item {\textbf{\emph{Lower Right Derivative}} : 
+\[D_{+}f(x) = \liminf_{h\to 0^{+}} \frac{f(x+h) - f(x)}{h}\]
+}
+\item {\textbf{\emph{Upper Left Derivative}} : 
+\[D^{-}f(x) = \limsup_{h\to 0^{-}}\frac{f(x+h) - f(x)}{h}\]
+}
+\item {\textbf{\emph{Lower Left Derivative}} : 
+\[D_{-}f(x) = \liminf_{h\to 0^{-}} \frac{f(x+h) - f(x)}{h}\]
+}
+	\end{itemize}
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Differentiable function}) The function $ f $ is said to be differentiable at $ x $ if and only if:
+	\[D^{+}f(x) = D_{+}f(x) = D^{-}f(x) = D_{-}f(x).\]
+	Hence, a function is said to be differentiable if it is differentiable at all points of it's domain. 
+\end{definition}
+\hrulefill
+\subsection{Functions of Bounded Variation}
+We now study those functions which do not change too erratically over an interval. We already have the notion of differentiability for the same, so we would see connections between such type of functions and there differential character.
+\begin{definition}
+	(\textbf{Variations of a Function}) Suppose we are given a function on an interval
+	\[f : [a,b] \longrightarrow \R\]
+	and any partition $ \mathcal{P}_{[a,b]} = \{a =x_0,x_1,x_2,\dots,x_{k-1},x_k = b\}$ where $ x_i < x_{i+1} $. Now, define the following the following three quantities:
+	\begin{align*}
+		p_\mathcal{P} &= \sum_{i=1}^{k} \left (f(x_i) - f(x_{i-1})\right )^{+} \\
+		n_\mathcal{P} &= \sum_{i=1}^{k}\left (f(x_i) - f(x_{i-1})\right )^{-}\\
+		t_\mathcal{P} &= p_{\mathcal{{P}}}+n_{\mathcal{P}} = \sum_{i=1}^{k} \abs{f(x_i) - f(x_{i-1})} 
+	\end{align*} 
+where $ _{\mathcal{P}} $ denotes the partition over which the sum is defined and it's simple to observe that $ p_\mathcal{P} - n_{\mathcal{P}} = f(b) - f(a)$. Also, $ x^{+} = \max(x,0) $ and $ x^{-} = \max(-x,0) $.\\
+ Then, we finally define the following three quantities:
+\begin{itemize}
+	\item {\textbf{\emph{Positive Variation of $ f $}} : 
+	\[P_f = \sup_{\mathcal{P}} p_{\mathcal{P}}.\]	
+}
+\item {\textbf{\emph{Negative Variation of $ f $}} :
+\[N_f = \sup_{\mathcal{P}} n_{\mathcal{P}}.\]
+}
+\item {\textbf{\emph{Total Variation of $ f $}} : 
+\[T_f = \sup_{\mathcal{P}} t_\mathcal{P}.\]
+}
+\end{itemize}
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Function of Bounded Variation}) Suppose $ f : \R \to \R $ is a given function. Then $ f $ is said to be of bounded variation over interval $ [a,b] $ if 
+	\[T_f[a,b] = T_f < \infty.\]
+	The class of functions on a given interval $ [a,b] $ which are of bounded variation is denoted by:
+	\[\bv{[a,b]}.\]
+	So that for any $ f\in \bv{[a,b]} $, $ T_f < \infty $.
+\end{definition}
+\begin{remark}
+	A function $ f $ is said to belong to $ \bv{(-\infty,\infty)} $ if $ f $ belongs to each $ \bv{[a,b]} $ for each interval $ [a,b] $. Clearly, in this case $ T_f(-\infty,\infty)  = \sup_{[a,b]} T_f[a,b]$.
+\end{remark}
+\hrulefill
+\begin{proposition}
+	Suppose $ f\in \bv{[a,b]} $. Then,
+	\begin{enumerate}
+		\item {$ f(b) - f(a) = P_f-N_f$.}
+		\item {$ T_f = P_f + N_f $.}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Take any $ f\in \bv{[a,b]} $. Then we have $ T_f[a,b] < \infty$. Now, we know that for any partition $ \mathcal{P} $ of $ [a,b] $, $ f(b) - f(a) = p_\mathcal{P} - n_\mathcal{P} $. Now, take supremum over all partitions of $ [a,b] $, both sides of the above, to write:
+	\begin{align*}
+		\sup_{\mathcal{P}} \left (f(b) - f(a)\right ) &= \sup_{\mathcal{P}} \left (p_\mathcal{P} - n_\mathcal{P}\right )\\
+		f(b) - f(a)&= \sup_{\mathcal{P}} p_\mathcal{P} - \sup_{\mathcal{P}} n_\mathcal{P} &&\text{Known result : $ \sup_n \left (x_n - y_n \right ) = \sup_n x_n - \sup_n y_n $.}\\
+		&= P_f - N_f
+   	\end{align*}
+   For the $ 2^{nd} $ part, we have
+   \begin{align*}
+   	T_f &= \sup_{\mathcal{P}} t_\mathcal{P}\\
+   	&= \sup_{\mathcal{P}} (p_\mathcal{P} + n_{\mathcal{P}})\\
+   	&= \sup_{\mathcal{P}} p_{\mathcal{P}} + n_{\mathcal{P}} &&\text{Known result : $ \sup_n \left (x_n + y_n \right ) = \sup_n x_n + \sup_n y_n $.}\\
+   	&= P_f + N_f
+    \end{align*}
+Hence proved.
+\end{proof}
+\hrulefill
 
+The following theorem is important as it characterizes the functions in $ \bv{[a,b]} $.
+\begin{proposition} \label{P-46}
+	The following result holds:
+	\begin{align*}
+		f\in \bv{[a,b]} \;\;\bm{\iff}\;\; \exists \;g,\;h\text{ which are \textbf{monotonically increasing} and \textbf{finite} on $ [a,b] $, such that } f = g-h.   
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	\textbf{ L $ \implies $ R} : Consider the functions 
+	\begin{align*}
+		g(x) &= P_f[a,x] + f(a)\\
+		h(x) &= N_f[a,x]
+ 	\end{align*}
+ For any $ a\le x_0  \le x_1 \le b $, we observe that:
+ \begin{align*}
+ 	g(x_0) &= P_f[a,x_0] + f(a) \le P_f[a,x_1] + f(a) = g(x_1)\\
+ 	h(x_0) &= N_f[a,x_0] \le N_f[a,x_1] = h(x_1)
+ \end{align*}
+because we are adding another partitioning point. Hence, $ g,h $ are monotonically increasing functions on $ [a,b] $. Hence, $ g(b) = P_f[a,b] + f(a) < \infty$ as $ f $ is of bounded variation, so $ g $ is finite. Similarly $ h $ is finite on $ [a,b] $. Finally, we note that:
+\begin{align*}
+	g(x) - h(x) &= P_f[a,x] + f(a) - N_f[a,x]\\
+	&= P_f[a,x] - N_f[a,x] + f(a)\\
+	&= f(x) - f(a) + f(a)\\
+	&= f(x) 
+\end{align*}
+Hence proved that if $ f \in \bv{[a,b]}$, then there exists two monotonically increasing, finite functions on $ [a,b] $ such that $ f $ is their difference.\\\\
+\textbf{R $ \implies $ L} : Take any partition $ \mathcal{P}[a,b] = a = x_0 < x_1 < x_2 < \dots <  x_k = b $. Now we see that
+\begin{align*}
+	t^{f}_\mathcal{P} &= \sum_{i=1}^{k} \abs{f(x_i) - f(x_{i-1})} \\
+	&= \sum_{i=1}^{k} \abs{g(x_i) - h(x_i) - g(x_{i-1}) + h(x_{i-1})} \\
+	&\le \sum_{i=1}^{k} \abs{g(x_i) - g(x_{i-1})} + \sum_{i=1}^{k}\abs{h(x_{i}) - h(x_{i-1})}\\
+	&= t^{g}_{\mathcal{P}} + t^{h}_{\mathcal{P}}\\
+	&< \infty
+\end{align*}
+Hence $ T_f = \sup_{\mathcal{P}} t^{f}_{\mathcal{P}} < \infty$. So $ f\in \bv{[a,b]} $.
+\end{proof}
+\hrulefill
+\subsection{Differentiability of Monotone Functions \& Lebesgue's Theorem}
+\begin{definition}
+	(\textbf{Vitali Covering}) A collection $ \mathcal{C} $ of closed, bounded, nondegenerate\footnote{An interval $ [a,b] $ is said to be nondegenerate if $ a< b $.} intervals is said to cover a given set $ E $ in the sense of Vitali if:
+	\[\text{For any $ x\in E $ and any $ \epsilon > 0 $, $ \exists \; I \in \mathcal{C}$ such that $x\in I \;\&\; \lm{I} < \epsilon $.}\]
+\end{definition}
+\hrulefill
+\begin{theorem}\label{T-14}
+	(\textbf{The Vitali Covering Lemma}) Suppose $ E \subset \R$ is of finite outer measure, that is $ \lom{E} < \infty $. Also consider a collection $ \mathcal{C} $ of closed, bounded intervals which covers $ E $ in the sense of Vitali. Then,
+	\[\forall \;\epsilon > 0,\; \exists \text{ disjoint \& finite subcollection } \{I_k\}_{k=1}^{n} \text{ of } \mathcal{C} \text{ such that }\]
+	\[\lom{E\setminus \bunion_{k=1}^{n} I_k } < \epsilon.\]
+\end{theorem}
+\begin{proof}
+	\emph{In Progress \HalfFilledHut.}
+\end{proof}
+\newpage
+The following is a generalization of Mean Value Theorem from Calculus.
+\begin{proposition}
+	Let $ f $ be an increasing function on a closed, bounded interval $ [a,b] $. Then, $ \forall \; \alpha > 0$, we have
+	\[\lom{\{x\in(a,b)\where D^{+}f(x) = D^{-}f(x) \ge \alpha\}} \le\frac{1}{\alpha}\cdot \left ( f(b) - f(a) \right )\]
+\end{proposition}
+\begin{proof}
+	We first begin be denoting $ E_\alpha = \{x\in (a,b)\where D^{+}f(x) = D^{-}f(x) \ge\alpha\} $. Now, construct the following collection $ \mathcal{F} $ of closed and bounded intervals $ [c,d] $ for which,
+	\[f(d)-f(c) \ge \alpha^{\prime}(d-c)\]
+	where $ 0 < \alpha^{\prime} \le \alpha $. Now take any $ x\in E_\alpha $. We hence see that $ D^{+}f(x) \ge \alpha $. Now for any $ \epsilon > 0 $, we can construct a closed bounded interval $ I = \left [x-\frac{\epsilon}{2}, x+ \frac{\epsilon}{2}\right ] $ for which $ \lom{I} = \epsilon $ with $ x\in I $. But moreover, we have that 
+	\begin{align*}
+		Df(x) = \frac{f(x+\epsilon/2) - f(x-\epsilon/2)}{\epsilon} &\ge \alpha \\
+	f(x+ \epsilon/2) - f(x-\epsilon /2) &\ge \epsilon\alpha \ge \epsilon \alpha^{\prime}
+	\end{align*}
+Hence the interval $ \left [x-\frac{\epsilon}{2}, x+\frac{\epsilon}{2}\right ] \in \mathcal{F}$. Therefore, \textbf{\emph{$ \mathcal{F} $ covers $ E_\alpha $ in the sense of Vitali}}(!)\\\\
+Now, by Vitali Covering Lemma (Theorem \ref{T-14}), we get that 
+\[\forall\;\epsilon>0,\;\exists\;\text{finite disjoint }\{I_k\}_{k=1}^{n} \text{ from $ \mathcal{F} $ such that }\lom{E_\alpha \setminus \bunion_{k=1}^{n} I_k} < \epsilon\]
+Now, observe that
+\[E_\alpha \subseteq \bunion_{k=1}^{n}I_k \union \left (E_\alpha \setminus \bunion_{k=1}^{n} I_k\right )\]
+Hence, by finite sub-additivity of outer measures, we get the following:
+\begin{align*}
+	\lom{E_\alpha} &\le \lom{E_\alpha \setminus \bunion_{k=1}^{n}} + \lom{\bunion_{k=1}^{n} I_k}\\
+	&< \epsilon + \sum_{k=1}^{n} \lom{I_k}\\
+	&\le \epsilon + \sum_{k=1}^{n} \frac{f(d_k) - f(c_k)}{\alpha^{\prime}}&&\text{Suppose $ I_k = [c_k,d_k] $.}
+\end{align*}
+Now since $ f $ is an increasing function and $ I_k \subset [a,b] \;\forall \;k$, therefore we have:
+\begin{align*}
+	\sum_{k=1}^{n} f(d_k) - f(c_k) \le f(b) - f(a)
+\end{align*} 
+That is,
+\begin{align*}
+	\lom{E_\alpha} < \epsilon + \frac{1}{\alpha^{\prime}} \cdot \left (f(b) - f(a)\right )
+\end{align*}
+But since $ \epsilon > 0 $ and $ \alpha^{\prime}\in (0,\alpha] $ are arbitrary, therefore,
+\begin{align*}
+	\lom{E_\alpha} \le \frac{1}{\alpha} \cdot \left (f(b) - f(a)\right )
+\end{align*}
+Hence proved.
+\end{proof}
+\newpage
+\subsubsection{Lebesgue's Differentiation Theorem}
+This is also one of the most important theorems of this course. This theorem portrays that monotonicity of a function is much better attribute of \emph{niceness} of a function than the usual belief of continuity, because we know example of continuous functions which is not differentiable, that is the \textbf{Weierstrass function}. But with this theorem, if we are given a monotone function on an open interval, then it ought to be differentiable almost everywhere on that interval. The same is obviously not true for just continuous functions.
+\begin{theorem}\label{T-15}
+	(\textbf{Lebesgue's Differentiation Theorem}) Suppose $ f $ is a \textbf{monotone} function on open interval $ (a,b) $ to $ \R $. Then, 
+	\[f \text{ is differentiable on $ (a,b) $ almost everywhere (!)}\]
+\end{theorem}
+\begin{proof}
+	\emph{Written in Diary at $ 1^{st} $ September, $ 2018 $. Typeset it here when time allows.}
+\end{proof}
+\begin{corollary}\label{C-2}
+	A function $ f $ of bounded variation over an interval $ [a,b] $ is differentiable almost everywhere in $ (a,b) $.
+\end{corollary}
+\begin{proof}
+	Lebesgue's Differentiation Theorem (\ref{T-15}) and the fact that any function of bounded variation is a difference of two increasing functions (Proposition \ref{P-46}). 
+\end{proof}
+\hrulefill
+\newpage
+\subsection{Integration \& Differentiation in Context}
+We now learn some relationships between differentiation and integration. But let us begin with the following basic proposition.
+\begin{proposition}\label{P-48}
+	Let $ f : X \to [0,+\infty) $ be a Measurable function which is Lebesgue Integrable on a set $ E \subseteq X $. Then,
+	\[\forall \;\epsilon > 0, \;\exists\; \delta > 0 \;\text{ such that } \forall \; A\subset E\;\text{ with }\;\lm{A} < \delta \;,\;\;\int_{A} f < \epsilon.\]
+\end{proposition}
+\begin{proof}
+	Consider the following sequence $ \{f_n\} $ of functions:
+	\begin{align*}
+		f_n(x) &= \begin{cases}
+			f(x) &\text{ if } f(x)\le n\\
+			n &\text{ if }f(x)\ge n
+		\end{cases}
+	\end{align*}
+Now, we see that $ f_n(x) \le f_{n+1}(x) $ because if $ f_n(x) = f(x) $ then $ f_n(x) = f(x) \le n < n+1 $ so that $ f_{n+1}(x) = f(x) $. Hence $ \{f_n\} $ is an increasing sequence. Therefore 
+\[f_n \longrightarrow f \;\text{almost everywhere}\]
+Hence, by Monotone Convergence Theorem (\ref{T-5}), we get that 
+\[\int \lim_{n}f_n = \lim_{n} \int f_n.\]
+Now, observe the following:
+\begin{align*}
+	\int_{E} f- \lim_{n} \int f_n &= 0\\
+	\lim_{n}\int_E f - \lim_{n}\int f_n &= 0\\
+	\lim_{n} \int_E \left ( f -f_n\right ) &= 0
+\end{align*}
+where we see that
+\begin{align*}
+	(f-f_n)(x)= \begin{cases}
+		0&\text{ if } f(x) - n\le 0\\
+		f(x) -n&\text{ if }f(x) - n\ge 0.
+	\end{cases}
+\end{align*}
+From this, we can construct the following sequence of sets:
+\begin{align*}
+	E_n &= \{x\in E\where f(x) - n \ge 0\}.
+\end{align*}
+Again, we see that for any $ x\in E_n $, we would have $ f(x) \ge n > n-1$, so that $ x\in E_{n-1} $. Hence $ \{E_n\} $ is a decreasing sequence of subsets of $ E $.\\
+We now observe that 
+\[\int_{E_n} f \ge \int_{E_n} n = n\lm{E_n}.\]
+Hence, we get that, for any $ n\in \N $,
+\begin{align*}
+	\lm{E_n} \le \frac{1}{n}\int_{E_n} f
+\end{align*}
+So that, we can choose $ n $ corresponding to any $ \delta = \epsilon/n $ such that 
+\[\lm{E_n} \le \frac{1}{n}\int_{E_n} f < \delta  = \epsilon/n\] 
+and
+\[\int_{E_n} f < n\delta = \epsilon.\]
+Hence proved.
+\end{proof}
+\hrulefill
+\newpage
+\subsubsection{Indefinite Integral}
+The Indefinite Integral of a Lebesgue Integrable function forms a sort of \emph{bridge} between Integration and Differentiation.
+
+\hrulefill
+\begin{definition}
+	(\textbf{Indefinite Integral}) Suppose $ f : [a,b] \longrightarrow \R $ is a Lebesgue Integrable function. We then define the indefinite integral of $ f $ as the following function:
+	\begin{align*}
+		F(x) = \int_{a}^{x} f(t) dt
+	\end{align*}
+\end{definition}
+\hrulefill
+\begin{proposition}
+	Suppose $ f : [a,b]\longrightarrow \R$ is a Lebesgue Integrable function. Then,
+	\begin{enumerate}
+		\item {$ F(x)  $ is a \textbf{continuous} function on $ [a,b] $.}
+		\item {$ F(x) $ is of \textbf{bounded variation} on $ [a,b] $.}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\textbf{1.} Take any $ \epsilon > 0 $. By Proposition \ref{P-48}, we get that 
+	\[F(x) = \int_{a}^{x} f(t)dt < \epsilon \;\implies \; \exists\;\delta > 0\;\&\; \exists A \subset [a,x] \text{ such that } \lom{A} < \delta.\]
+In more precise words, $ \forall \epsilon > 0 $, $ \exists \delta > 0 $ such that whenever
+\[\abs{a-x_0} = \lom{[a,x_0]} < \delta\]
+then we would have
+\begin{align*}
+	\abs{F(x_0) - F(a) } &< \epsilon\\
+	\abs{\int_{a}^{x_0} f(t)dt - \int_a^a f(t)dt} &< \epsilon\\
+	\abs{\int_{a}^{x_0} f(t) dt} &< \epsilon 
+\end{align*}
+which is just the definition of continuity.\\\\
+\textbf{2.} Take any partition of $ [a,b] $, say, $ \mathcal{P}([a,b]) = a= x_0 < x_1 < x_2 < \dots x_{k-1} < x_k = b$. Now, we see that,
+\begin{align*}
+	t_{\mathcal{P}} &= \sum_{i=1}^{k} \abs{F(x_i) - F(x_{i-1})} \\
+	&= \sum_{i=1}^{k} \abs{\int_{a}^{x_i} f(t) dt - \int_{a}^{x_{i-1}} f(t)dt}\\
+	&= \sum_{i=1}^{k} \abs{\int_{x_{i-1}}^{x_{i}} f(t)dt}\\
+	&< \sum_{i=1}^{k} \int_{x_{i-1}} ^{x_i} \abs{f(t)} dt\\
+	&< \infty 
+\end{align*}
+where last line follows because $ f $ is Lebesgue Integrable. Since our choice of partition $ \mathcal{P} $ was arbitrary, therefore $ \sup_{\mathcal{P}}t_{\mathcal{P}} < \infty $ hence $ F(x) $ is of bounded variation.
+\end{proof}
+\begin{corollary}
+	The Indefinite Integral of a Lebesgue Integrable function is Differentiable almost everywhere.
+\end{corollary}
+\begin{proof}
+	By-product of Lebesgue's Differentiation Theorem (\ref{T-15}), or more succinctly, Corollary \ref{C-2}. 
+\end{proof}
+\hrulefill
+\newpage
+\begin{proposition}
+Suppose $ f : [a,b]  \longrightarrow \R$ is a Lebesgue Integrable function and 
+\[F(x) = \int_{a}^{x_0} f(t)dt = 0 \;\forall\;x\in (a,b).\]
+Then, $ f = 0 $ almost everywhere on $ (a,b) $.
+\end{proposition}
+\begin{proof}
+		Suppose to the contrary that $ \exists\; E \subset [a,b] $ such that $ f(x) \neq 0 \;\forall\;x\in E $ with $ \lom{E} > 0 $. By Proposition \ref{P-16}, we get that $ \exists\;G\subset E $ which is closed such that $ \lom{G} > 0 $ and $ \lom{E\setminus G} = 0 $. Hence $ (a,b)\setminus G $ is open. Now consider the integral:
+		\begin{align*}
+			\int_{G} f &= \int_{(a,b)} f - \int_{(a,b)\setminus G} f
+		\end{align*}
+	We know that $ \int_{(a,b)} f = 0 $ as $ F(x) = 0\;\forall \;x\in(a,b) $. In a similar tone, we have $ \left. f\right \vert_{(a,b)\setminus G} = 0 $ almost everywhere because $ \lom{E\setminus G} = 0 $ and $ f = 0$ on $ (a,b) \setminus E $ anyways. Therefore, we have $ \int_G  f = 0$. But $ \left .f\right \vert_{G} \neq 0 $ by definition of $ G \subset E $. Hence we have a contradiction. Therefore such a set $ E $ cannot exist. Thus $ f = 0 $ almost everywhere on $ (a,b) $ if $ F = 0 \;\forall \;x\in (a,b) $.
+\end{proof}
+\hrulefill
+\begin{theorem}
+	Let $ [a,b] $ be a finite interval and let $ f : [a,b] \longrightarrow \R $ be a Lebesgue Integrable function over it. Then,
+	\[F^{\prime} = f\text{ almost everywhere in }[a,b].\]
+\end{theorem}
+\begin{proof}
+	\emph{Yet to be completed.}
+\end{proof}
+\hrulefill
+\subsubsection{Absolutely Continuous Functions}
+This is a more general form of continuity, and since it has connections with indefinite integral, we then learn them here.
+\begin{definition}
+	(\textbf{Absolutely Continuous Function}) A function $ f : [a,b] \longrightarrow\R $ is said to be Absolutely Continuous if
+	\[\forall \;\epsilon > 0\;,\;\;\exists\;\delta > 0\text{ such that }\forall\text{ \textbf{finite} \& \textbf{disjoint} collection of open intervals }\{(a_k,b_k)\}_{k=1}^{n} \text{ each subset of }(a,b) \text{ which satisfies }\]
+	\[\sum_{k=1}^{n}(b_k - a_k) < \delta,\]
+	\[\text{also satisfies}\]
+	\[\sum_{k=1}^{n} \abs{f(b_k) - f(a_k)} < \epsilon.\]
+\end{definition}
+\begin{remark} Some straightforward results are:
+	\begin{itemize}
+		\item {Any Absolutely Continuous function is Continuous in usual sense. This follows trivially from their definitions.}
+		\item {Any Absolutely Continuous function is Uniformly Continuous. This also follows from the definition.}
+	\end{itemize}
+\end{remark}
+\hrulefill
+\begin{proposition}
+	Suppose $ f : [a,b] \longrightarrow \R $ is an Absolutely Continuous function. Then, $ f $ is of Bounded Variation over $ [a,b] $.
+\end{proposition}
+\begin{proof}
+	 Since $ f $ is an absolutely continuous function, therefore, for any fixed $ \epsilon > 0 $, we can construct the partition of $ [a,b] $, say $ \mathcal{P}^{\prime} = a = x_0 < x_1 <\dots< x_k = b$ such that each $ (x_{i-1},x_i) $ is of length $ < \delta $. Clearly, we would then have that
+	 \[\sum_{i=1}^{k}\abs{f(x_i) - f(x_{i-1})} < k\epsilon.\]
+	 Now, consider any arbitrary partition say $ \mathcal{P} \equiv a = y_0 < y_1 < \dots< y_N = b $ of $ [a,b] $. Collect the partition points of $ \mathcal{P} $ as the open disjoint intervals $ \left \{(y_{i-1}, y_i)\right \}_{i=1}^{N}$. Then, for each $ i^{th} $ interval in this partition, we can further partition it into $ k_i $ open disjoint intervals such that each has length $ < \delta $. In particular, we would have the following partition of $ [y_{i-1},y_i] $:
+	 \[\left \{(z_{j-1}^{i}, z_{j}^{i})\right \}_{j=1}^{k_i}\text{ where }z_0^{i} = y_{i-1}\;,\;\;z^{i}_{k_i} = y_i.\]
+	 Now, note that the variation of $ f $ over the $ [y_{i-1},y_i] $ would then be:
+	 \begin{align*}
+	 	\abs{f(y_i) - f(y_{i-1})} &= \abs{\sum_{j=1}^{k_i} f(z_{j}^{i}) - f(z_{j-1}^{i})}\\
+	 	&\le \sum_{j=1}^{k_i} \abs{f(z_{j}^{i}) - f(z_{j-1}^{i})}\\
+	 	&< \sum_{j=1}^{k_i} \epsilon = k_i \epsilon&&\text{$ \because $ $ z_j^{i} - z_{j-1}^{i} < \delta$ by construction}
+	 \end{align*}
+ Now, the variation over whole of $ \mathcal{P} $ would then be:
+ \begin{align*}
+ 	t_{\mathcal{P}} &= \sum_{i=1}^{N} \abs{f(y_i) - f(y_{i-1})} \\
+ 	&< \sum_{i=1}^{N} k_i \epsilon\\
+ 	&< \infty
+ \end{align*}
+as $ k_i $ is finite for all $ i $. Hence proved.
+\end{proof}
+\hrulefill
+
+This theorem relates Indefinite Integral of a Lebesgue Integral and Absolute Continuity.
+\begin{theorem}
+	Suppose $ f : [a,b] \longrightarrow \R$ is a Lebesgue Integrable function and it's Indefinite Integral is denoted by the function $ F(x) $. Then, 
+	\[\text{$ F $ is an Indefinite Integral }\bm{\iff}\text{ $ F $ is Absolutlely Continuous.}\] 
+\end{theorem}
+\begin{proof}
+	\emph{Yet to be completed.}
+\end{proof}
+\hrulefill
+\newpage
+\section{Signed Measures and Derivatives}
+The concept of signed measures is the next generalization that we seek to understand. So far we have only encountered measures on a space which maps subsets to $ [0,\infty] $. But what happens when we \emph{increase} the co-domain to the whole $ [-\infty,\infty] $? First of all, we can see clearly that a measure shall not map some subsets to $ +\infty $ and some other subset to $ -\infty $ as we would then have the problem of $ \infty - \infty $, and since we are not doing set theory here, hence we would refrain ourselves only to such \emph{signed} measures which either maps to $(-\infty, \infty]  $ or $ [-\infty,\infty) $ but not both. 
+
+Later we would see that having such a notion of \emph{signed} measure actually leads to some very striking results!
+\begin{definition}
+	(\textbf{Signed Measure}) Suppose $ (X,\alg{M}) $ is a Measurable Space. A function 
+	\[\nu : \alg{M} \longrightarrow [-\infty,+\infty) \;\text{ \textbf{OR} }\nu : \alg{M} \longrightarrow (-\infty,+\infty]\]
+	is called a Signed Measure if it satisfies:
+	\begin{enumerate}
+		\item {$ \nu $ atmost maps sets either to $ +\infty $ or $ -\infty $, but not both\footnote{Hence the two possible choices for the $ \nu $ above.}.}
+		\item {$ \nu $ maps null-set to $ 0 $:
+	\[\sm{\Phi} = 0\]	
+	}
+\item {$ \nu $ follows countable additivity:
+\[\sm{\bunion_{i=1}^{\infty} A_i} = \sum_{i=1}^{\infty} \sm{A_i}\]}
+where $ \{A_i\} $ is any sequence of disjoint sets from $ \alg{M} $.
+	\end{enumerate}
+\end{definition} 
+\hrulefill
+\begin{definition}
+	(\textbf{Positive Set}) Suppose $ (X,\alg{M}) $ is a measurable space and $ \nu $ is a signed measure on it. Then a set $ A \in \alg{M} $ is said to be a positive set w.r.t. $ \nu $ if:
+	\[\forall \;S\subseteq A\text{ such that $ S\in \alg{M} $}\;,\;\;\sm{S} \ge 0.\]
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Negative Set}) Suppose $ (X,\alg{M}) $ is a measurable space and $ \nu $ is a signed measure on it. Then a set $ B \in \alg{M} $ is said to be a negative set w.r.t. $ \nu $ if:
+	\[\forall \;S\subseteq B\text{ such that $ S\in \alg{M} $}\;,\;\;\sm{S} \le 0.\]
+\end{definition}
+\begin{remark}
+	One could alternatively say that a set  is a negative set if it is positive w.r.t. $ -\nu $.
+\end{remark}
+\hrulefill
+\begin{definition}
+	(\textbf{Null Set}) Suppose $ (X,\alg{M}) $ is a measurable space and $ \nu $ is a signed measure on it. Then a set $ N \in \alg{M} $ is said to be a null set w.r.t. $ \nu $ if 
+	\[\text{$ N $ is both a Positive and Negative set w.r.t. $ \nu $}\]
+\end{definition}
+\hrulefill
+\begin{proposition}
+	Suppose $ (X,\alg{M}) $ is a measurable space and $ \nu  $ is a signed measure on it. Let $ \{A_i\} $ be a sequence of positive sets w.r.t. $ \nu $. Then,
+	\[A= \bunion_{i}A_i \text{ is a Positive Set w.r.t. $ \nu $.}\]	
+\end{proposition}
+\begin{proof}
+%	\emph{Written in Diary at $ 24^{th} $ September, $ 2018 $. Typeset it here when time allows.}
+	We know that we can write the sequence $ \{A_i\} $ in the following form:
+	\[\{B_i\}\text{ where $ B_i $'s are disjoint \& $ B_i \subseteq A_i $.}\]
+	This can be easily be seen by $ B_1 = A_1$ and $ B_i = A_i \setminus B_{i-1} $. Hence $ \{B_i\} $ is a sequence of disjoint positive sets. Moreover, we can see that
+	\[A = \bunion_{i} A_i = \bunion_{i} B_i.\]
+	Now, take any subset $ E\subseteq  A $, which we can simply write as:
+	\begin{align*}
+		\sm{E} &= \sm{E\intrs A} \\
+		&= \sm{\bunion_{i} E \intrs B_i}\\
+		&= \sum_{i} \sm{E\intrs B_i}\\
+		&>0
+	\end{align*}
+because $ E\intrs A_i\subseteq B_i $ and $ B_i $ is a positive set. Hence proved.
+\end{proof}
+\begin{remark}
+	This is clearly also true for negative sets and null sets. That is, countable union of negative (null) sets is also a negative (null) set.
+\end{remark}
+\hrulefill
+\begin{proposition}
+	Suppose $ (X,\alg{M}) $ is a measurable space and $ \nu $ is a signed measure on it. If $ E\in \alg{M} $ is such that $ \sm{E} \ge 0 $, then
+	\[\text{$ \exists \;A \subseteq E$ such that $ A $ is a Positive Set w.r.t. $ \nu $, $ A\in \alg{M} $ \& $ \sm{A} > 0 $. }\]
+\end{proposition}
+\begin{proof}
+		\emph{Written in Diary at $ 26^{th} $ September, $ 2018 $. Typeset it here when time allows.}
+\end{proof}
+\hrulefill
+\subsection{The Hahn Decomposition Theorem}
+\begin{theorem}(\textbf{Hahn Decomposition Theorem})\label{T-18}
+	Suppose $ (X,\alg{M}) $ is a measurable space and $ \nu $ is a signed measure on it. Then, 
+	\[\exists \text{ Positive Set $ A \in \alg{M}$ and Negative Set $ B\in \alg{M} $} \text{ such that } \boxed{A\union B = X \;\&\;A\intrs B = \Phi}\]
+	Moreover, any two such pairs $ (A,B) $ and $ (A^{\prime},B^{\prime}) $ are unique upto the fact that
+	\[A\Delta A^{\prime}\;\&\;B\Delta B^{\prime} \text{ are $ \nu $-Null Sets}\]
+	
+\end{theorem}
+\begin{proof}
+		\emph{Written in Diary at $ 1^{st} $ October, $ 2018 $. Typeset it here when time allows.}
+\end{proof}
+
+\newpage
+
+\subsection{The Jordan Decomposition of a Signed Measure}
+We now, in a sense, generalize the Hahn Decomposition Theorem (\ref{T-18}), but to the signed measure $ \nu $ itself. As usual, let's first familiarize ourselves with some definitions.
+\begin{definition}
+	(\textbf{Mutual Singularity of Signed Measures}) Let $ \nu_1 $ and $ \nu_2 $ be two measures (NOT signed!) over measurable space $ (X,\alg{M}) $. Then $ \nu_1 $ and $ \nu_2 $ are called mutually singular if 
+	\[\exists \; A\in \alg{M} \text{ such that }\nu_1(A) = \nu_2(\comp{A}) = 0\]
+	and is then denoted by:
+	\[\nu_1 \ms \nu_2.\]
+\end{definition}
+\hrulefill
+\begin{theorem}(\textbf{Jordan Decomposition Theorem})\label{T-19}
+	Suppose $ (X,\alg{M}) $ is a measurable space and $ \nu $ is a signed measure on it. Then, 
+	\[\exists \text{ Measures }\nu^{+}\;\&\;\nu^{-}\text{ on $ (X,\alg{M}) $ such that } \boxed{\nu= \nu^{+} - \nu^{-} \;\&\; \nu^{+}\ms \nu^{-}}\]
+	and such a decomposition of $ \nu $ is unique.
+\end{theorem}
+\begin{proof}
+	\emph{Written in Diary at $ 5^{th} $ October, $ 2018 $. Typeset it here when time allows.}	
+\end{proof}
+\newpage
+\subsection{The Radon-Nikodym Theorem}
+This is one of the final and most important theorems of this course. As we will see, this theorem gives us a notion of the derivative of a signed measure. However, we would not go more deeper into that fact. \\
+As usual, we first introduce some definitions.
+\begin{definition}
+	(\textbf{Total Variation of a Signed Measure}) The total variation of a signed measure $ \nu $ over some measurable space is defined by
+	\[\abs{\nu} = \nu^{+} + \nu^{-}\]
+	where $ \nu = \nu^{+} - \nu^{-}$ is the Jordan Decomposition (Theorem \ref{T-19}) of $ \nu $. 
+\end{definition}
+\begin{remark}
+	Since $ \nu^{+} $ and $ \nu^{+} $ are the usual measures on the measurable space, therefore $ \abs{\nu} $ is also a usual measure on the same measurable space.
+\end{remark}
+\hrulefill
+\begin{definition}
+	(\textbf{$ \sigma $-Finite Signed Measure}) Suppose $ \nu $ is a signed measure on measurable space $ (X,\alg{M}) $. Then $ \nu $ is called $ \sigma $-Finite if 
+	\[\exists\;\{X_n\}_{n=1}^{\infty}\text{ where $ X_i \in \alg{M} $ and $ \abs{\nu(X_i)} < \infty $ such that }\bunion_{n=1}^{\infty} X_n = X \]
+\end{definition}
+\begin{remark}
+	$ \nu $ is $ \sigma $-Finite $ \bm{\iff} $ $ \abs{\nu} $ is $ \sigma $-Finite.
+\end{remark}
+\hrulefill
+\begin{definition}
+	(\textbf{Absolute Continuity of Usual Measures}) Suppose $ \lambda $ and $ \gamma$ are usual measures over a measurable space $ (X,\alg{M}) $. If,
+	\begin{align*}
+\lambda(E) = 0 \text{ for some }  E\in \alg{M} \implies \gamma(E) = 0
+	\end{align*}
+	always, then $ \gamma $ is said to be absolutely continuous w.r.t. $ \lambda $. This is denoted by $ \gamma \ll \lambda $.
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Absolute Continuity of Signed Measures}) Suppose $ \mu $ and $ \nu $ are signed measures over a measurable space $ (X,\alg{M}) $. If,
+	\[\abs{\mu}(E) = 0 \text{ for some } E\in \alg{M} \implies \nu(E) = 0\]
+	always, then $ \nu $ is called absolutely continuous w.r.t. $ \mu $. This is denoted by $ \nu \ll \mu $.
+\end{definition}
+\hrulefill
+\begin{theorem}\label{T-20}
+	(\textbf{Radon-Nikodym Theorem}) Suppose $ (X,\alg{M}) $ is a measurable space and $ \lambda $ \& $ \gamma $ are two $ \sigma $-finite measures on it such that $ \gamma \ll \lambda $. Then,
+	\begin{align*}
+		\exists \;\text{Measurable }&\text{Function w.r.t. $ \lambda $ }  f : X \longrightarrow [0,\infty)  \text{ such that}\\
+		&\boxed{\gamma(E) = \int_{E}fd\lambda \;\forall\;E\in \alg{M}}
+	\end{align*}
+Moreover, $ f $ is unique up-to almost everywhere equality, that is, if $ \gamma(E) =\int_{E}gd\lambda \;\forall\;E\in\alg{M}$, then,
+\[f = g\text{ almost everywhere on $ X $ w.r.t. $ \lambda $.}\]
+\end{theorem}
+\begin{proof}
+	\textbf{\emph{Yet to be completed.}}
+\end{proof}
+\newpage
+\section{The Dual of $ \Lp{\R^{n}} $ : Riesz Representation Theorem}
+\begin{definition}
+	(\textbf{Linear Functional}) Suppose $ (V,\R,\norm{\cdot})$ is a Banach Space. A \textbf{linear}\footnote{$ f(\alpha v_1 + \beta v_2) =  \alpha f(v_1) + \beta f(v_2) \;\forall \;v_1,v_2 \in V$ and $ \alpha,\beta \in \mathbb{R} $. Or more simply, a morphism in the Category of Vector Spaces \textbf{Vect} :):} map $f : V \longrightarrow \R  $ is called a linear functional.
+\end{definition}
+\hrulefill
+\begin{definition}
+	(\textbf{Bounded Linear Functional}) A linear functional $ \phi : V\longrightarrow\R $ where $ (V,\R,\norm{\cdot}) $ is a Banach space is called bounded if
+	\[\exists\; c \ge 0 \text{ such that }\abs{\phi(x)} \le c\norm{x}\;\forall\;x\in V.\]
+	The space of all such bounded linear functionals is denoted by
+	\[\alg{B}(V).\]
+	That is, any $ \phi \in \alg{B}(V) $ is a bounded linear functional.
+\end{definition}
+\hrulefill
+\begin{proposition}
+	Suppose $ (V,\R,\norm{\cdot}_V) $ is a Banach Space and $ \sblf{V} $ is the space of bounded linear functionals over $ V $. Then,
+	\[\sblf{V}\text{ forms a Vector Space}\]
+	and the map
+	\[\norm{\cdot} : \sblf{V} \longrightarrow [0,\infty)\]
+	defined by
+	\begin{align*}
+		\norm{\phi} &= \sup\left \{\frac{\abs{\phi(x)}}{\norm{x}_V} \;:\: x\in V\right \}\\
+		&= \inf \left \{c\;:\: \abs{\phi(x)} \le c\norm{x}_V\;,\;\;x\in V\right \}
+	\end{align*}
+for any $ \phi \in \sblf{V} $ forms a norm on the Vector Space $ \sblf{V} $.
+\end{proposition}
+\begin{proof}
+	Take any two $ \phi_1,\phi_2 \in \sblf{V} $ and $ \alpha ,\beta \in \R $. By the very nature of their existence, $ \phi_1\;\&\; \phi_2 $ have to be bounded linear functionals. Suppose 
+	\begin{align*}
+		\abs{\phi_1(x)} &\le c_1\norm{x}_V\\
+		\abs{\phi_2(x)} &\le c_2 \norm{x}_V
+	\end{align*}
+$ \forall\; x\in V $. Then $ \alpha \phi_1  $ is a function such that:
+\begin{align*}
+	\abs{\alpha\phi_1(x)} \le \alpha c_1 \norm{x}_V
+\end{align*}
+Hence $ \alpha \phi_1 \in \sblf{V}$. Similarly, $ \beta\phi_2 \in \sblf{V} $. Now, since we have that
+\begin{align*}
+	\abs{\phi_1 + \phi_2 } \le \abs{\phi_1} + \abs{\phi_2} 
+\end{align*}
+Therefore, $ \phi_1 + \phi_2 \in \sblf{V} $. Hence, $ \sblf{V} $ is a Vector Space.\\\\
+To see that $ \norm{\cdot } $ is a norm over $ \sblf{V} $, we see that for any $ \alpha\in \R $ and $ \phi \in \sblf{V} $, we trivially get that
+\begin{align*}
+	\norm{\alpha\phi} &= \abs{\alpha} \norm{\phi}
+\end{align*}
+and, for $ f_1,f_2 \in \sblf{V} $, we also note that
+\begin{align*}
+	\norm{f_1 +f_2} &\le \norm{f_1} + \norm{f_2}
+ \end{align*}
+Hence, $ \norm{\cdot} $ is a norm on Vector Space $ \sblf{V} $.
+\end{proof}
+\hrulefill
+\newpage
+\subsection{$ \sblf{V} $ is a Banach Space!}
+\begin{proposition}
+	Suppose $ V $ is a Banach Space. Then $ \sblf{V} $ is a Banach Space.
+\end{proposition}
+\begin{proof}
+	Take any Cauchy sequence $ \{\phi_n\} $ in $ \sblf{V} $. Now, since $ \phi_n $'s are bounded linear functionals, therefore,
+	\[\exists\; c_n\ge 0 \text{ such that }\abs{\phi_n(x)} \le c_n \norm{x}_V\;\forall\;x\in V \]
+	Now take any $ x\in V $. Since $ \phi_n(x) \in V$, we therefore have a sequence $ \{\phi_n(x)\} $ in $ \R $. We now note that
+	\begin{align*}
+		\abs{\phi_n(x) - \phi_m(x)} &\le \norm{x}_V\times \sup\left \{\frac{\abs{\phi_n - \phi_m}}{\norm{x}_V}\;:\;x\in V\right \}\\
+		&= \norm{\phi_n - \phi_m} \norm{x}_V.
+	\end{align*}
+	Hence, $ \{\phi_n(x)\} $ is a Cauchy Sequence in $ \R $. Now write 
+	\[\phi(x) = \lim_{n} \phi_n(x).\]
+	Since $ \R $ is complete, therefore $ \phi(x) \in \R$. But our choice of $ x $ was arbitrary, hence $ \phi(x) = \lim_{n}\phi_n(x) < \infty\;\forall\;x\in V$. Hence $ \phi \in \sblf{V} $. \\\\
+	Moreover,
+	\begin{align*}
+		\lim_n\norm{\phi_n} &=  \lim_n\sup\left \{\frac{\abs{\phi_n(x)}}{\norm{x}_V}\;:\; x\in V\right \}\\
+		&= \sup\left \{\lim_n\frac{\abs{\phi_n(x)}}{\norm{x}_V}\;:\; x\in V\right \}\\
+		&= \sup\left \{\frac{\abs{\lim_n \phi_n(x)}}{\norm{x}_V}\;:\; x\in V\right \}\\
+		&= \sup\left \{\frac{\abs{\phi(x)}}{\norm{x}_V}\;:\; x\in V\right \}\\
+		&= \norm{\phi}
+	\end{align*}
+Hence proved.
+ \end{proof}
+\hrulefill
 \newpage
 \begin{thebibliography}{9}
 	\bibitem{Solovay70} 
