@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.9)  16 JAN 2021 20:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.11) (preloaded format=pdflatex 2020.11.9)  19 APR 2021 20:58
 entering extended mode
 **"./Measure Theory.tex"
 ("Measure Theory.tex"
@@ -247,7 +247,93 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 130.
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/fundus-calligra\calligra.s
 ty
 Package: calligra 2012/04/10 v1.9 LaTeX package calligra
-) (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/sectsty\sectsty.sty
+) (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/tools\bm.sty
+Package: bm 2019/07/24 v1.2d Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup7
+\symboldletters=\mathgroup8
+\symboldsymbols=\mathgroup9
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 209.
+)
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+Package: microtype 2021/02/25 v2.8b Micro-typographical refinements (RS)
+\MT@toks=\toks31
+\MT@count=\count274
+LaTeX Info: Redefining \textls on input line 788.
+\MT@outer@kern=\dimen179
+LaTeX Info: Redefining \textmicrotypecontext on input line 1358.
+\MT@listname@count=\count275
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdftex
+.def
+File: microtype-pdftex.def 2021/02/25 v2.8b Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 915.
+LaTeX Info: Redefining \lslig on input line 915.
+\MT@outer@space=\skip59
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+File: microtype.cfg 2021/02/25 v2.8b microtype main configuration file (RS)
+))
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\mathpazo.sty
+Package: mathpazo 2020/03/25 PSNFSS-v9.3 Palatino w/ Pazo Math (D.Puga, WaS) 
+\symupright=\mathgroup10
+)
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/cormorantgaramond\Cormoran
+tGaramond.sty
+Package: CormorantGaramond 2020/04/12 (Bob Tennent and autoinst) Style file for
+ Cormorant Garamond fonts.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks32
+\XKV@tempa@toks=\toks33
+)
+\XKV@depth=\count276
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 1
+12.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ppl.fd
+File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+))
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
+Package: fontaxes 2020/07/21 v1.0e Font selection axes
+LaTeX Info: Redefining \upshape on input line 29.
+LaTeX Info: Redefining \itshape on input line 31.
+LaTeX Info: Redefining \slshape on input line 33.
+LaTeX Info: Redefining \swshape on input line 35.
+LaTeX Info: Redefining \scshape on input line 37.
+LaTeX Info: Redefining \sscshape on input line 39.
+LaTeX Info: Redefining \ulcshape on input line 41.
+LaTeX Info: Redefining \textsw on input line 47.
+LaTeX Info: Redefining \textssc on input line 48.
+LaTeX Info: Redefining \textulc on input line 49.
+)
+LaTeX Info: Redefining \oldstylenums on input line 133.
+)
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/fonts/ifsym\ifsym.sty
+Package: ifsym 2000/04/18 I.Kloeckl
+\c@ifsymcnt=\count277
+)
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/sectsty\sectsty.sty
 Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
 les
 
@@ -298,9 +384,9 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
-\@linkdim=\dimen179
-\Hy@linkcounter=\count274
-\Hy@pagecounter=\count275
+\@linkdim=\dimen180
+\Hy@linkcounter=\count278
+\Hy@pagecounter=\count279
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
@@ -313,7 +399,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count276
+\Hy@SavedSpaceFactor=\count280
 Package hyperref Info: Hyper figures OFF on input line 4464.
 Package hyperref Info: Link nesting OFF on input line 4469.
 Package hyperref Info: Hyper index ON on input line 4472.
@@ -321,14 +407,14 @@ Package hyperref Info: Plain pages OFF on input line 4479.
 Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4717.
-\c@Hy@tempcnt=\count277
+\c@Hy@tempcnt=\count281
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5076.
-\XeTeXLinkMargin=\dimen180
+\XeTeXLinkMargin=\dimen181
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -338,9 +424,9 @@ y
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count278
-\Field@Width=\dimen181
-\Fld@charsize=\dimen182
+\Fld@menulength=\count282
+\Field@Width=\dimen182
+\Fld@charsize=\dimen183
 Package hyperref Info: Hyper figures OFF on input line 6347.
 Package hyperref Info: Link nesting OFF on input line 6352.
 Package hyperref Info: Hyper index ON on input line 6355.
@@ -355,9 +441,9 @@ Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
 ge
 with kernel methods
 )
-\Hy@abspage=\count279
-\c@Item=\count280
-\c@Hfootnote=\count281
+\Hy@abspage=\count283
+\c@Item=\count284
+\c@Hfootnote=\count285
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
@@ -368,8 +454,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
 e
 with kernel methods
 )
-\Fld@listcount=\count282
-\c@bookmark@seq@number=\count283
+\Fld@listcount=\count286
+\c@bookmark@seq@number=\count287
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilech
 eck.sty
@@ -382,9 +468,9 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
-\Hy@SectionHShift=\skip59
+\Hy@SectionHShift=\skip60
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 31.
+Package hyperref Info: Option `colorlinks' set `true' on input line 45.
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
 Package: tcolorbox 2020/10/09 version 4.42 text color boxes
@@ -393,9 +479,9 @@ Package: tcolorbox 2020/10/09 version 4.42 text color boxes
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-co
 mmon.tex
-\pgfutil@everybye=\toks31
-\pgfutil@tempdima=\dimen183
-\pgfutil@tempdimb=\dimen184
+\pgfutil@everybye=\toks34
+\pgfutil@tempdima=\dimen184
+\pgfutil@tempdimb=\dimen185
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-co
 mmon-lists.tex))
@@ -420,33 +506,33 @@ Package: pgfsys 2020/10/01 v3.1.6a (3.1.6a)
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.co
 de.tex
-\pgfkeys@pathtoks=\toks32
-\pgfkeys@temptoks=\toks33
+\pgfkeys@pathtoks=\toks35
+\pgfkeys@temptoks=\toks36
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeysfil
 tered.code.tex
-\pgfkeys@tmptoks=\toks34
+\pgfkeys@tmptoks=\toks37
 ))
-\pgf@x=\dimen185
-\pgf@y=\dimen186
-\pgf@xa=\dimen187
-\pgf@ya=\dimen188
-\pgf@xb=\dimen189
-\pgf@yb=\dimen190
-\pgf@xc=\dimen191
-\pgf@yc=\dimen192
-\pgf@xd=\dimen193
-\pgf@yd=\dimen194
+\pgf@x=\dimen186
+\pgf@y=\dimen187
+\pgf@xa=\dimen188
+\pgf@ya=\dimen189
+\pgf@xb=\dimen190
+\pgf@yb=\dimen191
+\pgf@xc=\dimen192
+\pgf@yc=\dimen193
+\pgf@xd=\dimen194
+\pgf@yd=\dimen195
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count284
-\c@pgf@countb=\count285
-\c@pgf@countc=\count286
-\c@pgf@countd=\count287
-\t@pgf@toka=\toks35
-\t@pgf@tokb=\toks36
-\t@pgf@tokc=\toks37
-\pgf@sys@id@count=\count288
+\c@pgf@counta=\count288
+\c@pgf@countb=\count289
+\c@pgf@countc=\count290
+\c@pgf@countd=\count291
+\t@pgf@toka=\toks38
+\t@pgf@tokb=\toks39
+\t@pgf@tokc=\toks40
+\pgf@sys@id@count=\count292
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
 File: pgf.cfg 2020/10/01 v3.1.6a (3.1.6a)
@@ -464,8 +550,8 @@ File: pgfsys-common-pdf.def 2020/10/01 v3.1.6a (3.1.6a)
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysso
 ftpath.code.tex
 File: pgfsyssoftpath.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgfsyssoftpath@smallbuffer@items=\count289
-\pgfsyssoftpath@bigbuffer@items=\count290
+\pgfsyssoftpath@smallbuffer@items=\count293
+\pgfsyssoftpath@bigbuffer@items=\count294
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyspr
 otocol.code.tex
@@ -500,12 +586,12 @@ e.tex
 e.tex)
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.c
 ode.tex
-\pgfmath@dimen=\dimen195
-\pgfmath@count=\count291
+\pgfmath@dimen=\dimen196
+\pgfmath@count=\count295
 \pgfmath@box=\box53
-\pgfmath@toks=\toks38
-\pgfmath@stack@operand=\toks39
-\pgfmath@stack@operation=\toks40
+\pgfmath@toks=\toks41
+\pgfmath@stack@operand=\toks42
+\pgfmath@stack@operation=\toks43
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunction
 s.code.tex
@@ -527,39 +613,39 @@ s.misc.code.tex)
 s.integerarithmetics.code.tex)))
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.co
 de.tex
-\c@pgfmathroundto@lastzeros=\count292
+\c@pgfmathroundto@lastzeros=\count296
 ))
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepo
 ints.code.tex
 File: pgfcorepoints.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgf@picminx=\dimen196
-\pgf@picmaxx=\dimen197
-\pgf@picminy=\dimen198
-\pgf@picmaxy=\dimen199
-\pgf@pathminx=\dimen256
-\pgf@pathmaxx=\dimen257
-\pgf@pathminy=\dimen258
-\pgf@pathmaxy=\dimen259
-\pgf@xx=\dimen260
-\pgf@xy=\dimen261
-\pgf@yx=\dimen262
-\pgf@yy=\dimen263
-\pgf@zx=\dimen264
-\pgf@zy=\dimen265
+\pgf@picminx=\dimen197
+\pgf@picmaxx=\dimen198
+\pgf@picminy=\dimen199
+\pgf@picmaxy=\dimen256
+\pgf@pathminx=\dimen257
+\pgf@pathmaxx=\dimen258
+\pgf@pathminy=\dimen259
+\pgf@pathmaxy=\dimen260
+\pgf@xx=\dimen261
+\pgf@xy=\dimen262
+\pgf@yx=\dimen263
+\pgf@yy=\dimen264
+\pgf@zx=\dimen265
+\pgf@zy=\dimen266
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepa
 thconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgf@path@lastx=\dimen266
-\pgf@path@lasty=\dimen267
+\pgf@path@lastx=\dimen267
+\pgf@path@lasty=\dimen268
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepa
 thusage.code.tex
 File: pgfcorepathusage.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgf@shorten@end@additional=\dimen268
-\pgf@shorten@start@additional=\dimen269
+\pgf@shorten@end@additional=\dimen269
+\pgf@shorten@start@additional=\dimen270
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoresc
 opes.code.tex
@@ -567,19 +653,19 @@ File: pgfcorescopes.code.tex 2020/10/01 v3.1.6a (3.1.6a)
 \pgfpic=\box54
 \pgf@hbox=\box55
 \pgf@layerbox@main=\box56
-\pgf@picture@serial@count=\count293
+\pgf@picture@serial@count=\count297
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregr
 aphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgflinewidth=\dimen270
+\pgflinewidth=\dimen271
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretr
 ansformations.code.tex
 File: pgfcoretransformations.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgf@pt@x=\dimen271
-\pgf@pt@y=\dimen272
-\pgf@pt@temp=\dimen273
+\pgf@pt@x=\dimen272
+\pgf@pt@y=\dimen273
+\pgf@pt@temp=\dimen274
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequ
 ick.code.tex
@@ -596,14 +682,14 @@ File: pgfcorepathprocessing.code.tex 2020/10/01 v3.1.6a (3.1.6a)
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorear
 rows.code.tex
 File: pgfcorearrows.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgfarrowsep=\dimen274
+\pgfarrowsep=\dimen275
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoresh
 ade.code.tex
 File: pgfcoreshade.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgf@max=\dimen275
-\pgf@sys@shading@range@num=\count294
-\pgf@shadingcount=\count295
+\pgf@max=\dimen276
+\pgf@sys@shading@range@num=\count298
+\pgf@shadingcount=\count299
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreim
 age.code.tex
@@ -642,8 +728,8 @@ File: pgfmoduleplot.code.tex 2020/10/01 v3.1.6a (3.1.6a)
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-
 version-0-65.sty
 Package: pgfcomp-version-0-65 2020/10/01 v3.1.6a (3.1.6a)
-\pgf@nodesepstart=\dimen276
-\pgf@nodesepend=\dimen277
+\pgf@nodesepstart=\dimen277
+\pgf@nodesepend=\dimen278
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-
 version-1-18.sty
@@ -651,8 +737,8 @@ Package: pgfcomp-version-1-18 2020/10/01 v3.1.6a (3.1.6a)
 ))
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
 Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks41
-\verbatim@line=\toks42
+\every@verbatim=\toks44
+\verbatim@line=\toks45
 \verbatim@in@stream=\read4
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
@@ -662,15 +748,15 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )) (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count296
+\etb@tempcnta=\count300
 )
 \tcb@titlebox=\box59
 \tcb@upperbox=\box60
 \tcb@lowerbox=\box61
 \tcb@phantombox=\box62
-\c@tcbbreakpart=\count297
-\c@tcblayer=\count298
-\c@tcolorbox@number=\count299
+\c@tcbbreakpart=\count301
+\c@tcblayer=\count302
+\c@tcolorbox@number=\count303
 \tcb@temp=\box63
 \tcb@temp=\box64
 \tcb@temp=\box65
@@ -696,10 +782,10 @@ Package: pgffor 2020/10/01 v3.1.6a (3.1.6a)
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.te
 x)
-\pgffor@iter=\dimen278
-\pgffor@skip=\dimen279
-\pgffor@stack=\toks43
-\pgffor@toks=\toks44
+\pgffor@iter=\dimen279
+\pgffor@skip=\dimen280
+\pgffor@stack=\toks46
+\pgffor@toks=\toks47
 ))
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\t
 ikz.code.tex
@@ -708,34 +794,34 @@ Package: tikz 2020/10/01 v3.1.6a (3.1.6a)
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibrary
 plothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgf@plot@mark@count=\count300
-\pgfplotmarksize=\dimen280
+\pgf@plot@mark@count=\count304
+\pgfplotmarksize=\dimen281
 )
-\tikz@lastx=\dimen281
-\tikz@lasty=\dimen282
-\tikz@lastxsaved=\dimen283
-\tikz@lastysaved=\dimen284
-\tikz@lastmovetox=\dimen285
-\tikz@lastmovetoy=\dimen286
-\tikzleveldistance=\dimen287
-\tikzsiblingdistance=\dimen288
+\tikz@lastx=\dimen282
+\tikz@lasty=\dimen283
+\tikz@lastxsaved=\dimen284
+\tikz@lastysaved=\dimen285
+\tikz@lastmovetox=\dimen286
+\tikz@lastmovetoy=\dimen287
+\tikzleveldistance=\dimen288
+\tikzsiblingdistance=\dimen289
 \tikz@figbox=\box67
 \tikz@figbox@bg=\box68
 \tikz@tempbox=\box69
 \tikz@tempbox@bg=\box70
-\tikztreelevel=\count301
-\tikznumberofchildren=\count302
-\tikznumberofcurrentchild=\count303
-\tikz@fig@count=\count304
+\tikztreelevel=\count305
+\tikznumberofchildren=\count306
+\tikznumberofcurrentchild=\count307
+\tikz@fig@count=\count308
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulemat
 rix.code.tex
 File: pgfmodulematrix.code.tex 2020/10/01 v3.1.6a (3.1.6a)
-\pgfmatrixcurrentrow=\count305
-\pgfmatrixcurrentcolumn=\count306
-\pgf@matrix@numberofcolumns=\count307
+\pgfmatrixcurrentrow=\count309
+\pgfmatrixcurrentcolumn=\count310
+\pgf@matrix@numberofcolumns=\count311
 )
-\tikz@expandcount=\count308
+\tikz@expandcount=\count312
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/l
 ibraries\tikzlibrarytopaths.code.tex
@@ -751,50 +837,61 @@ Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.42'
 .tex
 Library (tcolorbox): 'tcbtheorems.code.tex' version '4.42'
 ))
-\c@definition=\count309
-\c@theorem=\count310
-\c@corollary=\count311
-\c@proposition=\count312
-\c@lemma=\count313
+\c@definition=\count313
+\c@theorem=\count314
+\c@corollary=\count315
+\c@proposition=\count316
+LaTeX Font Info:    Trying to load font information for OT1+CormorantGaramond-L
+F on input line 166.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/cormorantgaramond\ot1cormo
+rantgaramond-lf.fd
+File: OT1CormorantGaramond-LF.fd 2019/12/11 (autoinst) Font definitions for OT1
+/CormorantGaramond-LF.
+)
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/n' on input line 166.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/n' will be
+(Font)              scaled to size 10.0pt on input line 166.
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex
 .def
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count314
+\l__kernel_color_stack_int=\count317
 \l__pdf_internal_box=\box72
 ) ("Measure Theory.aux")
 \openout1 = `"Measure Theory.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count315
-\scratchdimen=\dimen289
+\scratchcounter=\count318
+\scratchdimen=\dimen290
 \scratchbox=\box73
-\nofMPsegments=\count316
-\nofMParguments=\count317
-\everyMPshowfont=\toks45
-\MPscratchCnt=\count318
-\MPscratchDim=\dimen290
-\MPnumerator=\count319
-\makeMPintoPDFobject=\count320
-\everyMPtoPDFconversion=\toks46
+\nofMPsegments=\count319
+\nofMParguments=\count320
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count321
+\MPscratchDim=\dimen291
+\MPnumerator=\count322
+\makeMPintoPDFobject=\count323
+\everyMPtoPDFconversion=\toks49
 )
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base
 .sty
@@ -836,7 +933,24 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 131.
+LaTeX Info: Redefining \microtypecontext on input line 166.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 166.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `CormorantGaramond-LF' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+\c@mv@tabular=\count324
+\c@mv@boldtabular=\count325
+Package hyperref Info: Link coloring ON on input line 166.
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -847,132 +961,768 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 tring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count321
+\c@section@level=\count326
 )
-LaTeX Info: Redefining \ref on input line 131.
-LaTeX Info: Redefining \pageref on input line 131.
-LaTeX Info: Redefining \nameref on input line 131.
+LaTeX Info: Redefining \ref on input line 166.
+LaTeX Info: Redefining \pageref on input line 166.
+LaTeX Info: Redefining \nameref on input line 166.
  ("Measure Theory.out") ("Measure Theory.out")
 \@outlinefile=\write6
 \openout6 = `"Measure Theory.out"'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 135
-.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/sc' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/sc' on input line 168.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/sc' will be
+(Font)              scaled to size 10.0pt on input line 168.
+Package microtype Info: Character `013' is missing
+(microtype)             in font `OT1/CormorantGaramond-LF/light/sc/10'.
+(microtype)             Ignoring protrusion settings for this character.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/sc' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/sc' on input line 168.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/sc' will be
+(Font)              scaled to size 17.28pt on input line 168.
+Package microtype Info: Character `013' is missing
+(microtype)             in font `OT1/CormorantGaramond-LF/light/sc/17.28'.
+(microtype)             Ignoring protrusion settings for this character.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/sc' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/sc' on input line 170.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/sc' will be
+(Font)              scaled to size 14.4pt on input line 170.
+Package microtype Info: Character `013' is missing
+(microtype)             in font `OT1/CormorantGaramond-LF/light/sc/14.4'.
+(microtype)             Ignoring protrusion settings for this character.
 
-(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ppl.cfg
+File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 135
-.
+LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
+170.
 
-(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 13
-5.
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
+170.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
+170.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 15.0049pt on input line 170.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 170.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 170.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 15.0049pt on input line 170.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 170.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 8.33606pt on input line 170.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 17
+0.
 
 (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
+170.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `zplm' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/n' on input line 172.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/n' will be
+(Font)              scaled to size 24.88pt on input line 172.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/n' on input line 172.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/n' will be
+(Font)              scaled to size 24.88pt on input line 172.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/n' on input line 174.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/n' will be
+(Font)              scaled to size 14.4pt on input line 174.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/it' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/it' on input line 174.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/it' will be
+(Font)              scaled to size 14.4pt on input line 174.
+
+
+LaTeX Font Warning: Font shape `OT1/CormorantGaramond-LF/l/scit' undefined
+(Font)              using `OT1/CormorantGaramond-LF/l/sc' instead on input line
+ 174.
+
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/it' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/it' on input line 176.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/it' will be
+(Font)              scaled to size 10.0pt on input line 176.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/n' on input line 182.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/n' will be
+(Font)              scaled to size 12.0pt on input line 182.
 [1
 
 {C:/Users/hp/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/n' on input line 184.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/n' will be
+(Font)              scaled to size 14.4pt on input line 184.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/n' on input line 184.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/n' will be
+(Font)              scaled to size 20.0pt on input line 184.
 
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <20> not available
-(Font)              size <20.74> substituted on input line 149.
+("Measure Theory.toc"
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/n' on input line 2.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/n' will be
+(Font)              scaled to size 10.0pt on input line 2.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 3.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 3.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 3.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 3.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/n' on input line 23.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/n' will be
+(Font)              scaled to size 7.6pt on input line 23.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/n' on input line 23.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/n' will be
+(Font)              scaled to size 8.0pt on input line 23.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 23.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 5.21004pt on input line 23.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/n' on input line 23.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/n' will be
+(Font)              scaled to size 6.0pt on input line 23.
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 
+23.
 
-("Measure Theory.toc")
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ufplmbb.fd
+File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.54 ...inuous Functions}{74}{subsubsection.7.4.2}
+                                                  % [1])
 \tf@toc=\write7
 \openout7 = `"Measure Theory.toc"'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.150 \newpage
-               [1]
+ [2]
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/n' on input line 188.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/n' will be
+(Font)              scaled to size 12.0pt on input line 188.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/n' on input line 188.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/n' will be
+(Font)              scaled to size 15.0pt on input line 188.
+LaTeX Font Info:    Trying to load font information for TS1+CormorantGaramond-L
+F on input line 191.
+
+(C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/latex/cormorantgaramond\ts1cormo
+rantgaramond-lf.fd
+File: TS1CormorantGaramond-LF.fd 2019/12/11 (autoinst) Font definitions for TS1
+/CormorantGaramond-LF.
+)
+LaTeX Font Info:    Font shape `TS1/CormorantGaramond-LF/l/n' aliased to
+(Font)              `TS1/CormorantGaramond-LF/light/n' on input line 191.
+LaTeX Font Info:    Font shape `TS1/CormorantGaramond-LF/light/n' will be
+(Font)              scaled to size 10.0pt on input line 191.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `CormorantGaramond-LF' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [3] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 297--300
+
+ []
+
+[6]
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/n' on input line 348.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/n' will be
+(Font)              scaled to size 7.6pt on input line 348.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/n' on input line 348.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/n' will be
+(Font)              scaled to size 6.0pt on input line 348.
+ [7] [8]
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/it' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/it' on input line 429.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/it' will be
+(Font)              scaled to size 10.0pt on input line 429.
+ [9] [10] [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 608--612
+
+ []
+
+[13]
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/l/it' aliased to
+(Font)              `OT1/CormorantGaramond-LF/light/it' on input line 637.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/light/it' will be
+(Font)              scaled to size 8.0pt on input line 637.
+ [14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 775--778
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 783--787
+
+ []
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 844--846
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 909--913
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 947--951
+
+ []
+
+[20] [21]
+LaTeX Font Info:    Calculating math sizes for size <15> on input line 1011.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 15.63011pt on input line 1011.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 11.87878pt on input line 1011.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 9.37816pt on input line 1011.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 15.63011pt on input line 1011.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 11.87878pt on input line 1011.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 9.37816pt on input line 1011.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <15> not available
+(Font)              size <14.4> substituted on input line 1011.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <11.39992> not available
+(Font)              size <10.95> substituted on input line 1011.
+
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <15> not available
-(Font)              size <14.4> substituted on input line 153.
+(Font)              size <14.4> substituted on input line 1011.
 
-[2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 241--244
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <11.39992> not available
+(Font)              size <10.95> substituted on input line 1011.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <15> not available
+(Font)              size <14.4> substituted on input line 1011.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <11.39992> not available
+(Font)              size <10.95> substituted on input line 1011.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <15> not available
+(Font)              size <14.4> substituted on input line 1011.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <11.39992> not available
+(Font)              size <10.95> substituted on input line 1011.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1011.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\lambda' on input line 1011.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 1011.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\left' on input line 1011.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\right' on input line 1011.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1011.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1011.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1011.
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1063
 
  []
 
-[5] [6] [7] [8] [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 552--556
+
+Underfull \hbox (badness 10000) in paragraph at lines 1063--1068
 
  []
 
-[12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 650--652
+
+Underfull \hbox (badness 10000) in paragraph at lines 1073--1078
 
  []
 
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 714--718
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1122
 
  []
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 752--756
+
+Underfull \hbox (badness 10000) in paragraph at lines 1149--1152
 
  []
 
-[16] ("Measure Theory.aux")
+[24] [25] [26] [27] [28] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 1388--1390
+
+ []
+
+[30] [31] [32] [33] [34] [35]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1661.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1661.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 1661.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\lambda' on input line 1661.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 1661.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\lambda' on input line 1661.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1661.
+
+[36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 1768--1771
+
+ []
+
+[38] [39]
+Underfull \hbox (badness 10000) in paragraph at lines 1857--1860
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1864--1871
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1864--1871
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1864--1871
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1864--1871
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1864--1871
+
+ []
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 1925--1929
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1925--1929
+
+ []
+
+[41] [42]
+Underfull \hbox (badness 10000) in paragraph at lines 1985--1988
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1992--1995
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2014--2017
+
+ []
+
+[43] [44] [45] [46] [47] [48] [49] [50]
+Underfull \hbox (badness 10000) in paragraph at lines 2295--2299
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2295--2299
+
+ []
+
+[51]
+LaTeX Font Info:    Calculating math sizes for size <20> on input line 2312.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 20.84015pt on input line 2312.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 15.8384pt on input line 2312.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 12.50421pt on input line 2312.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 20.84015pt on input line 2312.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 15.8384pt on input line 2312.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 12.50421pt on input line 2312.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <20> not available
+(Font)              size <20.74> substituted on input line 2312.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <15.19989> not available
+(Font)              size <14.4> substituted on input line 2312.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <20> not available
+(Font)              size <20.74> substituted on input line 2312.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <15.19989> not available
+(Font)              size <14.4> substituted on input line 2312.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <20> not available
+(Font)              size <20.74> substituted on input line 2312.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <15.19989> not available
+(Font)              size <14.4> substituted on input line 2312.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <20> not available
+(Font)              size <20.74> substituted on input line 2312.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <15.19989> not available
+(Font)              size <14.4> substituted on input line 2312.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2312.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 2312.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2312.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2333.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 2333.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2333.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2335.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 2335.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2335.
+
+[52]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2364.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 2364.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2364.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2406--2409
+
+ []
+
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 2436--2438
+
+ []
+
+[54] [55] [56]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2517.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 2517.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\left' on input line 2517.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mu' on input line 2517.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\right' on input line 2517.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2517.
+
+[57]
+Underfull \hbox (badness 10000) in paragraph at lines 2572--2576
+
+ []
+
+[58]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2607.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 2607.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\left' on input line 2607.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\mu' on input line 2607.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\right' on input line 2607.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2607.
+
+[59] [60]
+Underfull \hbox (badness 10000) in paragraph at lines 2665--2667
+
+ []
+
+[61] [62] [63] [64] [65]
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/b/n' aliased to
+(Font)              `OT1/CormorantGaramond-LF/bold/n' on input line 2909.
+LaTeX Font Info:    Font shape `OT1/CormorantGaramond-LF/bold/n' will be
+(Font)              scaled to size 8.0pt on input line 2909.
+ [66] [67]
+Underfull \hbox (badness 10000) in paragraph at lines 3046--3049
+
+ []
+
+[68]
+LaTeX Font Info:    Trying to load font information for U+ifsym on input line 3
+071.
+ (C:\Users\hp\AppData\Local\Programs\MiKTeX\tex/fonts/ifsym\uifsym.fd)
+
+LaTeX Font Warning: Font shape `U/ifsym/l/it' undefined
+(Font)              using `U/ifsym/m/n' instead on input line 3071.
+
+Package microtype Info: Fixing zero fontdimen6 for font `U/ifsym/m/n/10'
+(microtype)             (new value: 10.0pt) on input line 3071.
+[69]
+Underfull \hbox (badness 10000) in paragraph at lines 3086--3089
+
+ []
+
+[70] [71] [72]
+Underfull \hbox (badness 10000) in paragraph at lines 3208--3211
+
+ []
+
+[73] [74] [75] [76] [77] [78] [79]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3446.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 3446.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\left' on input line 3446.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 3446.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\right' on input line 3446.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3446.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3484--3487
+
+ []
+
+[80]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3498.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\left' on input line 3498.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\right' on input line 3498.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 3498.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3511--3514
+
+ []
+
+[81] [82] ("Measure Theory.aux")
 Package rerunfilecheck Info: File `"Measure Theory".out' has not changed.
-(rerunfilecheck)             Checksum: 62C671D948B870BCB8B95DB7B6CB44A9;807.
+(rerunfilecheck)             Checksum: 4930726F9A841B6303BDE366CD99E413;4883.
 
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.74pt have occurred.
+(Font)              up to 0.7999pt have occurred.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 22224 strings out of 479799
- 440934 string characters out of 2871148
- 797966 words of memory out of 3000000
- 38713 multiletter control sequences out of 15000+200000
- 548513 words of font info for 80 fonts, out of 3000000 for 9000
+ 26248 strings out of 479799
+ 517337 string characters out of 2871148
+ 868908 words of memory out of 3000000
+ 41903 multiletter control sequences out of 15000+200000
+ 678489 words of font info for 454 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,20n,98p,1267b,485s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\hp\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm100
-0.pk><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmbx12.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmbxti10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmcsc10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/hp/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/hp/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/hp/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/
-hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/U
-sers/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
-<C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8
-.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmr12.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr5.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmr6.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr7.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/hp/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/hp/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/hp/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/hp/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/hp/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/
-hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/U
-sers/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam1
-0.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/sy
-mbols/msbm10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-rsfs/rsfs10.pfb>
-Output written on "Measure Theory.pdf" (17 pages, 403536 bytes).
+ 88i,26n,98p,1290b,547s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\hp\AppData\Local\MiKTeX\fonts/pk/ljfour/public/ifsym/dpi600\ifsym1
+0.pk>{C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cormorantgaramo
+nd/cgrm_k54atz.enc}{C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/c
+ormorantgaramond/cgrm_v7t4yx.enc}{C:/Users/hp/AppData/Local/Programs/MiKTeX/fon
+ts/enc/dvips/cormorantgaramond/cgrm_usix3v.enc}{C:/Users/hp/AppData/Local/Progr
+ams/MiKTeX/fonts/enc/dvips/base/8r.enc}{C:/Users/hp/AppData/Local/Programs/MiKT
+eX/fonts/enc/dvips/cormorantgaramond/cgrm_ctw2ju.enc}<C:/Users/hp/AppData/Local
+/Programs/MiKTeX/fonts/type1/catharsis/cormorantgaramond/CormorantGaramond-Bold
+.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/catharsis/cormorant
+garamond/CormorantGaramond-BoldItalic.pfb><C:/Users/hp/AppData/Local/Programs/M
+iKTeX/fonts/type1/catharsis/cormorantgaramond/CormorantGaramond-Light.pfb><C:/U
+sers/hp/AppData/Local/Programs/MiKTeX/fonts/type1/catharsis/cormorantgaramond/C
+ormorantGaramond-LightItalic.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Users/hp/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/hp/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/hp/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/hp/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/hp/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmbb.pfb><C:/Users/hp/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/h
+p/AppData/Local/Programs/MiKTeX/fonts/type1/public/mathpazo/fplmri.pfb><C:/User
+s/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.p
+fb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbo
+ls/msbm10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/public/rsf
+s/rsfs10.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatin
+o/uplr8a.pfb><C:/Users/hp/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatin
+o/uplri8a.pfb>
+Output written on "Measure Theory.pdf" (83 pages, 707060 bytes).
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 80 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1344 PDF objects out of 1440 (max. 8388607)
+ 453 named destinations out of 1000 (max. 500000)
+ 94693 words of extra memory for PDF output out of 106986 (max. 10000000)
 
